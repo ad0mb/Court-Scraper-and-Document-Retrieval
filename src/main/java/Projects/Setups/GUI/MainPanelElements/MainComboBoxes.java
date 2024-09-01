@@ -23,7 +23,7 @@ public class MainComboBoxes extends Panels {
 
     //Date Boxes
     //Date type declarations
-    private static String[] dateTypeElements = {"All available dates", "Date is", "Date is before", "Date is after", "Date is between"};
+    private static final String[] dateTypeElements = {"All available dates", "Date is", "Date is before", "Date is after", "Date is between"};
     public static JComboBox<String> dateType = new JComboBox<>(dateTypeElements);
     public static String selectedDateType = "All available dates";
     private static JLabel dateLabel;
@@ -62,7 +62,7 @@ public class MainComboBoxes extends Panels {
 
     //State Boxes
     //State type declarations
-    private static String[] stateElements = {"Select State", "California", "Florida", "New York", "Texas"};
+    private static final String[] stateElements = {"Select State", "California", "Florida", "New York", "Texas"};
     public static JComboBox<String> state = new JComboBox<>(stateElements);
     public static String selectedState = "";
 
@@ -113,7 +113,7 @@ public class MainComboBoxes extends Panels {
 
     //County Box
     //County type declarations
-    private static String[] countyElements = {"Select State First"};;
+    private static String[] countyElements = {"Select State First"};
     public static JComboBox<String> counties = new JComboBox<>(countyElements);
     public static String selectedCounty = "";
 

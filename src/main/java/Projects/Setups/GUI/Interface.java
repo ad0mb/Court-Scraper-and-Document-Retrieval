@@ -5,14 +5,10 @@ import Projects.Setups.GUI.MainPanelElements.MainButtons;
 import javax.swing.*;
 import java.awt.*;
 
-import static Projects.Setups.GUI.Panels.mainPanel;
-
 
 public class Interface {
 
     private static JFrame frame = new JFrame();
-
-
 
     public static void mainGUI() throws InterruptedException {
 

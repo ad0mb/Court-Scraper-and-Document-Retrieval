@@ -1,7 +1,6 @@
 package Projects.Setups.Browser;
 
 import Projects.StartGUI;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.*;
 
 public class Firefox extends StartGUI {

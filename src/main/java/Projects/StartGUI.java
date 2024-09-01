@@ -1,6 +1,5 @@
 package Projects;
 
-import Projects.Helpers.TabManagement;
 import Projects.Setups.GUI.Interface;
 import org.openqa.selenium.WebDriver;
 

@@ -10,7 +10,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.FileNotFoundException;
 import java.time.Duration;
-import java.util.ArrayList;
 import java.util.List;
 
 import static Projects.Helpers.TabManagement.switchTab;

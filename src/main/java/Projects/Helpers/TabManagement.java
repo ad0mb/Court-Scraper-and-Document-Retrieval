@@ -1,6 +1,5 @@
 package Projects.Helpers;
 
-import Projects.Setups.Browser.Firefox;
 import org.openqa.selenium.JavascriptExecutor;
 
 import java.util.Set;
