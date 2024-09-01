@@ -2,6 +2,7 @@ package Projects.Helpers;
 
 import org.openqa.selenium.JavascriptExecutor;
 
+import java.util.ArrayList;
 import java.util.Set;
 
 import static Projects.StartGUI.driver;
@@ -26,7 +27,17 @@ public class TabManagement {
         for (String tab : tabs) {
             if (count == tabSpot) {
                 driver.switchTo().window(tab);
+                break;
             }
+            count++;
         }
+   }
+
+   public static void closeLastOpened() {
+        String currentTab = driver.getWindowHandle();
+        int numOfTabs = driver.getWindowHandles().size();
+        switchTab(numOfTabs-1);
+        driver.close();
+        driver.switchTo().window(currentTab);
    }
 }
