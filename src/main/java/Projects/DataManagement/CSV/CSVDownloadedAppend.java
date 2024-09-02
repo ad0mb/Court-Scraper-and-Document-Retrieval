@@ -12,5 +12,8 @@ public class CSVDownloadedAppend {
 
         csvFile.append("\n");
         csvFile.append(row);
+
+        csvFile.flush();
+        csvFile.close();
     }
 }

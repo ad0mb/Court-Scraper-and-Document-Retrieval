@@ -12,14 +12,15 @@ import java.io.FileNotFoundException;
 import java.time.Duration;
 import java.util.List;
 
+import static Projects.Helpers.TabManagement.closeLastOpened;
 import static Projects.Helpers.TabManagement.switchTab;
 import static Projects.StartGUI.driver;
 
 public class HarrisCounty extends StateSelect {
 
-    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    private static WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
-    public void harrisMain(String caseNumber) throws FileNotFoundException, InterruptedException {
+    public static void harrisMain(String caseNumber) throws FileNotFoundException, InterruptedException {
 
         //grabs harris site and logs in only if reset has recently happened
         if (driver.getCurrentUrl().equals("https://www.google.com/")) {
@@ -33,32 +34,24 @@ public class HarrisCounty extends StateSelect {
 
         while (!driver.findElement(By.className("captcha-solver")).getAttribute("data-state").equals("solved")) {
             Thread.sleep(1);
-
-            Thread.sleep(500);
-            driver.findElement(By.cssSelector("#ctl00_ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder2_ContentPlaceHolder2_btnCivSearch")).click();
-            Thread.sleep(1000);
-            driver.findElement(By.xpath("//a[@title='View Case Details']")).click();
-            Thread.sleep(500);
-
-            switchTab(1);
-
-            driver.findElement(By.xpath("//*[@id=\"tabDocuments\"]")).click();
-
-
-            List<WebElement> rows = driver.findElements(By.xpath("/html/body/form/div[3]/div/div/div/div[3]/div[15]/div/section/div/div/div[3]/table/tbody/tr"));
-            int count = 0;
-            for (WebElement element : rows) {
-
-                if (element.getAttribute("outerHTML").contains(">Order<") || count <= 5) {
-                    WebElement link = element.findElement(By.xpath(".//a"));
-                    ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", link);
-                    link.click();
-                    Thread.sleep(3000);
-
-                    String name = element.findElement(By.xpath("./td/table/tbody/tr/td[1]")).getAttribute("innerHTML").replace("\n", " ").replace(",", "").replace("\u00A0", "").replace("/", " ").replace("\"", " ").trim();
-                }
-            }
         }
+
+        Thread.sleep(500);
+        driver.findElement(By.cssSelector("#ctl00_ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder2_ContentPlaceHolder2_btnCivSearch")).click();
+        Thread.sleep(1500);
+        driver.findElement(By.xpath("//a[@title='View Case Details']")).click();
+        Thread.sleep(2000);
+
+        switchTab(1);
+
+        driver.findElement(By.xpath("//*[@id=\"tabDocuments\"]")).click();
+
+        new HarrisDocketRetrieval().retrieveDockets();
+
+        driver.close();
+        switchTab(0);
+
+        driver.findElement(By.xpath("//*[@id=\"ctl00_ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder2_ContentPlaceHolder2_btnSearchAgain\"]")).click();
     }
 
     public static void loginHarris() throws InterruptedException, FileNotFoundException {

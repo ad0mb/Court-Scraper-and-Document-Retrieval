@@ -1,10 +1,10 @@
 package Projects.Flows.States;
 
 import Projects.Flows.States.Texas.Dallas.DallasCounty;
-import Projects.Flows.States.Texas.Harris.HarrisCounty;
 
 import java.io.FileNotFoundException;
 
+import static Projects.Flows.States.Texas.Harris.HarrisCounty.harrisMain;
 import static Projects.Setups.GUI.MainPanelElements.MainComboBoxes.selectedCounty;
 import static Projects.Setups.GUI.MainPanelElements.MainComboBoxes.selectedState;
 
@@ -24,7 +24,7 @@ public class StateSelect extends StateParser {
                 }
             case "Texas":
                 if (selectedCounty.equals("Harris")) {
-                    new HarrisCounty().harrisMain(caseNumber);
+                    harrisMain(caseNumber);
                 } else if (selectedCounty.equals("Dallas")) {
                     new DallasCounty().dallasMain();
                 }
