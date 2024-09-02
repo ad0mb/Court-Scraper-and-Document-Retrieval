@@ -15,14 +15,14 @@ import static Projects.StartGUI.driver;
 
 public class CourtlinkScrapeMain extends CourtlinkMain {
 
-    private static WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    private static WebDriverWait wait;
     private static int numCases = Integer.valueOf(driver.findElement(By.xpath("/html/body/main/div/main/div[2]/div/div[1]/div/div[1]/ul/li[1]")).getAttribute("data-actualresultscount"));
 
     public static void courtLinkScrape() throws IOException, InterruptedException {
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         Thread.sleep(500);
         System.out.println(numCases);
         driver.findElement(By.xpath("//*[@id=\"title_sr0\"]")).click();
-
         //waits until first page is loaded
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"Header\"]")));
 
@@ -58,7 +58,6 @@ public class CourtlinkScrapeMain extends CourtlinkMain {
         //inner text retrieves text not html from the inside and splits it
 
         String caseInfo = driver.findElement(By.xpath("//*[@id=\"Header\"]")).getAttribute("innerText");
-
         String[] info = caseInfo.split("\n");
 
         //adds the case number and date filed in a loop
