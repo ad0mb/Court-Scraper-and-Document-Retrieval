@@ -3,16 +3,13 @@ package Projects.Flows.States.Texas.Harris;
 import Projects.Flows.States.StateSelect;
 import Projects.Helpers.ConfigGrabbers;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.FileNotFoundException;
 import java.time.Duration;
-import java.util.List;
 
-import static Projects.Helpers.TabManagement.closeLastOpened;
 import static Projects.Helpers.TabManagement.switchTab;
 import static Projects.StartGUI.driver;
 
@@ -32,8 +29,12 @@ public class HarrisCounty extends StateSelect {
 
         Thread.sleep(3000);
 
-        while (!driver.findElement(By.className("captcha-solver")).getAttribute("data-state").equals("solved")) {
-            Thread.sleep(1);
+        try {
+            while (!driver.findElement(By.className("captcha-solver")).getAttribute("data-state").equals("solved")) {
+                Thread.sleep(1);
+            }
+        } catch (NoSuchElementException e) {
+            System.out.println("no captcha");
         }
 
         Thread.sleep(500);
