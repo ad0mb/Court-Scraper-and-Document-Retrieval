@@ -20,7 +20,10 @@ import static Projects.Setups.GUI.MainPanelElements.MainComboBoxes.selectedState
 
 public class StateParser extends FlowStart {
 
+    //file location of the temp file that is used to store data
     public static String tempFileLocation = "C:\\Users\\" + System.getenv("USERNAME") + "\\Desktop\\Courtlink Scraper\\" + selectedState + "\\" + selectedCounty;
+
+    //docket names and numbers for renaming purposes
     public static List<String> docketNumbers;
     public static List<String> docketNames;
 
@@ -46,9 +49,6 @@ public class StateParser extends FlowStart {
             //grabs case files
             stateFilter(caseLine[0]);
 
-            //renames case files
-            renameFiles();
-
             //moves case number folder to downloaded folder
             tempFileMove(caseLine[0]);
 
@@ -62,7 +62,7 @@ public class StateParser extends FlowStart {
         }
     }
 
-    public static void renameFiles() {
+    public static void renameFilesBulk() {
         for (int i = 0; i < docketNames.size(); i++) {
             tempFileRename(docketNumbers.get(i), docketNames.get(i));
         }

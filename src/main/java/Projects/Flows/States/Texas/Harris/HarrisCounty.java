@@ -53,6 +53,9 @@ public class HarrisCounty extends StateSelect {
         switchTab(0);
 
         driver.findElement(By.xpath("//*[@id=\"ctl00_ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder2_ContentPlaceHolder2_btnSearchAgain\"]")).click();
+
+        //renames case files
+        renameFilesBulk();
     }
 
     public static void loginHarris() throws InterruptedException, FileNotFoundException {
