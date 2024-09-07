@@ -21,7 +21,7 @@ import static Projects.Setups.GUI.MainPanelElements.MainComboBoxes.selectedState
 public class StateParser extends FlowStart {
 
     //file location of the temp file that is used to store data
-    public static String tempFileLocation = "C:\\Users\\" + System.getenv("USERNAME") + "\\Desktop\\Courtlink Scraper\\" + selectedState + "\\" + selectedCounty;
+    public static String tempFolderPath = "C:\\Users\\" + System.getenv("USERNAME") + "\\Desktop\\Courtlink Scraper\\" + selectedState + "\\" + selectedCounty;
 
     //docket names and numbers for renaming purposes
     public static List<String> docketNumbers;
@@ -42,7 +42,7 @@ public class StateParser extends FlowStart {
 
             //deletes the line from temp if it found a duplicate and skips retrieval
             if ((caseRepeatedCheck(caseLine[0])) || (caseLine[0].isEmpty())) {
-                deleteLine(tempFilePath, tempFileLocation, tempLines.get(i));
+                deleteLine(tempFilePath, tempFolderPath, tempLines.get(i));
                 continue;
             }
 
@@ -56,7 +56,7 @@ public class StateParser extends FlowStart {
             appendToDownloaded(tempLines.get(i));
 
             //deletes line from temp folder
-            deleteLine(tempFilePath, tempFileLocation, tempLines.get(i));
+            deleteLine(tempFilePath, tempFolderPath, tempLines.get(i));
 
 
         }

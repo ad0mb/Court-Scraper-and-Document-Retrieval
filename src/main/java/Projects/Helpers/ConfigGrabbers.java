@@ -21,7 +21,7 @@ public class ConfigGrabbers {
         String[] loginCreds;
 
         //Opening File and reading the file as Json
-        JsonReader reader = new JsonReader(new FileReader(".\\src\\main\\java\\Projects\\Configs\\logins.json"));
+        JsonReader reader = new JsonReader(new FileReader("C:\\Users\\" + System.getenv("USERNAME") + "\\Desktop\\Courtlink Scraper\\Configs\\logins.json"));
         JsonObject logins = gson.fromJson(reader, JsonObject.class);
 
         for (JsonElement element : logins.get("credentials").getAsJsonArray()) {
