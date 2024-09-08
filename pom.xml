@@ -4,28 +4,21 @@
 
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>Projects</groupId>
-  <artifactId>Scrapers</artifactId>
+  <groupId>com.CourtlinkProject</groupId>
+  <artifactId>CourtlinkScraper</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>Scrapers</name>
+  <name>Scraper</name>
   <url>http://maven.apache.org</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>22</maven.compiler.source> <!-- Ensure this matches your Java version -->
+    <maven.compiler.source>22</maven.compiler.source>
     <maven.compiler.target>22</maven.compiler.target>
   </properties>
 
   <dependencies>
-    <!-- JUnit dependency for testing -->
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
 
     <!-- Selenium dependency -->
     <dependency>
@@ -40,12 +33,19 @@
       <artifactId>gson</artifactId>
       <version>2.11.0</version>
     </dependency>
+
+
   </dependencies>
 
   <build>
-    <plugins>
+    <sourceDirectory>src/projects</sourceDirectory>
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+      </resource>
+    </resources>
 
-      <!-- Maven Assembly Plugin to create a runnable JAR with dependencies -->
+    <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-assembly-plugin</artifactId>
@@ -53,8 +53,7 @@
         <configuration>
           <archive>
             <manifest>
-              <!-- Replace with the fully qualified name of your main class -->
-              <mainClass>Projects.StartGUI</mainClass>
+              <mainClass>CourtScraper.StartGUI</mainClass>
             </manifest>
           </archive>
           <descriptorRefs>
@@ -63,7 +62,8 @@
         </configuration>
         <executions>
           <execution>
-            <phase>package</phase>
+            <id>make-assembly</id> <!-- this is used for inheritance merges -->
+            <phase>package</phase> <!-- bind to the packaging phase -->
             <goals>
               <goal>single</goal>
             </goals>
@@ -72,5 +72,4 @@
       </plugin>
     </plugins>
   </build>
-
 </project>
