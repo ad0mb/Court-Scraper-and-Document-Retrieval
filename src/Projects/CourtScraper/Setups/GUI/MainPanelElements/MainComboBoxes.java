@@ -7,7 +7,8 @@ import javax.swing.*;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
-import static CourtScraper.Setups.GUI.MainPanelElements.MainInputBoxes.date;
+import static CourtScraper.Setups.GUI.MainPanelElements.MainButtons.start;
+import static CourtScraper.Setups.GUI.MainPanelElements.MainInputBoxes.*;
 
 
 public class MainComboBoxes extends Panels {
@@ -19,6 +20,7 @@ public class MainComboBoxes extends Panels {
         setDateType();
         setState();
         setCounty();
+        setFlowType();
 
     }
 
@@ -134,6 +136,43 @@ public class MainComboBoxes extends Panels {
             public void itemStateChanged(ItemEvent e) {
                 if (e.getStateChange() == ItemEvent.SELECTED) {
                     selectedCounty = (String) counties.getSelectedItem();
+                }
+            }
+        });
+    }
+
+//Flow type box
+    //Flow type declarations
+    private static String[] flowTypeElements = {"Select", "Scrape and Retrieve", "Scrape Only", "Retrieve Only"};
+    public static JComboBox<String> flowType = new JComboBox<>(flowTypeElements);
+    public static String selectedFlowType = "";
+
+    public static void setFlowType() {
+        gbcMain.gridx = 0;
+        gbcMain.gridy = 100;
+
+        mainPanel.add(flowType, gbcMain);
+
+        flowType.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+
+                selectedFlowType = (String) flowType.getSelectedItem();
+
+                if (selectedFlowType.equals("Retrieve Only")) {
+                    //disable input boxes
+                    search.setEditable(false);
+                    attorney.setEditable(false);
+                    date.setEditable(false);
+
+                    //disable combo boxes
+                    dateType.setEnabled(false);
+
+                    start.setEnabled(true);
+                } else if (selectedFlowType != "Select") {
+                    start.setEnabled(true);
+                } else {
+                    start.setEnabled(false);
                 }
             }
         });

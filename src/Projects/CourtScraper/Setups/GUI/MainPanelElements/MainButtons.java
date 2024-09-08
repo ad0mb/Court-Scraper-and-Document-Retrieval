@@ -18,7 +18,7 @@ public class MainButtons extends Panels {
 
 
     //startButton declarations
-    private static JButton start;
+    public static JButton start;
 
     //start button for mainPanel to start flow
     public static void startButton() throws InterruptedException {
@@ -26,9 +26,11 @@ public class MainButtons extends Panels {
 
         start = new JButton("Start");
 
-        gbcMain.gridx = 0;
+        gbcMain.gridx = 1;
         gbcMain.gridy = 100;
         mainPanel.add(start, gbcMain);
+
+        start.setEnabled(false);
 
         //clicked action reader AND STARTS FLOW
         start.addActionListener(e -> {
