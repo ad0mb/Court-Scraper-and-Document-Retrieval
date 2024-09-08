@@ -5,6 +5,8 @@ import org.openqa.selenium.WebDriver;
 
 public class StartGUI {
 
+    //interface start
+
     public static WebDriver driver;
 
     public static void main( String[] args ) throws InterruptedException {

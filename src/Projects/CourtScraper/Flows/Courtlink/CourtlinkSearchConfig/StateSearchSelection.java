@@ -6,6 +6,8 @@ import org.openqa.selenium.By;
 
 public class StateSearchSelection extends CourtlinkSearchConfigMain {
 
+    //this is the dropdown selection portion of the courtlink search flow
+
     public static void searchState(String state) throws InterruptedException {
         switch (state) {
             case "California":

@@ -1,12 +1,15 @@
 package CourtScraper.Setups.GUI;
 
 import CourtScraper.Setups.GUI.MainPanelElements.MainButtons;
+import CourtScraper.StartGUI;
 
 import javax.swing.*;
 import java.awt.*;
 
 
-public class Interface {
+public class Interface extends StartGUI {
+
+    //This file contains the interface box and all of its elements
 
     private static JFrame frame = new JFrame();
 

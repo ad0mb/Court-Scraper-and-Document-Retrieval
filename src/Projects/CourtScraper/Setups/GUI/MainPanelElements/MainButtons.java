@@ -1,16 +1,16 @@
 package CourtScraper.Setups.GUI.MainPanelElements;
 
+//panel imports
+import static CourtScraper.FlowStart.StartMainFlowButton;
 import CourtScraper.Setups.GUI.Panels;
 
-import javax.swing.*;
 
-import static CourtScraper.FlowStart.StartMainFlowButton;
-import static CourtScraper.Setups.GUI.Panels.gbcMain;
-import static CourtScraper.Setups.GUI.Panels.mainPanel;
+//java swing imports
+import javax.swing.*;
 
 public class MainButtons extends Panels {
 
-//Main Panel Buttons
+    //This file contains the main panel buttons
 
     public static void mainPanelButtons() throws InterruptedException {
         startButton();
@@ -22,7 +22,7 @@ public class MainButtons extends Panels {
 
     //start button for mainPanel to start flow
     public static void startButton() throws InterruptedException {
-        //button intialization
+        //start button intialization
 
         start = new JButton("Start");
 
@@ -40,10 +40,10 @@ public class MainButtons extends Panels {
                     start.setText("Started");
 
 
-                    //FLOW START vvvv
+                    //MAIN FLOW START vvvv
                     StartMainFlowButton();
                     System.out.println("Ended");
-                    //FLOW START ^^^^
+                    //MAIN FLOW START ^^^^
 
 
                     start.setEnabled(true);
@@ -55,7 +55,6 @@ public class MainButtons extends Panels {
         };
             startLooper.execute();
     });
-
 }
 
     //isClicked declarations
@@ -65,10 +64,5 @@ public class MainButtons extends Panels {
         while (!clicked) {
             Thread.sleep(1);
         }
-        //start.setEnabled(false);
-        //start.setText("Running");
     }
-
-
-//Main Panel Buttons
 }

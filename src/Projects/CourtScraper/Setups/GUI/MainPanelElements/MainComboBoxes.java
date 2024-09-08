@@ -4,7 +4,6 @@ import CourtScraper.Setups.GUI.Panels;
 
 import javax.swing.*;
 
-
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
@@ -13,7 +12,9 @@ import static CourtScraper.Setups.GUI.MainPanelElements.MainInputBoxes.date;
 
 public class MainComboBoxes extends Panels {
 
-//Main Panel Combo Boxes
+    //This file contains the main panels combo boxes (dropdowns)
+
+
     public static void mainPanelComboBoxes() {
         setDateType();
         setState();
@@ -21,7 +22,7 @@ public class MainComboBoxes extends Panels {
 
     }
 
-    //Date Boxes
+//Date Boxes
     //Date type declarations
     private static final String[] dateTypeElements = {"All available dates", "Date is", "Date is before", "Date is after", "Date is between"};
     public static JComboBox<String> dateType = new JComboBox<>(dateTypeElements);
@@ -60,7 +61,7 @@ public class MainComboBoxes extends Panels {
 
     }
 
-    //State Boxes
+//State Boxes
     //State type declarations
     private static final String[] stateElements = {"Select State", "California", "Florida", "New York", "Texas"};
     public static JComboBox<String> state = new JComboBox<>(stateElements);
@@ -103,15 +104,12 @@ public class MainComboBoxes extends Panels {
                             counties.addItem("Dallas");
                     }
                     counties.setEnabled(true);
-
                 }
             }
         });
-
-
     }
 
-    //County Box
+//County Box
     //County type declarations
     private static String[] countyElements = {"Select State First"};
     public static JComboBox<String> counties = new JComboBox<>(countyElements);
@@ -140,8 +138,4 @@ public class MainComboBoxes extends Panels {
             }
         });
     }
-
-//Main Panel Combo Boxes
-
-
 }

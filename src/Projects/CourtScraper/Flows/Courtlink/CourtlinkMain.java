@@ -13,6 +13,8 @@ import static CourtScraper.Flows.Courtlink.CourtlinkSearchConfig.CourtlinkSearch
 
 public class CourtlinkMain {
 
+    //main hub for all courtlink processes from login, to search, to scrape
+
     public void CourtlinkFlow() throws IOException, InterruptedException {
         //Login process
         courtLinkLogin();

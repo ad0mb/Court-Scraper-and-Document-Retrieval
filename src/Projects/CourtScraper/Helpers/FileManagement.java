@@ -7,6 +7,8 @@ import static CourtScraper.Setups.GUI.MainPanelElements.MainComboBoxes.selectedS
 
 public class FileManagement {
 
+    //this file contains all the methods that allow you to move rename and modify files/folders
+
     //folder paths
     private static String downloadedFolderPath = "C:\\Users\\" + System.getenv("USERNAME") + "\\Desktop\\Courtlink Scraper\\States\\" + selectedState + "\\" + selectedCounty + "\\Downloaded";
     private static String tempFolderPath = "C:\\Users\\" + System.getenv("USERNAME") + "\\Desktop\\Courtlink Scraper\\Temp";

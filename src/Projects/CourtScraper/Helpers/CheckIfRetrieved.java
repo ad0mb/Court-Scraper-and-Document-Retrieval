@@ -10,6 +10,8 @@ import static CourtScraper.Setups.GUI.MainPanelElements.MainComboBoxes.selectedS
 
 public class CheckIfRetrieved {
 
+    //This file contains all the retrieval check processes
+
     public static String downloadedFilePath = "C:\\Users\\" + System.getenv("USERNAME") + "\\Desktop\\Courtlink Scraper\\States\\" + selectedState + "\\" + selectedCounty + "\\downloadedtest.csv";
 
     public static boolean caseRepeatedCheck(String caseNumber) throws IOException {

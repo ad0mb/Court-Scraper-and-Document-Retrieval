@@ -16,6 +16,8 @@ import static CourtScraper.StartGUI.driver;
 
 public class CourtlinkScrapeMain extends CourtlinkMain {
 
+    //this is the main hub for the courtlink scrape flow
+
     private static WebDriverWait wait;
     private static int numCases = Integer.valueOf(driver.findElement(By.xpath("/html/body/main/div/main/div[2]/div/div[1]/div/div[1]/ul/li[1]")).getAttribute("data-actualresultscount"));
 

@@ -7,7 +7,9 @@ import java.awt.*;
 
 import static CourtScraper.Setups.GUI.MainPanelElements.MainInputBoxes.mainPanelBoxes;
 
-public class Panels {
+public class Panels extends Interface{
+
+    //this file contains all the panels
 
     public static JPanel mainPanel = new JPanel();
     public static GridBagConstraints gbcMain = new GridBagConstraints();

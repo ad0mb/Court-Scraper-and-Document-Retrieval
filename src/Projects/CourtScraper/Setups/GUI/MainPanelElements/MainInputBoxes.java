@@ -1,12 +1,15 @@
 package CourtScraper.Setups.GUI.MainPanelElements;
 
+
 import CourtScraper.Setups.GUI.Panels;
+
 
 import javax.swing.*;
 
 public class MainInputBoxes extends Panels {
 
-//mainPanel variables
+    //This file contains input boxes (text boxes) for the interface
+
     //declarations are public so they can be grabbed
     public static JTextField search;
     public static JTextField attorney;
@@ -58,7 +61,4 @@ public class MainInputBoxes extends Panels {
 
         date.setEditable(false);
     }
-
-
-//mainPanel Boxes
 }

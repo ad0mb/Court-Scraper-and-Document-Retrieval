@@ -5,6 +5,8 @@ import org.openqa.selenium.firefox.*;
 
 public class Firefox extends StartGUI {
 
+    //This file contains the selenium webdriver and browser launch
+
     public void FirefoxLaunch() {
 
         //System.setProperty("webdriver.gecko.driver", firefoxPath);

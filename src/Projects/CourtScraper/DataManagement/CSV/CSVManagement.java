@@ -9,8 +9,7 @@ import java.util.List;
 
 public class CSVManagement {
 
-    //path to be used for accessing temp file
-
+    //this will contain the methods to manage and modify csv files
 
     public static void deleteLine(String tempFilePath, String tempFolderPath, String line) throws IOException {
         File newTempFile = new File(tempFolderPath + "\\temp2temp.csv");

@@ -13,6 +13,8 @@ import org.openqa.selenium.support.ui.Select;
 
 public class CourtlinkSearchConfigMain extends CourtlinkMain {
 
+    //this is the main hub for the search configuration for courtlink flow
+
     public static String[] processedInputs;
 
     private static WebElement dateBox;

@@ -13,6 +13,8 @@ import static CourtScraper.Setups.GUI.MainPanelElements.MainComboBoxes.selectedS
 
 public class CSVSearchAppendTemp {
 
+    //this will contain the search flows specific appending variables
+
     public static String tempFilePath = "C:\\Users\\" + System.getenv("USERNAME") + "\\Desktop\\Courtlink Scraper\\States\\" + selectedState + "\\" + selectedCounty + "\\temp.csv";
 
     //declarations of current date and time

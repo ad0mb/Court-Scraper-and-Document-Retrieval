@@ -19,6 +19,8 @@ import static CourtScraper.Setups.GUI.MainPanelElements.MainComboBoxes.selectedS
 
 public class StateParser extends FlowStart {
 
+    //this is the main parser flow which will parse through all gathered case numbers in temp.csv
+
     //file location of the temp file that is used to store data
     public static String tempFolderPath = "C:\\Users\\" + System.getenv("USERNAME") + "\\Desktop\\Courtlink Scraper\\States\\" + selectedState + "\\" + selectedCounty;
 

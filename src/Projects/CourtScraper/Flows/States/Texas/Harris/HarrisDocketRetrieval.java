@@ -6,8 +6,6 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-import static CourtScraper.Flows.States.StateParser.docketNames;
-import static CourtScraper.Flows.States.StateParser.docketNumbers;
 import static CourtScraper.Helpers.TabManagement.closeLastOpened;
 import static CourtScraper.StartGUI.driver;
 

@@ -28,7 +28,7 @@ public class HarrisCounty extends StateSelect {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='txtCaseNumber']"))).sendKeys(caseNumber);
         //driver.findElement(By.xpath("//*[@id='txtCaseNumber']")).sendKeys(caseNumber);
 
-        Thread.sleep(3000);
+        Thread.sleep(6000);
 
         try {
             while (!driver.findElement(By.className("captcha-solver")).getAttribute("data-state").equals("solved")) {

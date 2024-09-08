@@ -2,13 +2,14 @@ package CourtScraper.Helpers;
 
 import org.openqa.selenium.JavascriptExecutor;
 
-import java.util.ArrayList;
 import java.util.Set;
 
 import static CourtScraper.StartGUI.driver;
 
 
 public class TabManagement {
+
+    //this file contains all the methods that allow you to manipulate and modify browser tabs as needed
 
     public static void closeAllTabs() throws InterruptedException {
         Set<String> tabs = driver.getWindowHandles();
