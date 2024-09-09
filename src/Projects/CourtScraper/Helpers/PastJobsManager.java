@@ -15,6 +15,8 @@ import static CourtScraper.Setups.GUI.MainPanelElements.MainInputBoxes.search;
 
 public class PastJobsManager {
 
+    //this file has the managing features for the Jtable
+
     public static String pastJobsFilePath = "C:\\Users\\" + System.getenv("USERNAME") + "\\Desktop\\Courtlink Scraper\\Configs\\PastJobs.csv";
     public static String configsFolderPath = "C:\\Users\\" + System.getenv("USERNAME") + "\\Desktop\\Courtlink Scraper\\Configs";
 

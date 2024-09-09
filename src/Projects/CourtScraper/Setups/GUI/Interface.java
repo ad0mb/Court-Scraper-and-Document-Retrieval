@@ -4,6 +4,7 @@ import CourtScraper.Setups.GUI.MainPanelElements.MainButtons;
 import CourtScraper.StartGUI;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.io.IOException;
 
@@ -37,7 +38,7 @@ public class Interface extends StartGUI {
 
     public static void topTabsSetup() {
 
-        topTabs.setPreferredSize(new Dimension(600, 285));
+        topTabs.setPreferredSize(new Dimension(500, 285));
         topTabs.add(mainPanel, "Start Configuration");
         topTabs.add(jobsPanel, "Jobs");
 
@@ -54,11 +55,11 @@ public class Interface extends StartGUI {
     public static void frameSetup() {
         //frame setup
         //frame.add(Panels.mainPanel, BorderLayout.CENTER);
+        frame.setLayout(new BorderLayout());
         frame.setSize(500, 500);
-        frame.add(topTabs);
+        frame.add(topTabs, BorderLayout.CENTER);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setTitle("My Scraper");
-        frame.setLayout(new FlowLayout());
         frame.pack();
         frame.setVisible(true);
         //frame setup

@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 
+import static CourtScraper.Setups.GUI.JobsPanelElements.JobsButtons.jobsButtons;
 import static CourtScraper.Setups.GUI.MainPanelElements.MainButtons.mainPanelButtons;
 import static CourtScraper.Setups.GUI.MainPanelElements.MainComboBoxes.mainPanelComboBoxes;
 import static CourtScraper.Setups.GUI.MainPanelElements.MainInputBoxes.mainPanelBoxes;
@@ -43,8 +44,10 @@ public class Panels extends Interface{
 
         jobsPanel.setLayout(new GridBagLayout());
 
+
         gbcJobs.fill = GridBagConstraints.BOTH;
 
         jobsTables();
+        jobsButtons();
     }
 }
