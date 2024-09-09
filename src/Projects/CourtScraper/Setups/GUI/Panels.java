@@ -16,14 +16,14 @@ public class Panels extends Interface{
 
     public static void mainPanel() throws InterruptedException {
         //borders around edges
-        mainPanel.setBorder(BorderFactory.createEmptyBorder(30, 30, 10, 30));
+        mainPanel.setBorder(BorderFactory.createEmptyBorder(20, 10, 20, 10));
         //borders around edges
 
 
         mainPanel.setLayout(new GridBagLayout());
 
         gbcMain.fill = GridBagConstraints.BOTH;
-        gbcMain.insets = new Insets(5, 5, 5, 5);
+        //gbcMain.insets = new Insets(5, 5, 5, 5);
 
 
 

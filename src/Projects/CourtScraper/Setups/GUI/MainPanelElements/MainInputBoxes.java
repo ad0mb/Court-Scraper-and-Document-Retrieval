@@ -5,6 +5,7 @@ import CourtScraper.Setups.GUI.Panels;
 
 
 import javax.swing.*;
+import java.awt.*;
 
 public class MainInputBoxes extends Panels {
 
@@ -26,38 +27,43 @@ public class MainInputBoxes extends Panels {
         JLabel instruction = new JLabel("Search Terms");
         search = new JTextField(15);
 
-        Panels.gbcMain.gridx = 0;
-        Panels.gbcMain.gridy = 2;
-        Panels.mainPanel.add(instruction, Panels.gbcMain);
+        gbcMain.gridx = 0;
+        gbcMain.gridy = 2;
+        gbcMain.insets = new Insets(0, 0, 0, 0);
+        mainPanel.add(instruction, gbcMain);
 
-        Panels.gbcMain.gridx = 0;
-        Panels.gbcMain.gridy = 3;
-        Panels.gbcMain.gridwidth = 2;
-        Panels.mainPanel.add(search, Panels.gbcMain);
+        gbcMain.gridx = 0;
+        gbcMain.gridy = 3;
+        gbcMain.gridwidth = 2;
+        gbcMain.insets = new Insets(0, 0, 10, 0);
+        mainPanel.add(search, gbcMain);
     }
 
     public static void attorneyBox() {
         JLabel instruction = new JLabel("Attorney Search Terms");
         attorney = new JTextField();
 
-        Panels.gbcMain.gridx = 0;
-        Panels.gbcMain.gridy = 6;
-        Panels.mainPanel.add(instruction, Panels.gbcMain);
+        gbcMain.gridx = 0;
+        gbcMain.gridy = 6;
+        gbcMain.insets = new Insets(0, 0, 0, 0);
+        mainPanel.add(instruction, gbcMain);
 
-        Panels.gbcMain.gridx = 0;
-        Panels.gbcMain.gridy = 7;
-        Panels.gbcMain.gridwidth = 2;
-        Panels.mainPanel.add(attorney, Panels.gbcMain);
+        gbcMain.gridx = 0;
+        gbcMain.gridy = 7;
+        gbcMain.gridwidth = 2;
+        gbcMain.insets = new Insets(0, 0, 10, 0);
+        mainPanel.add(attorney, gbcMain);
 
     }
 
     public static void dateBox() {
         date = new JTextField();
 
-        Panels.gbcMain.gridx = 1;
-        Panels.gbcMain.gridy = 9;
-        Panels.gbcMain.gridwidth = 1;
-        Panels.mainPanel.add(date, Panels.gbcMain);
+        gbcMain.gridx = 1;
+        gbcMain.gridy = 9;
+        gbcMain.insets = new Insets(0, 0, 10, 0);
+        gbcMain.gridwidth = 1;
+        mainPanel.add(date, gbcMain);
 
         date.setEditable(false);
     }

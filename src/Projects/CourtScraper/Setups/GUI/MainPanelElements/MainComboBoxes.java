@@ -4,6 +4,7 @@ import CourtScraper.Setups.GUI.Panels;
 
 import javax.swing.*;
 
+import java.awt.*;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
@@ -34,11 +35,13 @@ public class MainComboBoxes extends Panels {
     public static void setDateType() {
         gbcMain.gridx = 0;
         gbcMain.gridy = 8;
+        gbcMain.insets = new Insets(0, 0, 0, 0);
         dateLabel = new JLabel("MM/DD/YYYY");
         mainPanel.add(dateLabel, gbcMain);
 
         gbcMain.gridx = 0;
         gbcMain.gridy = 9;
+        gbcMain.insets = new Insets(0, 0, 10, 10);
         mainPanel.add(dateType, gbcMain);
 
         //Listener for Date instruction label
@@ -74,10 +77,12 @@ public class MainComboBoxes extends Panels {
 
         gbcMain.gridx = 0;
         gbcMain.gridy = 0;
+        gbcMain.insets = new Insets(0, 0, 0, 0);
         mainPanel.add(instruction, gbcMain);
 
         gbcMain.gridx = 0;
         gbcMain.gridy = 1;
+        gbcMain.insets = new Insets(0, 0, 20, 10);
         mainPanel.add(state, gbcMain);
 
         //Listener for County Combo Box selection
@@ -87,25 +92,38 @@ public class MainComboBoxes extends Panels {
                 if (e.getStateChange() == ItemEvent.SELECTED) {
                     selectedState = (String) state.getSelectedItem();
 
+                    //decides whether county box is open or not
+                    boolean isCountyOpen = false;
+
                     switch(selectedState) {
+                        case "Select State":
+                            counties.removeAllItems();
+                            counties.addItem("Select State First");
+                            isCountyOpen = false;
+                            break;
                         case "California":
                             counties.removeAllItems();
                             counties.addItem("Whole State");
+                            isCountyOpen = true;
                             break;
                         case "Florida":
                             counties.removeAllItems();
                             counties.addItem("Miami-Dade");
+                            isCountyOpen = true;
                             break;
                         case "New York":
                             counties.removeAllItems();
                             counties.addItem("New York BKQ");
+                            isCountyOpen = true;
                             break;
                         case "Texas":
                             counties.removeAllItems();
                             counties.addItem("Harris");
                             counties.addItem("Dallas");
+                            isCountyOpen = true;
+                            break;
                     }
-                    counties.setEnabled(true);
+                    counties.setEnabled(isCountyOpen);
                 }
             }
         });
@@ -122,12 +140,15 @@ public class MainComboBoxes extends Panels {
 
         gbcMain.gridx = 1;
         gbcMain.gridy = 0;
+        gbcMain.insets = new Insets(0, 0, 0, 0);
         mainPanel.add(instruction, gbcMain);
 
         counties.setEnabled(false);
 
         gbcMain.gridx = 1;
         gbcMain.gridy = 1;
+        gbcMain.insets = new Insets(0, 0, 20, 0);
+        counties.setPreferredSize(new Dimension(100, 0));
         mainPanel.add(counties, gbcMain);
 
         //Listening to grab input for county
@@ -150,7 +171,7 @@ public class MainComboBoxes extends Panels {
     public static void setFlowType() {
         gbcMain.gridx = 0;
         gbcMain.gridy = 100;
-
+        gbcMain.insets = new Insets(0, 0, 10, 10);
         mainPanel.add(flowType, gbcMain);
 
         flowType.addItemListener(new ItemListener() {
@@ -159,21 +180,35 @@ public class MainComboBoxes extends Panels {
 
                 selectedFlowType = (String) flowType.getSelectedItem();
 
-                if (selectedFlowType.equals("Retrieve Only")) {
-                    //disable input boxes
-                    search.setEditable(false);
-                    attorney.setEditable(false);
-                    date.setEditable(false);
+                //boolean that disables and enables search elements
+                boolean searchElements = true;
 
-                    //disable combo boxes
-                    dateType.setEnabled(false);
+                switch (selectedFlowType) {
+                    case "Select":
+                        searchElements = true;
 
-                    start.setEnabled(true);
-                } else if (selectedFlowType != "Select") {
-                    start.setEnabled(true);
-                } else {
-                    start.setEnabled(false);
+                        start.setEnabled(false);
+                        break;
+                    case "Scrape and Retrieve":
+                    case "Scrape Only":
+                        searchElements = true;
+
+                        start.setEnabled(true);
+                        break;
+                    case "Retrieve Only":
+                        searchElements = false;
+
+                        start.setEnabled(true);
+                        break;
                 }
+
+                //disable input boxes
+                search.setEditable(searchElements);
+                attorney.setEditable(searchElements);
+                date.setEditable(searchElements);
+
+                //disable combo boxes
+                dateType.setEnabled(searchElements);
             }
         });
     }
