@@ -26,6 +26,7 @@ public class JobsTableBox extends Panels {
     private static String[] columnData = {"Keywords", "Date Range", "State", "Counties", "Status", "Job Type", "Start Time", "End Time"};
 
     public static void jobsTable() {
+        //invoke later allows for editing function later on throughout the interfaces instantiation
         SwingUtilities.invokeLater(() -> {
             updateJobsTable();
 
@@ -53,6 +54,7 @@ public class JobsTableBox extends Panels {
             try {
             jobsModel.setColumnIdentifiers(columnData);
 
+            //this line is for resetting rows on "Update" button click
             jobsModel.setRowCount(0);
 
             for (String[] subArray : getJobs()) {

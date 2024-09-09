@@ -33,7 +33,7 @@ public class Interface extends StartGUI {
 
         MainButtons.isClicked();
         //put all waiting or conditional elements above here but below frames
-
+        //the isClicked above pauses the interface as it waits to be clicked
     }
 
     public static void topTabsSetup() {

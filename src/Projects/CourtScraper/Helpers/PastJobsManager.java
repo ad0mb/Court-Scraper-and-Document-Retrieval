@@ -23,13 +23,22 @@ public class PastJobsManager {
     public static void addJob(String status) throws IOException {
         String appendableString = "";
 
+        //crafts the csv line to add to pastJobslist
+        //adds search terms
         appendableString += search.getText() + ",";
+        //adds date range
         appendableString += date.getText() + ",";
+        //adds selected state
         appendableString += selectedState + ",";
+        //adds selected county
         appendableString += selectedCounty + ",";
+        //adds status (failed or finsihed, this is decided in the FlowStart)
         appendableString +=  status + ",";
+        //adds selected flow type
         appendableString += selectedFlowType + ",";
+        //adds start date and time
         appendableString += startTime + ",";
+        //adds finished date and time
         appendableString += endTime;
 
         appendToCSV(appendableString, pastJobsFilePath);
