@@ -5,23 +5,24 @@ import org.checkerframework.checker.units.qual.A;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static CourtScraper.Helpers.PastJobsManager.getJobs;
+
 public class JobsTableBox extends Panels {
 
-    public static void jobsTables(){
+    public static void jobsTables() throws IOException {
         jobsTable();
     }
 
     public static JTable recentJobs;
     private static JScrollPane jobsScrollPane;
-    private static String[] columnData = {"Keywords", "Date Range", "State", "Counties", "Status"};
-    public static List<String[]> rowData = new ArrayList<>();
-    private static String[][] tempshit = {{"", "", "", "", ""}};
+    private static String[] columnData = {"Keywords", "Date Range", "State", "Counties", "Status", "Job Type", "Start Time", "End Time"};
 
-    public static void jobsTable() {
-        recentJobs = new JTable(tempshit, columnData);
+    public static void jobsTable() throws IOException {
+        recentJobs = new JTable(getJobs(), columnData);
         jobsScrollPane = new JScrollPane(recentJobs);
         JLabel instructions = new JLabel("Previous Jobs");
 
@@ -34,5 +35,8 @@ public class JobsTableBox extends Panels {
         gbcJobs.weightx = 1.0;
         gbcJobs.weighty = 1.0;
         jobsPanel.add(jobsScrollPane, gbcJobs);
+    }
+
+    public static void updateJobsTable() throws IOException {
     }
 }

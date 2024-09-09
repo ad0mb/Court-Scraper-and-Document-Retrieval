@@ -2,6 +2,7 @@ package CourtScraper.Setups.GUI;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 
 import static CourtScraper.Setups.GUI.MainPanelElements.MainButtons.mainPanelButtons;
 import static CourtScraper.Setups.GUI.MainPanelElements.MainComboBoxes.mainPanelComboBoxes;
@@ -35,7 +36,7 @@ public class Panels extends Interface{
     public static JPanel jobsPanel = new JPanel();
     public static GridBagConstraints gbcJobs = new GridBagConstraints();
 
-    public static void jobsPanel() {
+    public static void jobsPanel() throws IOException {
         //borders around edges
         jobsPanel.setBorder(BorderFactory.createEmptyBorder(20, 10, 20 ,10));
         //borders around edges

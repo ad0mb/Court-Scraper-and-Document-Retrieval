@@ -5,6 +5,7 @@ import CourtScraper.StartGUI;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 
 import static CourtScraper.Setups.GUI.Panels.mainPanel;
 import static CourtScraper.Setups.GUI.Panels.jobsPanel;
@@ -14,10 +15,10 @@ public class Interface extends StartGUI {
 
     //This file contains the interface box and all of its elements
 
-    private static JFrame frame = new JFrame();
-    private static JTabbedPane topTabs = new JTabbedPane();
+    public static JFrame frame = new JFrame();
+    public static JTabbedPane topTabs = new JTabbedPane();
 
-    public static void mainGUI() throws InterruptedException {
+    public static void mainGUI() throws InterruptedException, IOException {
 
         panelSetups();
 
@@ -36,13 +37,13 @@ public class Interface extends StartGUI {
 
     public static void topTabsSetup() {
 
-        topTabs.setPreferredSize(new Dimension(400, 285));
+        topTabs.setPreferredSize(new Dimension(600, 285));
         topTabs.add(mainPanel, "Start Configuration");
         topTabs.add(jobsPanel, "Jobs");
 
     }
 
-    public static void panelSetups() throws InterruptedException {
+    public static void panelSetups() throws InterruptedException, IOException {
 
         //panel setup
         mainPanel();
