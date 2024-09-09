@@ -1,7 +1,5 @@
 package CourtScraper.Flows.States;
 
-
-import CourtScraper.DataManagement.CSV.CSVDownloadedAppend;
 import CourtScraper.FlowStart;
 import CourtScraper.Helpers.CheckIfRetrieved;
 import CourtScraper.Helpers.FileManagement;
@@ -12,7 +10,9 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
+import static CourtScraper.DataManagement.CSV.CSVManagement.appendToCSV;
 import static CourtScraper.DataManagement.CSV.CSVManagement.deleteLine;
+import static CourtScraper.Helpers.CheckIfRetrieved.downloadedFilePath;
 import static CourtScraper.Setups.GUI.MainPanelElements.MainComboBoxes.selectedCounty;
 import static CourtScraper.Setups.GUI.MainPanelElements.MainComboBoxes.selectedState;
 
@@ -54,7 +54,7 @@ public class StateParser extends FlowStart {
             FileManagement.tempFileMove(caseLine[0]);
 
             //adds line to downloads folder
-            CSVDownloadedAppend.appendToDownloaded(tempLines.get(i));
+            appendToCSV(tempLines.get(i), downloadedFilePath);
 
             //deletes line from temp folder
             deleteLine(CourtScraper.DataManagement.CSV.CSVSearchAppendTemp.tempFilePath, tempFolderPath, tempLines.get(i));

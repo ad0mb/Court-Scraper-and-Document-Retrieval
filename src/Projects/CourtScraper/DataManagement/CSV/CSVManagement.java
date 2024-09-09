@@ -34,4 +34,14 @@ public class CSVManagement {
         newTempFile.renameTo(oldTempFile);
 
     }
+
+    public static void appendToCSV(String row, String filePath) throws IOException {
+        FileWriter csvFile = new FileWriter(filePath, true);
+
+        csvFile.append("\n");
+        csvFile.append(row);
+
+        csvFile.flush();
+        csvFile.close();
+    }
 }
