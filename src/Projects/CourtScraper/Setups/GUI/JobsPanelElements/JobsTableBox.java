@@ -21,7 +21,6 @@ public class JobsTableBox extends Panels {
     }
 
     public static JTable recentJobs;
-    public static DefaultTableModel jobsModel = new DefaultTableModel();
     private static JScrollPane jobsScrollPane;
     private static String[] columnData = {"Keywords", "Date Range", "State", "Counties", "Status", "Job Type", "Start Time", "End Time"};
 
@@ -49,6 +48,14 @@ public class JobsTableBox extends Panels {
         });
         }
 
+        //the override make sure that table boxes cannot be edited. It overrides a library function
+    public static DefaultTableModel jobsModel = new DefaultTableModel() {
+        @Override
+        public boolean isCellEditable(int row, int column) {
+            return false;
+        }
+    };
+
     public static void updateJobsTable() {
         SwingUtilities.invokeLater(() -> {
             try {
@@ -60,6 +67,8 @@ public class JobsTableBox extends Panels {
             for (String[] subArray : getJobs()) {
                 jobsModel.addRow(subArray);
             }
+
+
         } catch (IOException ignored) {}
         });
     }
