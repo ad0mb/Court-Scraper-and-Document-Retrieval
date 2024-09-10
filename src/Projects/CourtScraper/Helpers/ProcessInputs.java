@@ -23,15 +23,15 @@ public class ProcessInputs {
         return inputs;
     }
 
-    public static String getSearchBox() {
+    private static String getSearchBox() {
         return MainInputBoxes.search.getText();
     }
 
-    public static String getAttorneyBox() {
+    private static String getAttorneyBox() {
         return MainInputBoxes.attorney.getText();
     }
 
-    public static void getDateBox() {
+    private static void getDateBox() {
         String[] reformattedDates = MainInputBoxes.date.getText().replaceAll("[^0-9/-]", "").split("-");
         if (reformattedDates.length > 1) {
             startDate = reformattedDates[0];
@@ -41,11 +41,11 @@ public class ProcessInputs {
         }
     }
 
-    public static String getState() {
+    private static String getState() {
         return MainComboBoxes.selectedState;
     }
 
-    public static String getCounty() {
+    private static String getCounty() {
         return MainComboBoxes.selectedCounty;
     }
 }

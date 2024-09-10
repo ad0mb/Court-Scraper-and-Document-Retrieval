@@ -43,24 +43,24 @@ public class CourtlinkSearchConfigMain extends CourtlinkMain {
         driver.findElement(By.xpath("//button[@id='triggersearch']")).click();
     }
 
-    public static void courtLinkSearchTerms() throws InterruptedException {
+    private static void courtLinkSearchTerms() throws InterruptedException {
         driver.findElement(By.xpath("//input[@name='keywords']")).sendKeys(processedInputs[0]);
         Thread.sleep(1000);
 
     }
 
-    public static void courtLinkAttorneyName() throws InterruptedException {
+    private static void courtLinkAttorneyName() throws InterruptedException {
         driver.findElement(By.cssSelector("div.controls-container:nth-child(1) > div:nth-child(5) > filteredtextbox:nth-child(1) > div:nth-child(1) > fieldset:nth-child(1) > div:nth-child(2) > div:nth-child(1) > input:nth-child(1)")).sendKeys(processedInputs[1]);
         Thread.sleep(1000);
     }
 
-    public static void courtLinkStateSelection() throws InterruptedException {
+    private static void courtLinkStateSelection() throws InterruptedException {
         driver.findElement(By.xpath("/html/body/main/div/ln-courtlinksearchform/div/searchform/div[1]/div[1]/courtlist/div/courtlistselector/div/div[1]/span[1]/div")).click();
         StateSearchSelection.searchState(MainComboBoxes.selectedState);
         Thread.sleep(1000);
     }
 
-    public static void courtLinkDateInput() throws InterruptedException {
+    private static void courtLinkDateInput() throws InterruptedException {
         //scroll into view
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", driver.findElement(By.cssSelector("div.courtlinkdateselection-container")));
         Thread.sleep(1000);

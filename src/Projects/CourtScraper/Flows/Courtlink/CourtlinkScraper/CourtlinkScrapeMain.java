@@ -55,7 +55,7 @@ public class CourtlinkScrapeMain extends CourtlinkMain {
         }
     }
 
-    public void grabCaseInfo() throws IOException {
+    private void grabCaseInfo() throws IOException {
         List<String> toBeAppended = new ArrayList<>();
 
         //inner text retrieves text not html from the inside and splits it

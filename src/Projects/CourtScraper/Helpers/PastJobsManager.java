@@ -47,7 +47,7 @@ public class PastJobsManager {
 
     }
 
-    public static void checkForMaxJobs() throws IOException {
+    private static void checkForMaxJobs() throws IOException {
         List<String> rows = Files.readAllLines(Path.of(pastJobsFilePath));
 
         if (rows.size() >= 21) {

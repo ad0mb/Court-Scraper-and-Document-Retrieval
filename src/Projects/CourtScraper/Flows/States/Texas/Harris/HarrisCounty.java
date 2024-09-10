@@ -59,7 +59,7 @@ public class HarrisCounty extends StateSelect {
         renameFilesBulk();
     }
 
-    public static void loginHarris() throws InterruptedException, FileNotFoundException {
+    private static void loginHarris() throws InterruptedException, FileNotFoundException {
         driver.get("https://www.hcdistrictclerk.com/eDocs/Public/Search.aspx");
         String[] credentials = new ConfigGrabbers().loginGrabber("texasharris");
 
