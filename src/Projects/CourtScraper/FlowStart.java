@@ -53,6 +53,7 @@ public class FlowStart {
         endTime = dateFormat.format(new Date());
 
         addJob(runStatus);
+        updateJobsTable();
 
 
     }
