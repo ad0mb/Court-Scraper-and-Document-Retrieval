@@ -46,7 +46,7 @@ public class HarrisCounty extends StateSelect {
 
         switchTab(1);
 
-        driver.findElement(By.xpath("//*[@id=\"tabDocuments\"]")).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"tabDocuments\"]"))).click();
 
         new HarrisDocketRetrieval().retrieveDockets();
 
