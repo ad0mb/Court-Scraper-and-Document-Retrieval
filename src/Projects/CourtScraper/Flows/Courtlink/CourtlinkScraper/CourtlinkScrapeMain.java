@@ -32,7 +32,7 @@ public class CourtlinkScrapeMain extends CourtlinkMain {
         //waits until first page is loaded
 
         //Grabs Case Info
-        for (int i = 0; i<9; i++) {
+        for (int i = 0; i<numCases; i++) {
             driver.navigate().refresh();
             Thread.sleep(2000);
             System.out.println(i);
