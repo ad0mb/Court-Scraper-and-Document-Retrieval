@@ -28,8 +28,8 @@ public class CSVSearchAppendTemp {
         FileWriter csvFile = new FileWriter(tempFilePath, true);
 
         //adds case number and date of case filed from the courtlink site
-        for (String element : toBeAppended) {
-            appendableString += element.substring(1) + ",";
+        for (int i = toBeAppended.size()-1; i>=0; i--) {
+            appendableString += toBeAppended.get(i).replace("\"", "") + ",";
         }
 
         //adds keywords used in search
