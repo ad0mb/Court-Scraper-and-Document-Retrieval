@@ -8,8 +8,7 @@ import javax.swing.border.Border;
 import java.awt.*;
 import java.io.IOException;
 
-import static CourtScraper.Setups.GUI.Panels.mainPanel;
-import static CourtScraper.Setups.GUI.Panels.jobsPanel;
+import static CourtScraper.Setups.GUI.Panels.*;
 
 
 public class Interface extends StartGUI {
@@ -41,6 +40,7 @@ public class Interface extends StartGUI {
         topTabs.setPreferredSize(new Dimension(500, 285));
         topTabs.add(mainPanel, "Start Configuration");
         topTabs.add(jobsPanel, "Jobs");
+        topTabs.add(terminalPanel, "Terminal");
 
     }
 
@@ -49,6 +49,7 @@ public class Interface extends StartGUI {
         //panel setup
         mainPanel();
         jobsPanel();
+        terminalPanel();
         //panel setup
     }
 

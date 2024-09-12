@@ -4,6 +4,7 @@ import CourtScraper.Flows.Courtlink.CourtlinkMain;
 import CourtScraper.Setups.Browser.Firefox;
 
 import java.io.IOException;
+import java.io.StringWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -11,6 +12,7 @@ import static CourtScraper.Helpers.PastJobsManager.addJob;
 import static CourtScraper.Setups.GUI.Interface.frame;
 import static CourtScraper.Setups.GUI.JobsPanelElements.JobsTableBox.updateJobsTable;
 import static CourtScraper.Setups.GUI.MainPanelElements.MainComboBoxes.selectedFlowType;
+import static CourtScraper.Setups.GUI.TerminalPanelElements.TerminalTextArea.*;
 
 
 public class FlowStart {
@@ -19,6 +21,7 @@ public class FlowStart {
 
     private static SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 
+    //Variables for previous jobs
     private static String runStatus = "";
     public static String startTime = "";
     public static String endTime = "";
@@ -45,7 +48,7 @@ public class FlowStart {
                     break;
             }
         } catch(Exception e) {
-            e.printStackTrace();
+            terminalToTextArea(e);
             //sets status for recent jobs to failed
             runStatus = "Failed";
         }

@@ -8,6 +8,7 @@ import static CourtScraper.Setups.GUI.MainPanelElements.MainButtons.mainPanelBut
 import static CourtScraper.Setups.GUI.MainPanelElements.MainComboBoxes.mainPanelComboBoxes;
 import static CourtScraper.Setups.GUI.MainPanelElements.MainInputBoxes.mainPanelBoxes;
 import static CourtScraper.Setups.GUI.JobsPanelElements.JobsTableBox.jobsTables;
+import static CourtScraper.Setups.GUI.TerminalPanelElements.TerminalTextArea.terminalTextAreas;
 
 public class Panels extends Interface{
 
@@ -48,5 +49,21 @@ public class Panels extends Interface{
 
         jobsTables();
         //jobsButtons();
+    }
+
+    public static JPanel terminalPanel = new JPanel();
+    public static GridBagConstraints gbcTerminal = new GridBagConstraints();
+
+    public static void terminalPanel() {
+        //borders around edges
+        terminalPanel.setBorder(BorderFactory.createEmptyBorder(20, 10, 20 ,10));
+        //borders around edges
+
+        terminalPanel.setLayout(new GridBagLayout());
+
+        gbcTerminal.fill = GridBagConstraints.BOTH;
+
+        terminalTextAreas();
+
     }
 }
