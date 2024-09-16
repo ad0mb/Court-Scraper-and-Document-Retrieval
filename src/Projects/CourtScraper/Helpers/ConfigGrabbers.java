@@ -38,4 +38,18 @@ public class ConfigGrabbers {
         }
         return loginCreds = new String[]{null};
     }
+
+    public String apiGrabber(String apiID) throws FileNotFoundException {
+        //opens file as JsonArray
+        JsonReader reader = new JsonReader(new FileReader("C:\\Users\\" + System.getenv("USERNAME") + "\\Desktop\\Courtlink Scraper\\Configs\\logins.json"));
+        JsonObject apiKeys = gson.fromJson(reader, JsonObject.class);
+
+        for (JsonElement element : apiKeys.get("API Keys").getAsJsonArray()) {
+            //grabs key if inputed parameter is the same as something on the api key
+            if (element.getAsJsonObject().get("ID").getAsString().equals(apiID)) {
+                return element.getAsJsonObject().get("Key").getAsString();
+            }
+        }
+        return null;
+    }
 }

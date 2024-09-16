@@ -19,7 +19,7 @@ public class HarrisCounty extends StateSelect {
     private static WebDriverWait wait;
 
     public static void harrisMain(String caseNumber) throws FileNotFoundException, InterruptedException {
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(60));
         //grabs harris site and logs in only if reset has recently happened
         if (driver.getCurrentUrl().equals("https://www.google.com/")) {
             loginHarris();
