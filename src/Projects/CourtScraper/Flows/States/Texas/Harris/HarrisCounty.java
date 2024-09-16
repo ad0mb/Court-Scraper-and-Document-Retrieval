@@ -39,9 +39,11 @@ public class HarrisCounty extends StateSelect {
         }
 
         Thread.sleep(500);
-        driver.findElement(By.cssSelector("#ctl00_ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder2_ContentPlaceHolder2_btnCivSearch")).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#ctl00_ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder2_ContentPlaceHolder2_btnCivSearch"))).click();
+        //driver.findElement(By.cssSelector("#ctl00_ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder2_ContentPlaceHolder2_btnCivSearch")).click();
         Thread.sleep(1500);
-        driver.findElement(By.xpath("//a[@title='View Case Details']")).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[@title='View Case Details']"))).click();
+        //driver.findElement(By.xpath("//a[@title='View Case Details']")).click();
         Thread.sleep(2000);
 
         switchTab(1);
@@ -53,7 +55,7 @@ public class HarrisCounty extends StateSelect {
         driver.close();
         switchTab(0);
 
-        driver.findElement(By.xpath("//*[@id=\"ctl00_ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder2_ContentPlaceHolder2_btnSearchAgain\"]")).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"ctl00_ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder2_ContentPlaceHolder2_btnSearchAgain\"]"))).click();
 
         //renames case files
         renameFilesBulk();
