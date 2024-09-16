@@ -22,7 +22,7 @@ public class StateSelect extends StateParser {
                 }
                 break;
             case "Florida":
-                if (selectedCounty.equals("Miami-Dade")) {
+                if (selectedCounty.equals("Miami Dade")) {
                     miamiDadeMain(caseNumber);
                 }
                 break;

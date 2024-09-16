@@ -49,6 +49,7 @@ public class FlowStart {
             }
         } catch(Exception e) {
             terminalToTextArea(e);
+            e.printStackTrace();
             //sets status for recent jobs to failed
             runStatus = "Failed";
         }

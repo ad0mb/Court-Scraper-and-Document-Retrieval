@@ -11,11 +11,11 @@ public class FileManagement {
 
     //folder paths
     private static String downloadedFolderPath = "C:\\Users\\" + System.getenv("USERNAME") + "\\Desktop\\Courtlink Scraper\\States\\" + selectedState + "\\" + selectedCounty + "\\Downloaded";
-    private static String tempFolderPath = "C:\\Users\\" + System.getenv("USERNAME") + "\\Desktop\\Courtlink Scraper\\Temp";
+    public static String tempDownloadsFolderPath = "C:\\Users\\" + System.getenv("USERNAME") + "\\Desktop\\Courtlink Scraper\\Temp";
     private static String tempFolderLocationPath = "C:\\Users\\" + System.getenv("USERNAME") + "\\Desktop\\Courtlink Scraper";
 
     public static void tempFileMove(String caseNumber) throws InterruptedException {
-        File oldFolder = new File(tempFolderPath);
+        File oldFolder = new File(tempDownloadsFolderPath);
 
         //moves and renames
         oldFolder.renameTo(new File(downloadedFolderPath + "\\" + caseNumber));
@@ -26,8 +26,8 @@ public class FileManagement {
     }
 
     public static void tempFileRename(String originalName, String newName) {
-        File oldNamedFolder = new File(tempFolderPath + "\\" + originalName + ".pdf");
+        File oldNamedFolder = new File(tempDownloadsFolderPath + "\\" + originalName + ".pdf");
 
-        oldNamedFolder.renameTo(new File(tempFolderPath + "\\" + newName + ".pdf"));
+        oldNamedFolder.renameTo(new File(tempDownloadsFolderPath + "\\" + newName + ".pdf"));
     }
 }

@@ -12,7 +12,9 @@ import java.util.List;
 
 import static CourtScraper.DataManagement.CSV.CSVManagement.appendToCSV;
 import static CourtScraper.DataManagement.CSV.CSVManagement.deleteLine;
+import static CourtScraper.DataManagement.CSV.CSVSearchAppendTemp.tempFilePath;
 import static CourtScraper.Helpers.CheckIfRetrieved.downloadedFilePath;
+import static CourtScraper.Helpers.FileManagement.tempFileRename;
 import static CourtScraper.Setups.GUI.MainPanelElements.MainComboBoxes.selectedCounty;
 import static CourtScraper.Setups.GUI.MainPanelElements.MainComboBoxes.selectedState;
 
@@ -33,7 +35,7 @@ public class StateParser extends FlowStart {
         //declares lists for docket names and docket numbers
 
         //declares list containing lines from temp file.
-        List<String> tempLines = Files.readAllLines(Path.of(CourtScraper.DataManagement.CSV.CSVSearchAppendTemp.tempFilePath));
+        List<String> tempLines = Files.readAllLines(Path.of(tempFilePath));
         //parses through the current temp file skipping the first line
         for (int i = 1; i<=tempLines.size()-1; i++) {
             docketNames = new ArrayList<>();
@@ -43,7 +45,7 @@ public class StateParser extends FlowStart {
 
             //deletes the line from temp if it found a duplicate and skips retrieval
             if ((CheckIfRetrieved.caseRepeatedCheck(caseLine[0])) || (caseLine[0].isEmpty())) {
-                deleteLine(CourtScraper.DataManagement.CSV.CSVSearchAppendTemp.tempFilePath, tempFolderPath, tempLines.get(i));
+                deleteLine(tempFilePath, tempFolderPath, tempLines.get(i));
                 continue;
             }
 
@@ -57,7 +59,7 @@ public class StateParser extends FlowStart {
             appendToCSV(tempLines.get(i), downloadedFilePath);
 
             //deletes line from temp folder
-            deleteLine(CourtScraper.DataManagement.CSV.CSVSearchAppendTemp.tempFilePath, tempFolderPath, tempLines.get(i));
+            deleteLine(tempFilePath, tempFolderPath, tempLines.get(i));
 
 
         }
@@ -65,7 +67,7 @@ public class StateParser extends FlowStart {
 
     public static void renameFilesBulk() {
         for (int i = 0; i < docketNames.size(); i++) {
-            FileManagement.tempFileRename(docketNumbers.get(i), docketNames.get(i));
+            tempFileRename(docketNumbers.get(i), docketNames.get(i));
         }
     }
 }
