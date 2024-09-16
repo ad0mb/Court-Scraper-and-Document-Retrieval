@@ -1,6 +1,5 @@
 package CourtScraper.Flows.Courtlink;
 
-import CourtScraper.Flows.Courtlink.CourtlinkScraper.CourtlinkScrapeMain;
 import CourtScraper.Helpers.ConfigGrabbers;
 import CourtScraper.StartGUI;
 import org.openqa.selenium.By;
@@ -9,6 +8,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 
+import static CourtScraper.Flows.Courtlink.CourtlinkScraper.CourtlinkScrapeMain.courtLinkScrape;
 import static CourtScraper.Flows.Courtlink.CourtlinkSearchConfig.CourtlinkSearchConfigMain.courtLinkTermInputs;
 
 public class CourtlinkMain {
@@ -27,7 +27,7 @@ public class CourtlinkMain {
         Thread.sleep(1000);
 
         //scrapes courtlink for casenumbers
-        CourtlinkScrapeMain.courtLinkScrape();
+        courtLinkScrape();
 
 
     }

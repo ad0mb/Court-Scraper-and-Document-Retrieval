@@ -10,7 +10,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.io.IOException;
 import java.time.Duration;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.regex.MatchResult;
 import java.util.regex.Pattern;
@@ -23,7 +22,7 @@ public class CourtlinkScrapeMain extends CourtlinkMain {
     //this is the main hub for the courtlink scrape flow
 
     private static WebDriverWait wait;
-    private static int numCases = Integer.valueOf(driver.findElement(By.xpath("//*[@id=\"content\"]/div[2]/form/div[2]/nav/ol/li[6]/a")).getAttribute("data-value"));
+    private static int numCases = getNumCases();
 
     public static void courtLinkScrape() throws IOException, InterruptedException {
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -76,5 +75,16 @@ public class CourtlinkScrapeMain extends CourtlinkMain {
             new CSVSearchAppendTemp().courtLinkAppendToTemp(toBeAppended);
         }
 
+    }
+
+    private static int getNumCases() {
+        if (!driver.findElements(By.xpath("//*[@id=\"content\"]/div[2]/form/div[2]/nav/ol/li[7]/a")).isEmpty()) {
+            return Integer.valueOf(driver.findElement(By.xpath("//*[@id=\"content\"]/div[2]/form/div[2]/nav/ol/li[6]/a")).getAttribute("data-value"));
+        } else if (!driver.findElements(By.xpath("//*[@id=\"content\"]/div[2]/form/div[2]/nav/ol/li[4]/a")).isEmpty()) {
+            List<WebElement> list = driver.findElements(By.xpath("/html/body/main/div/main/div[2]/div/div[2]/div[2]/form/div[2]/nav/ol/li"));
+            return Integer.valueOf(list.get(list.size()-2).findElement(By.xpath(".//a")).getAttribute("data-value"));
+        } else {
+            return Integer.valueOf(driver.findElement(By.xpath("//*[@id=\"content\"]/div[2]/form/div[2]/nav/ol/li[2]/span")).getAttribute("innerHTML"));
+        }
     }
 }
