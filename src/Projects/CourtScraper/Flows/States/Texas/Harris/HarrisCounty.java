@@ -1,7 +1,7 @@
 package CourtScraper.Flows.States.Texas.Harris;
 
 import CourtScraper.Flows.States.StateSelect;
-import CourtScraper.Helpers.ConfigGrabbers;
+import CourtScraper.DataManagement.JSON.JSONGrabbers;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -63,7 +63,7 @@ public class HarrisCounty extends StateSelect {
 
     private static void loginHarris() throws InterruptedException, FileNotFoundException {
         driver.get("https://www.hcdistrictclerk.com/eDocs/Public/Search.aspx");
-        String[] credentials = new ConfigGrabbers().loginGrabber("texasharris");
+        String[] credentials = new JSONGrabbers().loginGrabber("texasharris");
 
         Thread.sleep(500);
         driver.findElement(By.xpath("//*[@id='txtUserName']")).sendKeys(credentials[0]);

@@ -1,7 +1,8 @@
 package CourtScraper;
 
-import CourtScraper.Setups.GUI.Interface;
 import org.openqa.selenium.WebDriver;
+
+import static CourtScraper.Setups.GUI.Interface.mainGUI;
 
 public class StartGUI {
 
@@ -12,7 +13,7 @@ public class StartGUI {
     public static void main( String[] args ) throws InterruptedException {
         try {
             //Initializes interface
-            Interface.mainGUI();
+            mainGUI();
 
             //Flow actually starts in Buttons.java inside of GUI. Inside the startButton function
         } catch (Exception e) {

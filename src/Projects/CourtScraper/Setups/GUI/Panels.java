@@ -10,7 +10,7 @@ import static CourtScraper.Setups.GUI.MainPanelElements.MainInputBoxes.mainPanel
 import static CourtScraper.Setups.GUI.JobsPanelElements.JobsTableBox.jobsTables;
 import static CourtScraper.Setups.GUI.TerminalPanelElements.TerminalTextArea.terminalTextAreas;
 
-public class Panels extends Interface{
+public class Panels extends Interface {
 
     //this file contains all the panels
 

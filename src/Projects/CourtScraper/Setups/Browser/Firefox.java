@@ -1,8 +1,9 @@
 package CourtScraper.Setups.Browser;
 
-import CourtScraper.Setups.Browser.UserAgent.RandomUserAgent;
 import CourtScraper.StartGUI;
 import org.openqa.selenium.firefox.*;
+
+import static CourtScraper.Setups.Browser.UserAgent.RandomUserAgent.getRandomUserAgent;
 
 public class Firefox extends StartGUI {
 
@@ -14,7 +15,7 @@ public class Firefox extends StartGUI {
 
         ProfilesIni profileIni = new ProfilesIni();
         FirefoxProfile profile = profileIni.getProfile("BOT RUN");
-        profile.setPreference("general.useragent.override", RandomUserAgent.getRandomUserAgent());
+        profile.setPreference("general.useragent.override", getRandomUserAgent());
         FirefoxOptions options = new FirefoxOptions();
 
         options.setProfile(profile);

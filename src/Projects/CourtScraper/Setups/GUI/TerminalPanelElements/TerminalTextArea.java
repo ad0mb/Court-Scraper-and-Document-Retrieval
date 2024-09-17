@@ -8,10 +8,8 @@ import java.awt.*;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 
-import static CourtScraper.Setups.GUI.Panels.gbcTerminal;
-import static CourtScraper.Setups.GUI.Panels.terminalPanel;
 
-public class TerminalTextArea {
+public class TerminalTextArea extends Panels {
 
     public static JTextArea terminalBox;
     private static Font terminalFont = new Font(Font.MONOSPACED, Font.PLAIN, 12);
