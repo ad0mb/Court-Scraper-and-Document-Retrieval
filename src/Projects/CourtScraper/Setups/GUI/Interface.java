@@ -4,7 +4,6 @@ import CourtScraper.Setups.GUI.MainPanelElements.MainButtons;
 import CourtScraper.StartGUI;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 import java.io.IOException;
 

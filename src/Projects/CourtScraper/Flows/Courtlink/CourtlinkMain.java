@@ -1,6 +1,6 @@
 package CourtScraper.Flows.Courtlink;
 
-import CourtScraper.Helpers.ConfigGrabbers;
+import CourtScraper.DataManagement.JSON.JSONGrabbers;
 import CourtScraper.StartGUI;
 import org.openqa.selenium.By;
 
@@ -35,7 +35,7 @@ public class CourtlinkMain {
 
     public static void courtLinkLogin() throws FileNotFoundException, InterruptedException {
         StartGUI.driver.get("https://signin.lexisnexis.com/lnaccess/app/signin?back=https%3A%2F%2Fadvance.lexis.com%3A443%2Fcourtlinkhome&aci=la");
-        String[] credentials = new ConfigGrabbers().loginGrabber("courtlink");
+        String[] credentials = new JSONGrabbers().loginGrabber("courtlink");
 
         StartGUI.driver.findElement(By.xpath("//*[@id=\"userid\"]")).sendKeys(credentials[0]);
         StartGUI.driver.findElement(By.xpath("//*[@id=\"signInSbmtBtn\"]")).click();

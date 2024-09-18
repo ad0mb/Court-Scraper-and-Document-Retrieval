@@ -1,7 +1,7 @@
 package CourtScraper.Flows.States.Florida.MiamiDade;
 
 import CourtScraper.Flows.States.StateSelect;
-import CourtScraper.Helpers.ConfigGrabbers;
+import CourtScraper.DataManagement.JSON.JSONGrabbers;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -69,7 +69,7 @@ public class MiamiDadeCounty extends StateSelect {
     private static void loginMiamiDade() throws InterruptedException, FileNotFoundException {
         wait = new WebDriverWait(driver, Duration.ofSeconds(30));
         driver.get("https://www2.miamidadeclerk.gov/usermanagementservices");
-        String[] credentials = new ConfigGrabbers().loginGrabber("floridamiamidade");
+        String[] credentials = new JSONGrabbers().loginGrabber("floridamiamidade");
 
         Thread.sleep(500);
         driver.findElement(By.xpath("//*[@id=\"userName\"]")).sendKeys(credentials[0]);

@@ -1,14 +1,11 @@
 package CourtScraper.Setups.GUI.JobsPanelElements;
 
 import CourtScraper.Setups.GUI.Panels;
-import org.checkerframework.checker.units.qual.A;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import static CourtScraper.Helpers.PastJobsManager.getJobs;
 

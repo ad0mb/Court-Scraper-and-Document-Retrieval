@@ -1,4 +1,4 @@
-package CourtScraper.Helpers;
+package CourtScraper.DataManagement.JSON;
 
 
 import com.google.gson.Gson;
@@ -9,7 +9,7 @@ import com.google.gson.stream.JsonReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 
-public class ConfigGrabbers {
+public class JSONGrabbers {
 
     //This helper class is for grabbing any data in configs
 

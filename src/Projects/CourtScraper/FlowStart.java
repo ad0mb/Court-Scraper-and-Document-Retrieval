@@ -4,12 +4,12 @@ import CourtScraper.Flows.Courtlink.CourtlinkMain;
 import CourtScraper.Setups.Browser.Firefox;
 
 import java.io.IOException;
-import java.io.StringWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import static CourtScraper.Flows.States.StateParser.stateRetrievalFlow;
 import static CourtScraper.Helpers.PastJobsManager.addJob;
-import static CourtScraper.Setups.GUI.Interface.frame;
+import static CourtScraper.Helpers.TabManagement.closeAllTabs;
 import static CourtScraper.Setups.GUI.JobsPanelElements.JobsTableBox.updateJobsTable;
 import static CourtScraper.Setups.GUI.MainPanelElements.MainComboBoxes.selectedFlowType;
 import static CourtScraper.Setups.GUI.TerminalPanelElements.TerminalTextArea.*;
@@ -37,14 +37,14 @@ public class FlowStart {
             switch (selectedFlowType) {
                 case "Scrape and Retrieve":
                     new CourtlinkMain().CourtlinkFlow();
-                    CourtScraper.Helpers.TabManagement.closeAllTabs();
-                    CourtScraper.Flows.States.StateParser.stateRetrievalFlow();
+                    closeAllTabs();
+                    stateRetrievalFlow();
                     break;
                 case "Scrape Only":
                     new CourtlinkMain().CourtlinkFlow();
                     break;
                 case "Retrieve Only":
-                    CourtScraper.Flows.States.StateParser.stateRetrievalFlow();
+                    stateRetrievalFlow();
                     break;
             }
         } catch(Exception e) {
