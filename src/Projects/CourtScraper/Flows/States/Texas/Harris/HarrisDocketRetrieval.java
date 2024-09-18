@@ -4,14 +4,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 
-import java.security.spec.ECField;
 import java.util.List;
-import java.util.NoSuchElementException;
 
+import static CourtScraper.Helpers.CheckIfRetrieved.fileDownloadedCheck;
 import static CourtScraper.Helpers.TabManagement.closeLastOpened;
 import static CourtScraper.StartGUI.driver;
 
-public class HarrisDocketRetrieval extends CourtScraper.Flows.States.Texas.Harris.HarrisCounty {
+public class HarrisDocketRetrieval extends HarrisCounty {
 
 
     public void retrieveDockets() throws InterruptedException {
@@ -38,8 +37,9 @@ public class HarrisDocketRetrieval extends CourtScraper.Flows.States.Texas.Harri
                     link.click();
                 } catch (Exception ignored) {}
 
+                Thread.sleep(2000);
+                fileDownloadedCheck(link.getText());
 
-                Thread.sleep(5000);
                 closeLastOpened();
 
 
