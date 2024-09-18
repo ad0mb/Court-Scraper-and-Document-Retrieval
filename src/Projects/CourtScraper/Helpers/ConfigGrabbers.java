@@ -41,7 +41,7 @@ public class ConfigGrabbers {
 
     public String apiGrabber(String apiID) throws FileNotFoundException {
         //opens file as JsonArray
-        JsonReader reader = new JsonReader(new FileReader("C:\\Users\\" + System.getenv("USERNAME") + "\\Desktop\\Courtlink Scraper\\Configs\\logins.json"));
+        JsonReader reader = new JsonReader(new FileReader("C:\\Users\\" + System.getenv("USERNAME") + "\\Desktop\\Courtlink Scraper\\Configs\\API Keys.json"));
         JsonObject apiKeys = gson.fromJson(reader, JsonObject.class);
 
         for (JsonElement element : apiKeys.get("API Keys").getAsJsonArray()) {

@@ -34,7 +34,9 @@ public class CheckIfRetrieved {
         //sets infolder to false for loop
         boolean inFolder = false;
 
-        while (!inFolder) {
+        //gets current time for timeout sequence
+        long startTime = System.currentTimeMillis() + 10000;
+        while (!inFolder && System.currentTimeMillis() < startTime) {
             //if the folder path containing the given parameter name exists it will mark true to end the loop
             if (tempFolder.exists()) {
                 inFolder = true;
