@@ -3,15 +3,20 @@ package CourtScraper.Setups.Browser;
 import CourtScraper.StartGUI;
 import org.openqa.selenium.firefox.*;
 
+import java.io.FileNotFoundException;
+
+import static CourtScraper.Setups.Browser.Captcha.CaptchaMain.initiateSolver;
 import static CourtScraper.Setups.Browser.UserAgent.RandomUserAgent.getRandomUserAgent;
 
 public class Firefox extends StartGUI {
 
     //This file contains the selenium webdriver and browser launch
 
-    public void FirefoxLaunch() {
+    public void FirefoxLaunch() throws FileNotFoundException {
 
         //System.setProperty("webdriver.gecko.driver", firefoxPath);
+
+        initiateSolver();
 
         ProfilesIni profileIni = new ProfilesIni();
         FirefoxProfile profile = profileIni.getProfile("BOT RUN");
