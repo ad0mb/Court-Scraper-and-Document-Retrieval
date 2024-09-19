@@ -1,13 +1,19 @@
 package CourtScraper.Setups.GUI;
 
+import com.twocaptcha.captcha.Grid;
+
 import javax.swing.*;
 import java.awt.*;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import static CourtScraper.Setups.GUI.MainPanelElements.MainButtons.mainPanelButtons;
 import static CourtScraper.Setups.GUI.MainPanelElements.MainComboBoxes.mainPanelComboBoxes;
 import static CourtScraper.Setups.GUI.MainPanelElements.MainInputBoxes.mainPanelBoxes;
 import static CourtScraper.Setups.GUI.JobsPanelElements.JobsTableBox.jobsTables;
+import static CourtScraper.Setups.GUI.SettingsPanelElements.SettingsButtons.settingsPanelButtons;
+import static CourtScraper.Setups.GUI.SettingsPanelElements.SettingsComboBoxes.settingsPanelComboBoxes;
+import static CourtScraper.Setups.GUI.SettingsPanelElements.SettingsInputBoxes.settingsPanelBoxes;
 import static CourtScraper.Setups.GUI.TerminalPanelElements.TerminalTextArea.terminalTextAreas;
 
 public class Panels extends Interface {
@@ -64,6 +70,24 @@ public class Panels extends Interface {
         gbcTerminal.fill = GridBagConstraints.BOTH;
 
         terminalTextAreas();
+
+    }
+
+    public static JPanel settingsPanel = new JPanel();
+    public static GridBagConstraints gbcSettings = new GridBagConstraints();
+
+    public static void settingsPanel() throws FileNotFoundException {
+        //borders around edges
+        settingsPanel.setBorder(BorderFactory.createEmptyBorder(20, 10 ,20, 10));
+        //borders around edges
+
+        settingsPanel.setLayout(new GridBagLayout());
+
+        gbcSettings.fill = GridBagConstraints.BOTH;
+
+        settingsPanelComboBoxes();
+        settingsPanelBoxes();
+        settingsPanelButtons();
 
     }
 }

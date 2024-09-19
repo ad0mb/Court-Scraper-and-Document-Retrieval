@@ -52,4 +52,14 @@ public class JSONGrabbers {
         }
         return null;
     }
+
+    public String configGrabber(String config) throws FileNotFoundException {
+        //opens file as JsonArray
+        JsonReader reader = new JsonReader(new FileReader("C:\\Users\\" + System.getenv("USERNAME") + "\\Desktop\\Courtlink Scraper\\Configs\\Configs.json"));
+        JsonObject settings = gson.fromJson(reader, JsonObject.class);
+
+        //returns the targetted config
+        return settings.getAsJsonObject("settings").get(config).getAsString();
+
+    }
 }

@@ -40,6 +40,7 @@ public class Interface extends StartGUI {
         topTabs.add(mainPanel, "Start Configuration");
         topTabs.add(jobsPanel, "Jobs");
         topTabs.add(terminalPanel, "Terminal");
+        topTabs.add(settingsPanel, "Settings");
 
     }
 
@@ -49,6 +50,7 @@ public class Interface extends StartGUI {
         mainPanel();
         jobsPanel();
         terminalPanel();
+        settingsPanel();
         //panel setup
     }
 
