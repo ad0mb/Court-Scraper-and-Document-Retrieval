@@ -115,7 +115,7 @@
         <configuration>
           <archive>
             <manifest>
-              <mainClass>CourtScraper.StartGUI</mainClass>
+              <mainClass>courtscraper.StartGUI</mainClass>
             </manifest>
           </archive>
           <descriptorRefs>
