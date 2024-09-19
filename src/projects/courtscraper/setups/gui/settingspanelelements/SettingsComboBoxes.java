@@ -14,6 +14,8 @@ import static courtscraper.datamanagement.json.JSONWriters.configWriter;
 
 public class SettingsComboBoxes extends Panels {
 
+    //this file contains the combobox elements for the settings panel
+
     public static void settingsPanelComboBoxes() throws FileNotFoundException {
 
         setStateSettings();

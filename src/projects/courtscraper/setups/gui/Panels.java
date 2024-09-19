@@ -10,6 +10,7 @@ import static courtscraper.setups.gui.mainpanelelements.MainComboBoxes.mainPanel
 import static courtscraper.setups.gui.mainpanelelements.MainInputBoxes.mainPanelBoxes;
 import static courtscraper.setups.gui.jobspanelelements.JobsTableBox.jobsTables;
 import static courtscraper.setups.gui.settingspanelelements.SettingsButtons.settingsPanelButtons;
+import static courtscraper.setups.gui.settingspanelelements.SettingsCheckBoxes.settingsPanelCheckBoxes;
 import static courtscraper.setups.gui.settingspanelelements.SettingsComboBoxes.settingsPanelComboBoxes;
 import static courtscraper.setups.gui.settingspanelelements.SettingsInputBoxes.settingsPanelBoxes;
 import static courtscraper.setups.gui.terminalpanelelements.TerminalTextArea.terminalTextAreas;
@@ -86,6 +87,6 @@ public class Panels extends Interface {
         settingsPanelComboBoxes();
         settingsPanelBoxes();
         settingsPanelButtons();
-
+        settingsPanelCheckBoxes();
     }
 }
