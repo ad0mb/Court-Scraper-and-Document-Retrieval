@@ -7,8 +7,8 @@ import java.io.FileNotFoundException;
 
 import static CourtScraper.Flows.States.Florida.MiamiDade.MiamiDadeCounty.miamiDadeMain;
 import static CourtScraper.Flows.States.Texas.Harris.HarrisCounty.harrisMain;
-import static CourtScraper.Setups.GUI.MainPanelElements.MainComboBoxes.selectedCounty;
-import static CourtScraper.Setups.GUI.MainPanelElements.MainComboBoxes.selectedState;
+import static CourtScraper.Setups.GUI.MainPanelElements.MainComboBoxes.selectedCountyMain;
+import static CourtScraper.Setups.GUI.MainPanelElements.MainComboBoxes.selectedStateMain;
 
 public class StateSelect extends StateParser {
 
@@ -16,24 +16,24 @@ public class StateSelect extends StateParser {
 
     public static void stateFilter(String caseNumber) throws FileNotFoundException, InterruptedException {
         Thread.sleep(500);
-        switch (selectedState) {
+        switch (selectedStateMain) {
             case "California":
-                if (selectedCounty.equals("Whole State")) {
+                if (selectedCountyMain.equals("Whole State")) {
                 }
                 break;
             case "Florida":
-                if (selectedCounty.equals("Miami Dade")) {
+                if (selectedCountyMain.equals("Miami Dade")) {
                     miamiDadeMain(caseNumber);
                 }
                 break;
             case "New York":
-                if (selectedCounty.equals("New York BKQ")) {
+                if (selectedCountyMain.equals("New York BKQ")) {
                 }
                 break;
             case "Texas":
-                if (selectedCounty.equals("Harris")) {
+                if (selectedCountyMain.equals("Harris")) {
                     harrisMain(caseNumber);
-                } else if (selectedCounty.equals("Dallas")) {
+                } else if (selectedCountyMain.equals("Dallas")) {
                     new DallasCounty().dallasMain();
                 }
                 break;

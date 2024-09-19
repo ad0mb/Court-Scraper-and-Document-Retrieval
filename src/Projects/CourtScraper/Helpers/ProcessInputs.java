@@ -42,10 +42,10 @@ public class ProcessInputs {
     }
 
     private static String getState() {
-        return MainComboBoxes.selectedState;
+        return MainComboBoxes.selectedStateMain;
     }
 
     private static String getCounty() {
-        return MainComboBoxes.selectedCounty;
+        return MainComboBoxes.selectedCountyMain;
     }
 }

@@ -56,7 +56,7 @@ public class CourtlinkSearchConfigMain extends CourtlinkMain {
 
     private static void courtLinkStateSelection() throws InterruptedException {
         driver.findElement(By.xpath("/html/body/main/div/ln-courtlinksearchform/div/searchform/div[1]/div[1]/courtlist/div/courtlistselector/div/div[1]/span[1]/div")).click();
-        StateSearchSelection.searchState(MainComboBoxes.selectedState);
+        StateSearchSelection.searchState(MainComboBoxes.selectedStateMain);
         Thread.sleep(1000);
     }
 

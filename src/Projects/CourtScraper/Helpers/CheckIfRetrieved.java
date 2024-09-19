@@ -7,14 +7,14 @@ import java.nio.file.Path;
 import java.util.List;
 
 import static CourtScraper.Helpers.FileManagement.tempDownloadsFolderPath;
-import static CourtScraper.Setups.GUI.MainPanelElements.MainComboBoxes.selectedCounty;
-import static CourtScraper.Setups.GUI.MainPanelElements.MainComboBoxes.selectedState;
+import static CourtScraper.Setups.GUI.MainPanelElements.MainComboBoxes.selectedCountyMain;
+import static CourtScraper.Setups.GUI.MainPanelElements.MainComboBoxes.selectedStateMain;
 
 public class CheckIfRetrieved {
 
     //This file contains all the retrieval check processes
 
-    public static String downloadedFilePath = "C:\\Users\\" + System.getenv("USERNAME") + "\\Desktop\\Courtlink Scraper\\States\\" + selectedState + "\\" + selectedCounty + "\\downloadedtest.csv";
+    public static String downloadedFilePath = "C:\\Users\\" + System.getenv("USERNAME") + "\\Desktop\\Courtlink Scraper\\States\\" + selectedStateMain + "\\" + selectedCountyMain + "\\downloadedtest.csv";
 
     public static boolean caseRepeatedCheck(String caseNumber) throws IOException {
         List<String> downloadedList = Files.readAllLines(Path.of(downloadedFilePath));

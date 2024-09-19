@@ -29,9 +29,9 @@ public class PastJobsManager {
         //adds date range
         appendableString += date.getText() + ",";
         //adds selected state
-        appendableString += selectedState + ",";
+        appendableString += selectedStateMain + ",";
         //adds selected county
-        appendableString += selectedCounty + ",";
+        appendableString += selectedCountyMain + ",";
         //adds status (failed or finsihed, this is decided in the FlowStart)
         appendableString +=  status + ",";
         //adds selected flow type

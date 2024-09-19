@@ -2,15 +2,15 @@ package CourtScraper.Helpers;
 
 import java.io.File;
 
-import static CourtScraper.Setups.GUI.MainPanelElements.MainComboBoxes.selectedCounty;
-import static CourtScraper.Setups.GUI.MainPanelElements.MainComboBoxes.selectedState;
+import static CourtScraper.Setups.GUI.MainPanelElements.MainComboBoxes.selectedCountyMain;
+import static CourtScraper.Setups.GUI.MainPanelElements.MainComboBoxes.selectedStateMain;
 
 public class FileManagement {
 
     //this file contains all the methods that allow you to move rename and modify files/folders
 
     //folder paths
-    private static String downloadedFolderPath = "C:\\Users\\" + System.getenv("USERNAME") + "\\Desktop\\Courtlink Scraper\\States\\" + selectedState + "\\" + selectedCounty + "\\Downloaded";
+    private static String downloadedFolderPath = "C:\\Users\\" + System.getenv("USERNAME") + "\\Desktop\\Courtlink Scraper\\States\\" + selectedStateMain + "\\" + selectedCountyMain + "\\Downloaded";
     public static String tempDownloadsFolderPath = "C:\\Users\\" + System.getenv("USERNAME") + "\\Desktop\\Courtlink Scraper\\Temp";
     private static String tempFolderLocationPath = "C:\\Users\\" + System.getenv("USERNAME") + "\\Desktop\\Courtlink Scraper";
 

@@ -15,8 +15,8 @@ import static CourtScraper.DataManagement.CSV.CSVManagement.deleteLine;
 import static CourtScraper.DataManagement.CSV.CSVSearchAppendTemp.tempFilePath;
 import static CourtScraper.Helpers.CheckIfRetrieved.downloadedFilePath;
 import static CourtScraper.Helpers.FileManagement.tempFileRename;
-import static CourtScraper.Setups.GUI.MainPanelElements.MainComboBoxes.selectedCounty;
-import static CourtScraper.Setups.GUI.MainPanelElements.MainComboBoxes.selectedState;
+import static CourtScraper.Setups.GUI.MainPanelElements.MainComboBoxes.selectedCountyMain;
+import static CourtScraper.Setups.GUI.MainPanelElements.MainComboBoxes.selectedStateMain;
 
 
 public class StateParser extends FlowStart {
@@ -24,7 +24,7 @@ public class StateParser extends FlowStart {
     //this is the main parser flow which will parse through all gathered case numbers in temp.csv
 
     //file location of the temp file that is used to store data
-    public static String tempFolderPath = "C:\\Users\\" + System.getenv("USERNAME") + "\\Desktop\\Courtlink Scraper\\States\\" + selectedState + "\\" + selectedCounty;
+    public static String tempFolderPath = "C:\\Users\\" + System.getenv("USERNAME") + "\\Desktop\\Courtlink Scraper\\States\\" + selectedStateMain + "\\" + selectedCountyMain;
 
     //docket names and numbers for renaming purposes
     public static List<String> docketNumbers;

@@ -19,8 +19,8 @@ public class MainComboBoxes extends Panels {
 
     public static void mainPanelComboBoxes() {
         setDateType();
-        setState();
-        setCounty();
+        setStateMain();
+        setCountyMain();
         setFlowType();
 
     }
@@ -70,9 +70,9 @@ public class MainComboBoxes extends Panels {
     //State type declarations
     private static final String[] stateElements = {"Select State", "California", "Florida", "New York", "Texas"};
     public static JComboBox<String> state = new JComboBox<>(stateElements);
-    public static String selectedState = "";
+    public static String selectedStateMain = "";
 
-    public static void setState() {
+    public static void setStateMain() {
         JLabel instruction = new JLabel("Select State");
 
         gbcMain.gridx = 0;
@@ -90,12 +90,12 @@ public class MainComboBoxes extends Panels {
             @Override
             public void itemStateChanged(ItemEvent e) {
                 if (e.getStateChange() == ItemEvent.SELECTED) {
-                    selectedState = (String) state.getSelectedItem();
+                    selectedStateMain = (String) state.getSelectedItem();
 
                     //decides whether county box is open or not
                     boolean isCountyOpen = false;
 
-                    switch(selectedState) {
+                    switch(selectedStateMain) {
                         case "Select State":
                             counties.removeAllItems();
                             counties.addItem("Select State First");
@@ -119,7 +119,6 @@ public class MainComboBoxes extends Panels {
                         case "Texas":
                             counties.removeAllItems();
                             counties.addItem("Harris");
-                            counties.addItem("Dallas");
                             isCountyOpen = true;
                             break;
                     }
@@ -133,9 +132,9 @@ public class MainComboBoxes extends Panels {
     //County type declarations
     private static String[] countyElements = {"Select State First"};
     public static JComboBox<String> counties = new JComboBox<>(countyElements);
-    public static String selectedCounty = "";
+    public static String selectedCountyMain = "";
 
-    public static void setCounty() {
+    public static void setCountyMain() {
         JLabel instruction = new JLabel("Select County");
 
         gbcMain.gridx = 1;
@@ -156,7 +155,7 @@ public class MainComboBoxes extends Panels {
             @Override
             public void itemStateChanged(ItemEvent e) {
                 if (e.getStateChange() == ItemEvent.SELECTED) {
-                    selectedCounty = (String) counties.getSelectedItem();
+                    selectedCountyMain = (String) counties.getSelectedItem();
                 }
             }
         });
