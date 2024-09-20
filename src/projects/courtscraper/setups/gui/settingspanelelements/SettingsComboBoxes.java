@@ -11,6 +11,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import static courtscraper.datamanagement.json.JSONWriters.configWriter;
+import static courtscraper.setups.gui.settingspanelelements.SettingsInputBoxes.apiKeyInputChecker;
 
 public class SettingsComboBoxes extends Panels {
 
@@ -146,6 +147,8 @@ public class SettingsComboBoxes extends Panels {
                     } catch (IOException ex) {
                         throw new RuntimeException(ex);
                     }
+
+                    apiKeyInputChecker();
                 }
             }
         });

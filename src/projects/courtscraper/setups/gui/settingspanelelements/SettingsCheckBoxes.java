@@ -26,7 +26,7 @@ public class SettingsCheckBoxes extends Panels {
         headless = new JCheckBox("Headless");
 
         gbcSettings.gridx = 1;
-        gbcSettings.gridy = 2;
+        gbcSettings.gridy = 4;
         gbcSettings.insets = new Insets(10,25,0,0);
         settingsPanel.add(headless, gbcSettings);
 
