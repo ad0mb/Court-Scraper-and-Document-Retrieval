@@ -116,7 +116,7 @@ public class SettingsComboBoxes extends Panels {
         });
     }
 
-    private static String[] captchaOptions = {"None", "2captcha", "Death By Captcha"};
+    private static String[] captchaOptions = {"None", "2captcha"/*, "Death By Captcha"*/};
     public static JComboBox<String> captchaSolution = new JComboBox<>(captchaOptions);
     public static String selectedCaptchaSolution = "";
 

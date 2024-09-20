@@ -2,7 +2,7 @@ package courtscraper.flows.courtlink.courtlinksearchconfig;
 
 
 import courtscraper.flows.courtlink.CourtlinkMain;
-import courtscraper.helpers.ProcessInputs;
+import courtscraper.helpers.inputprocesses.ProcessMainInputs;
 import courtscraper.setups.gui.mainpanelelements.MainComboBoxes;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -24,7 +24,7 @@ public class CourtlinkSearchConfigMain extends CourtlinkMain {
 
         Thread.sleep(1000);
 
-        processedInputs = new ProcessInputs().grabInputs();
+        processedInputs = new ProcessMainInputs().grabMainInputs();
 
         //enter search terms
         courtLinkSearchTerms();

@@ -1,10 +1,10 @@
-package courtscraper.helpers;
+package courtscraper.helpers.inputprocesses;
 
 
 import courtscraper.setups.gui.mainpanelelements.MainComboBoxes;
 import courtscraper.setups.gui.mainpanelelements.MainInputBoxes;
 
-public class ProcessInputs {
+public class ProcessMainInputs {
 
     //This Helper class is for grabbing the inputs from the search box and combo boxes on the interface to then be processed into usable variables throughout the code
 
@@ -12,7 +12,7 @@ public class ProcessInputs {
     private static String startDate = "";
     private static String endDate = "";
 
-    public String[] grabInputs() {
+    public String[] grabMainInputs() {
 
         //Runs getDateBox() to get the dates inputed into the fixed variables above
         getDateBox();
