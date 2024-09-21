@@ -7,6 +7,8 @@ import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 
 import static courtscraper.datamanagement.json.JSONWriters.apiWriter;
@@ -67,39 +69,10 @@ public class SettingsInputBoxes extends Panels {
         gbcSettings.insets = new Insets(0, 25, 0, 0);
         settingsPanel.add(apiKey, gbcSettings);
 
-        apiKeyInputChecker();
-
-        apiKey.getDocument().addDocumentListener(new DocumentListener() {
-            @Override
-            public void insertUpdate(DocumentEvent e) {
-                try {
-                    apiWriter("captcha", apiKey.getText());
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                }
-            }
-
-            @Override
-            public void removeUpdate(DocumentEvent e) {
-                try {
-                    apiWriter("captcha", apiKey.getText());
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                }
-            }
-
-            @Override
-            public void changedUpdate(DocumentEvent e) {
-                try {
-                    apiWriter("captcha", apiKey.getText());
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                }
-            }
-        });
+        apiKeyInputRenameChecker();
     }
 
-    public static void apiKeyInputChecker() {
+    public static void apiKeyInputRenameChecker() {
         try {
             switch (new JSONGrabbers().configGrabber("captcha")) {
                 case "None":

@@ -6,6 +6,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
 import com.google.gson.stream.JsonReader;
 
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -13,6 +14,26 @@ import java.io.IOException;
 public class JSONWriters {
 
     private static Gson gson = new Gson();
+
+    public static void loginWriter(String loginType, String username, String password) throws IOException {
+        //opens file as JsonArray
+        JsonReader reader = new JsonReader(new FileReader("C:\\Users\\" + System.getenv("USERNAME") + "\\Desktop\\Courtlink Scraper\\Configs\\logins.json"));
+        JsonObject logins = gson.fromJson(reader, JsonObject.class);
+
+        for (JsonElement element : logins.get("credentials").getAsJsonArray()) {
+            //grabs key if inputed parameter is the same as something on the api key
+            if (element.getAsJsonObject().get("ID").getAsString().equals(loginType)) {
+                element.getAsJsonObject().add("username", new JsonPrimitive(username));
+                element.getAsJsonObject().add("password", new JsonPrimitive(password));
+            }
+        }
+
+        FileWriter fileWriter = new FileWriter("C:\\Users\\" + System.getenv("USERNAME") + "\\Desktop\\Courtlink Scraper\\Configs\\logins.json");
+        gson.toJson(logins, fileWriter);
+
+        fileWriter.flush();
+        fileWriter.close();
+    }
 
     public static void apiWriter(String apiID, String Key) throws IOException {
         //opens file as JsonArray

@@ -11,7 +11,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import static courtscraper.datamanagement.json.JSONWriters.configWriter;
-import static courtscraper.setups.gui.settingspanelelements.SettingsInputBoxes.apiKeyInputChecker;
+import static courtscraper.setups.gui.settingspanelelements.SettingsInputBoxes.apiKeyInputRenameChecker;
 
 public class SettingsComboBoxes extends Panels {
 
@@ -26,7 +26,7 @@ public class SettingsComboBoxes extends Panels {
     }
 
 //Settings Panel login comboboxes
-    private static final String[] stateElements = {"Select State", "California", "Florida", "New York", "Texas"};
+    private static final String[] stateElements = {"Courtlink", "California", "Florida", "New York", "Texas"};
     public static JComboBox<String> state = new JComboBox<>(stateElements);
     public static String selectedStateSettings = "";
 
@@ -54,7 +54,7 @@ public class SettingsComboBoxes extends Panels {
                     boolean isCountyOpen = false;
 
                     switch(selectedStateSettings) {
-                        case "Select State":
+                        case "Courtlink":
                             counties.removeAllItems();
                             counties.addItem("Select State First");
                             isCountyOpen = false;
@@ -135,6 +135,7 @@ public class SettingsComboBoxes extends Panels {
         settingsPanel.add(captchaSolution, gbcSettings);
 
         captchaSolution.setSelectedItem(new JSONGrabbers().configGrabber("captcha"));
+        selectedCaptchaSolution = (String) captchaSolution.getSelectedItem();
 
         captchaSolution.addItemListener(new ItemListener() {
             @Override
@@ -148,7 +149,7 @@ public class SettingsComboBoxes extends Panels {
                         throw new RuntimeException(ex);
                     }
 
-                    apiKeyInputChecker();
+                    apiKeyInputRenameChecker();
                 }
             }
         });
