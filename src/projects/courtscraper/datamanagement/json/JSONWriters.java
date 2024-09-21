@@ -11,13 +11,15 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import static courtscraper.helpers.FolderPaths.*;
+
 public class JSONWriters {
 
     private static Gson gson = new Gson();
 
     public static void loginWriter(String loginType, String username, String password) throws IOException {
         //opens file as JsonArray
-        JsonReader reader = new JsonReader(new FileReader("C:\\Users\\" + System.getenv("USERNAME") + "\\Desktop\\Courtlink Scraper\\Configs\\logins.json"));
+        JsonReader reader = new JsonReader(new FileReader(LOGINS_JSON_PATH));
         JsonObject logins = gson.fromJson(reader, JsonObject.class);
 
         for (JsonElement element : logins.get("credentials").getAsJsonArray()) {
@@ -28,7 +30,7 @@ public class JSONWriters {
             }
         }
 
-        FileWriter fileWriter = new FileWriter("C:\\Users\\" + System.getenv("USERNAME") + "\\Desktop\\Courtlink Scraper\\Configs\\logins.json");
+        FileWriter fileWriter = new FileWriter(LOGINS_JSON_PATH);
         gson.toJson(logins, fileWriter);
 
         fileWriter.flush();
@@ -37,7 +39,7 @@ public class JSONWriters {
 
     public static void apiWriter(String apiID, String Key) throws IOException {
         //opens file as JsonArray
-        JsonReader reader = new JsonReader(new FileReader("C:\\Users\\" + System.getenv("USERNAME") + "\\Desktop\\Courtlink Scraper\\Configs\\API Keys.json"));
+        JsonReader reader = new JsonReader(new FileReader(API_KEYS_JSON_PATH));
         JsonObject apiKeys = gson.fromJson(reader, JsonObject.class);
 
         for (JsonElement element : apiKeys.get("API Keys").getAsJsonArray()) {
@@ -47,7 +49,7 @@ public class JSONWriters {
             }
         }
 
-        FileWriter fileWriter = new FileWriter("C:\\Users\\" + System.getenv("USERNAME") + "\\Desktop\\Courtlink Scraper\\Configs\\API Keys.json");
+        FileWriter fileWriter = new FileWriter(API_KEYS_JSON_PATH);
         gson.toJson(apiKeys, fileWriter);
 
         fileWriter.flush();
@@ -56,7 +58,7 @@ public class JSONWriters {
 
     public static void configWriter(String config, String input) throws IOException {
         //opens file as JsonArray
-        JsonReader reader = new JsonReader(new FileReader("C:\\Users\\" + System.getenv("USERNAME") + "\\Desktop\\Courtlink Scraper\\Configs\\Configs.json"));
+        JsonReader reader = new JsonReader(new FileReader(CONFIGS_JSON_PATH));
         JsonObject settings = gson.fromJson(reader, JsonObject.class);
 
         //targets the jsonobject containing the configs and excecutes the necessary changes
@@ -64,7 +66,7 @@ public class JSONWriters {
         target.add(config, new JsonPrimitive(input));
 
         //adds it to the json file
-        FileWriter fileWriter = new FileWriter("C:\\Users\\" + System.getenv("USERNAME") + "\\Desktop\\Courtlink Scraper\\Configs\\Configs.json");
+        FileWriter fileWriter = new FileWriter(CONFIGS_JSON_PATH);
         gson.toJson(settings, fileWriter);
 
         fileWriter.flush();

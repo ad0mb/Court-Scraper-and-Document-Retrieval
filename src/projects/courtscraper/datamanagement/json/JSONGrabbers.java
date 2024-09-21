@@ -9,6 +9,8 @@ import com.google.gson.stream.JsonReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 
+import static courtscraper.helpers.FolderPaths.*;
+
 public class JSONGrabbers {
 
     //This helper class is for grabbing any data in configs
@@ -21,7 +23,7 @@ public class JSONGrabbers {
         String[] loginCreds;
 
         //Opening File and reading the file as Json
-        JsonReader reader = new JsonReader(new FileReader("C:\\Users\\" + System.getenv("USERNAME") + "\\Desktop\\Courtlink Scraper\\Configs\\logins.json"));
+        JsonReader reader = new JsonReader(new FileReader(LOGINS_JSON_PATH));
         JsonObject logins = gson.fromJson(reader, JsonObject.class);
 
         for (JsonElement element : logins.get("credentials").getAsJsonArray()) {
@@ -41,7 +43,7 @@ public class JSONGrabbers {
 
     public String apiGrabber(String apiID) throws FileNotFoundException {
         //opens file as JsonArray
-        JsonReader reader = new JsonReader(new FileReader("C:\\Users\\" + System.getenv("USERNAME") + "\\Desktop\\Courtlink Scraper\\Configs\\API Keys.json"));
+        JsonReader reader = new JsonReader(new FileReader(API_KEYS_JSON_PATH));
         JsonObject apiKeys = gson.fromJson(reader, JsonObject.class);
 
         for (JsonElement element : apiKeys.get("API Keys").getAsJsonArray()) {
@@ -55,7 +57,7 @@ public class JSONGrabbers {
 
     public String configGrabber(String config) throws FileNotFoundException {
         //opens file as JsonArray
-        JsonReader reader = new JsonReader(new FileReader("C:\\Users\\" + System.getenv("USERNAME") + "\\Desktop\\Courtlink Scraper\\Configs\\Configs.json"));
+        JsonReader reader = new JsonReader(new FileReader(CONFIGS_JSON_PATH));
         JsonObject settings = gson.fromJson(reader, JsonObject.class);
 
         //returns the targetted config

@@ -8,6 +8,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.net.URL;
 
+import static courtscraper.helpers.FolderPaths.CAPTCHA_JPG_PATH;
 import static courtscraper.setups.browser.captcha.CaptchaMain.solver;
 import static courtscraper.StartGUI.driver;
 
@@ -22,7 +23,7 @@ public class CaptchaSolutions {
         //image saver
         String src = driver.findElement(By.xpath(xpathString)).getAttribute("src");
         BufferedImage bufferedImage = ImageIO.read(new URL(src));
-        File outputFile = new File("C:\\Users\\" + System.getenv("USERNAME") + "\\Desktop\\Courtlink Scraper\\Configs\\Captchas\\captcha.jpg");
+        File outputFile = new File(CAPTCHA_JPG_PATH);
         ImageIO.write(bufferedImage, "jpg", outputFile);
 
         normalCaptcha.setFile(outputFile);

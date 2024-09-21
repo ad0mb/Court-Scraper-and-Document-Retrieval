@@ -9,6 +9,8 @@ import static courtscraper.datamanagement.csv.CSVManagement.appendToCSV;
 import static courtscraper.datamanagement.csv.CSVManagement.deleteLine;
 import static courtscraper.FlowStart.endTime;
 import static courtscraper.FlowStart.startTime;
+import static courtscraper.helpers.FolderPaths.CONFIGS_FOLDER_PATH;
+import static courtscraper.helpers.FolderPaths.PAST_JOBS_CSV_PATH;
 import static courtscraper.setups.gui.mainpanelelements.MainComboBoxes.*;
 import static courtscraper.setups.gui.mainpanelelements.MainInputBoxes.date;
 import static courtscraper.setups.gui.mainpanelelements.MainInputBoxes.search;
@@ -16,9 +18,6 @@ import static courtscraper.setups.gui.mainpanelelements.MainInputBoxes.search;
 public class PastJobsManager {
 
     //this file has the managing features for the Jtable
-
-    public static String pastJobsFilePath = "C:\\Users\\" + System.getenv("USERNAME") + "\\Desktop\\Courtlink Scraper\\Configs\\PastJobs.csv";
-    public static String configsFolderPath = "C:\\Users\\" + System.getenv("USERNAME") + "\\Desktop\\Courtlink Scraper\\Configs";
 
     public static void addJob(String status) throws IOException {
         String appendableString = "";
@@ -41,25 +40,25 @@ public class PastJobsManager {
         //adds finished date and time
         appendableString += endTime;
 
-        appendToCSV(appendableString, pastJobsFilePath);
+        appendToCSV(appendableString, PAST_JOBS_CSV_PATH);
 
         checkForMaxJobs();
 
     }
 
     private static void checkForMaxJobs() throws IOException {
-        List<String> rows = Files.readAllLines(Path.of(pastJobsFilePath));
+        List<String> rows = Files.readAllLines(Path.of(PAST_JOBS_CSV_PATH));
 
         if (rows.size() >= 21) {
             for (int i = 0; i<rows.size(); i++) {
                 if (rows.get(1).equals(rows.get(i)) || rows.get(i).isEmpty())
-                    deleteLine(pastJobsFilePath, configsFolderPath, rows.get(i));
+                    deleteLine(PAST_JOBS_CSV_PATH, CONFIGS_FOLDER_PATH, rows.get(i));
             }
         }
     }
 
     public static String[][] getJobs() throws IOException {
-        List<String> rows = Files.readAllLines(Path.of(pastJobsFilePath));
+        List<String> rows = Files.readAllLines(Path.of(PAST_JOBS_CSV_PATH));
         String[][] pastJobsPanelList = new String[rows.size()-1][8];
 
         int counterCount = 0;

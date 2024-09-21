@@ -2,32 +2,28 @@ package courtscraper.helpers;
 
 import java.io.File;
 
-import static courtscraper.setups.gui.mainpanelelements.MainComboBoxes.selectedCountyMain;
-import static courtscraper.setups.gui.mainpanelelements.MainComboBoxes.selectedStateMain;
+import static courtscraper.helpers.FolderPaths.*;
 
 public class FileManagement {
 
     //this file contains all the methods that allow you to move rename and modify files/folders
 
     //folder paths
-    private static String downloadedFolderPath = "C:\\Users\\" + System.getenv("USERNAME") + "\\Desktop\\Courtlink Scraper\\States\\" + selectedStateMain + "\\" + selectedCountyMain + "\\Downloaded";
-    public static String tempDownloadsFolderPath = "C:\\Users\\" + System.getenv("USERNAME") + "\\Desktop\\Courtlink Scraper\\Temp";
-    private static String tempFolderLocationPath = "C:\\Users\\" + System.getenv("USERNAME") + "\\Desktop\\Courtlink Scraper";
 
     public static void tempFileMove(String caseNumber) throws InterruptedException {
-        File oldFolder = new File(tempDownloadsFolderPath);
+        File oldFolder = new File(TEMP_FOLDER_PATH);
 
         //moves and renames
-        oldFolder.renameTo(new File(downloadedFolderPath + "\\" + caseNumber));
-        new File(tempFolderLocationPath + "\\Temp").mkdir();
+        oldFolder.renameTo(new File(DOWNLOADS_FOLDER_PATH + "\\" + caseNumber));
+        new File(COURTLINK_SCRAPER_PATH + "\\Temp").mkdir();
 
         Thread.sleep(500);
 
     }
 
     public static void tempFileRename(String originalName, String newName) {
-        File oldNamedFolder = new File(tempDownloadsFolderPath + "\\" + originalName + ".pdf");
+        File oldNamedFolder = new File(TEMP_FOLDER_PATH + "\\" + originalName + ".pdf");
 
-        oldNamedFolder.renameTo(new File(tempDownloadsFolderPath + "\\" + newName + ".pdf"));
+        oldNamedFolder.renameTo(new File(TEMP_FOLDER_PATH + "\\" + newName + ".pdf"));
     }
 }

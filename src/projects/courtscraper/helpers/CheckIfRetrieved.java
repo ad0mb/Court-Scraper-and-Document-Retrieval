@@ -6,18 +6,17 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
 
-import static courtscraper.helpers.FileManagement.tempDownloadsFolderPath;
-import static courtscraper.setups.gui.mainpanelelements.MainComboBoxes.selectedCountyMain;
-import static courtscraper.setups.gui.mainpanelelements.MainComboBoxes.selectedStateMain;
+import static courtscraper.helpers.FolderPaths.DOWNLOADED_TEST_CSV_PATH;
+import static courtscraper.helpers.FolderPaths.TEMP_FOLDER_PATH;
 
 public class CheckIfRetrieved {
 
     //This file contains all the retrieval check processes
 
-    public static String downloadedFilePath = "C:\\Users\\" + System.getenv("USERNAME") + "\\Desktop\\Courtlink Scraper\\States\\" + selectedStateMain + "\\" + selectedCountyMain + "\\downloadedtest.csv";
+    //public static String downloadedFilePath = "C:\\Users\\" + System.getenv("USERNAME") + "\\Desktop\\Courtlink Scraper\\States\\" + selectedStateMain + "\\" + selectedCountyMain + "\\downloadedtest.csv";
 
     public static boolean caseRepeatedCheck(String caseNumber) throws IOException {
-        List<String> downloadedList = Files.readAllLines(Path.of(downloadedFilePath));
+        List<String> downloadedList = Files.readAllLines(Path.of(DOWNLOADED_TEST_CSV_PATH));
 
         //goes through the downloaded cases list to check skipping the first line
         for (int i = 1; i<=downloadedList.size()-1; i++) {
@@ -30,7 +29,7 @@ public class CheckIfRetrieved {
     }
 
     public static boolean fileDownloadedCheck(String fileName) {
-        File tempFolder = new File(tempDownloadsFolderPath + "\\" + fileName + ".pdf");
+        File tempFolder = new File(TEMP_FOLDER_PATH + "\\" + fileName + ".pdf");
         //sets infolder to false for loop
         boolean inFolder = false;
 

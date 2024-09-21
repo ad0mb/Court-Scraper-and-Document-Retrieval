@@ -12,19 +12,14 @@ import java.util.List;
 
 import static courtscraper.datamanagement.csv.CSVManagement.appendToCSV;
 import static courtscraper.datamanagement.csv.CSVManagement.deleteLine;
-import static courtscraper.datamanagement.csv.CSVSearchAppendTemp.tempFilePath;
-import static courtscraper.helpers.CheckIfRetrieved.downloadedFilePath;
 import static courtscraper.helpers.FileManagement.tempFileRename;
-import static courtscraper.setups.gui.mainpanelelements.MainComboBoxes.selectedCountyMain;
-import static courtscraper.setups.gui.mainpanelelements.MainComboBoxes.selectedStateMain;
+import static courtscraper.helpers.FolderPaths.*;
 
 
 public class StateParser extends FlowStart {
 
     //this is the main parser flow which will parse through all gathered case numbers in temp.csv
 
-    //file location of the temp file that is used to store data
-    public static String tempFolderPath = "C:\\Users\\" + System.getenv("USERNAME") + "\\Desktop\\Courtlink Scraper\\States\\" + selectedStateMain + "\\" + selectedCountyMain;
 
     //docket names and numbers for renaming purposes
     public static List<String> docketNumbers;
@@ -35,7 +30,7 @@ public class StateParser extends FlowStart {
         //declares lists for docket names and docket numbers
 
         //declares list containing lines from temp file.
-        List<String> tempLines = Files.readAllLines(Path.of(tempFilePath));
+        List<String> tempLines = Files.readAllLines(Path.of(TEMP_CSV_PATH));
         //parses through the current temp file skipping the first line
         for (int i = 1; i<=tempLines.size()-1; i++) {
             docketNames = new ArrayList<>();
@@ -45,7 +40,7 @@ public class StateParser extends FlowStart {
 
             //deletes the line from temp if it found a duplicate and skips retrieval
             if ((CheckIfRetrieved.caseRepeatedCheck(caseLine[0])) || (caseLine[0].isEmpty())) {
-                deleteLine(tempFilePath, tempFolderPath, tempLines.get(i));
+                deleteLine(TEMP_CSV_PATH, COUNTY_FOLDER_PATH, tempLines.get(i));
                 continue;
             }
 
@@ -56,10 +51,10 @@ public class StateParser extends FlowStart {
             FileManagement.tempFileMove(caseLine[0]);
 
             //adds line to downloads folder
-            appendToCSV(tempLines.get(i), downloadedFilePath);
+            appendToCSV(tempLines.get(i), DOWNLOADED_TEST_CSV_PATH);
 
             //deletes line from temp folder
-            deleteLine(tempFilePath, tempFolderPath, tempLines.get(i));
+            deleteLine(TEMP_CSV_PATH, COUNTY_FOLDER_PATH, tempLines.get(i));
 
 
         }
