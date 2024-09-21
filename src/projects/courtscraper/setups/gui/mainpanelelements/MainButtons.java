@@ -2,6 +2,8 @@ package courtscraper.setups.gui.mainpanelelements;
 
 //panel imports
 import static courtscraper.FlowStart.StartMainFlowButton;
+import static courtscraper.helpers.FolderPaths.updateCountyFolderPath;
+
 import courtscraper.setups.gui.Panels;
 
 
@@ -43,6 +45,8 @@ public class MainButtons extends Panels {
 
 
                     //MAIN FLOW START vvvv
+                    //updates path that requires up-to-date selected state and county information
+                    updateCountyFolderPath();
                     StartMainFlowButton();
                     System.out.println("Ended");
                     //MAIN FLOW START ^^^^
