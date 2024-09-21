@@ -69,7 +69,7 @@ public class MiamiDadeCounty extends StateSelect {
     private static void loginMiamiDade() throws InterruptedException, FileNotFoundException {
         wait = new WebDriverWait(driver, Duration.ofSeconds(30));
         driver.get("https://www2.miamidadeclerk.gov/usermanagementservices");
-        String[] credentials = new JSONGrabbers().loginGrabber("floridamiamidade");
+        String[] credentials = new JSONGrabbers().loginGrabber("FloridaMiami Dade");
 
         Thread.sleep(500);
         driver.findElement(By.xpath("//*[@id=\"userName\"]")).sendKeys(credentials[0]);

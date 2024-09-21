@@ -63,7 +63,7 @@ public class HarrisCounty extends StateSelect {
 
     private static void loginHarris() throws InterruptedException, FileNotFoundException {
         driver.get("https://www.hcdistrictclerk.com/eDocs/Public/Search.aspx");
-        String[] credentials = new JSONGrabbers().loginGrabber("texasharris");
+        String[] credentials = new JSONGrabbers().loginGrabber("TexasHarris");
 
         Thread.sleep(500);
         driver.findElement(By.xpath("//*[@id='txtUserName']")).sendKeys(credentials[0]);

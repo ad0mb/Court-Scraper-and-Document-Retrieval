@@ -35,7 +35,7 @@ public class CourtlinkMain {
 
     public static void courtLinkLogin() throws FileNotFoundException, InterruptedException {
         driver.get("https://signin.lexisnexis.com/lnaccess/app/signin?back=https%3A%2F%2Fadvance.lexis.com%3A443%2Fcourtlinkhome&aci=la");
-        String[] credentials = new JSONGrabbers().loginGrabber("courtlink");
+        String[] credentials = new JSONGrabbers().loginGrabber("Courtlink");
 
         driver.findElement(By.xpath("//*[@id=\"userid\"]")).sendKeys(credentials[0]);
         driver.findElement(By.xpath("//*[@id=\"signInSbmtBtn\"]")).click();
