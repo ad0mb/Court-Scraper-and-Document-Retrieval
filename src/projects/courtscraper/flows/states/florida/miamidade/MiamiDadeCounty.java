@@ -13,8 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import static courtscraper.StartGUI.driver;
-
 public class MiamiDadeCounty extends StateSelect {
 
     private static WebDriverWait wait;

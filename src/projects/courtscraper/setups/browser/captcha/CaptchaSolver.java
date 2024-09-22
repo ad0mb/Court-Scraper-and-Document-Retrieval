@@ -11,7 +11,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.net.URL;
 
-import static courtscraper.StartGUI.driver;
+import static courtscraper.FlowStart.driver;
 import static courtscraper.helpers.FolderPaths.CAPTCHA_JPG_PATH;
 
 public class CaptchaSolver {

@@ -1,14 +1,14 @@
 package courtscraper.setups.browser;
 
-import courtscraper.StartGUI;
+import courtscraper.FlowStart;
 import org.openqa.selenium.firefox.*;
 
 import java.io.FileNotFoundException;
 
-import static courtscraper.helpers.inputprocesses.ProcessConfigInputs.getHeadless;
+import static courtscraper.helpers.guiinputprocessors.ProcessConfigInputs.getHeadless;
 import static courtscraper.setups.browser.useragent.RandomUserAgent.getRandomUserAgent;
 
-public class Firefox extends StartGUI {
+public class Firefox extends FlowStart {
 
     //This file contains the selenium webdriver and browser launch
 

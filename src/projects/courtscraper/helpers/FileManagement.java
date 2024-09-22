@@ -8,8 +8,6 @@ public class FileManagement {
 
     //this file contains all the methods that allow you to move rename and modify files/folders
 
-    //folder paths
-
     public static void tempFileMove(String caseNumber) throws InterruptedException {
         File oldFolder = new File(TEMP_FOLDER_PATH);
 

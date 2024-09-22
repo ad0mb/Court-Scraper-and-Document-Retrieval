@@ -4,7 +4,7 @@ import org.openqa.selenium.JavascriptExecutor;
 
 import java.util.Set;
 
-import static courtscraper.StartGUI.driver;
+import static courtscraper.FlowStart.driver;
 
 
 public class TabManagement {

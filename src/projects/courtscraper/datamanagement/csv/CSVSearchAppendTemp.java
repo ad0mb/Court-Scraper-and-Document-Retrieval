@@ -19,10 +19,11 @@ public class CSVSearchAppendTemp {
     //public static String tempFilePath = "C:\\Users\\" + System.getenv("USERNAME") + "\\Desktop\\Courtlink Scraper\\States\\" + selectedStateMain + "\\" + selectedCountyMain + "\\temp.csv";
 
     //declarations of current date and time
-    private static SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-    private Date date = new Date();
+    private final static SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+    private static Date date;
 
-    public void courtLinkAppendToTemp(List<String> toBeAppended) throws IOException {
+    public static void courtLinkAppendToTemp(List<String> toBeAppended) throws IOException {
+        date = new Date();
 
         String appendableString = "";
 

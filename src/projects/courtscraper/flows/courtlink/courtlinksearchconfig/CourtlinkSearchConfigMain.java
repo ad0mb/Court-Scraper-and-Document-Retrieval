@@ -2,14 +2,12 @@ package courtscraper.flows.courtlink.courtlinksearchconfig;
 
 
 import courtscraper.flows.courtlink.CourtlinkMain;
-import courtscraper.helpers.inputprocesses.ProcessMainInputs;
+import courtscraper.helpers.guiinputprocessors.ProcessMainInputs;
 import courtscraper.setups.gui.mainpanelelements.MainComboBoxes;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
-
-import static courtscraper.StartGUI.driver;
 
 
 public class CourtlinkSearchConfigMain extends CourtlinkMain {

@@ -3,7 +3,7 @@ package courtscraper.helpers;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 
-import static courtscraper.StartGUI.driver;
+import static courtscraper.FlowStart.driver;
 
 public class SeleniumSolutions {
 

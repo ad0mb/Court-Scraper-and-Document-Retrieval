@@ -1,4 +1,4 @@
-package courtscraper.helpers.inputprocesses;
+package courtscraper.helpers.guiinputprocessors;
 
 import courtscraper.datamanagement.json.JSONGrabbers;
 

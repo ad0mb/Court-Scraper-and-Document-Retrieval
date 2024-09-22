@@ -22,8 +22,8 @@ public class StateParser extends FlowStart {
 
 
     //docket names and numbers for renaming purposes
-    public static List<String> docketNumbers;
-    public static List<String> docketNames;
+    protected static List<String> docketNumbers;
+    protected static List<String> docketNames;
 
 
     public static void stateRetrievalFlow() throws IOException, InterruptedException {

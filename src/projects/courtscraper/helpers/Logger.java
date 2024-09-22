@@ -7,7 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-import static courtscraper.StartGUI.driver;
+import static courtscraper.FlowStart.driver;
 import static courtscraper.datamanagement.csv.CSVManagement.appendToCSV;
 import static courtscraper.datamanagement.csv.CSVManagement.deleteLine;
 import static courtscraper.helpers.FolderPaths.*;
@@ -23,10 +23,19 @@ public class Logger {
     private static String endTime;
     private String runStatus;
 
+    private static Logger INSTANCE = null;
+
 
     public Logger() {
         startTime = dateFormat.format(new Date());
         this.runStatus = "Finished";
+    }
+
+    public static Logger getInstance() {
+        if (INSTANCE == null) {
+            INSTANCE = new Logger();
+        }
+        return INSTANCE;
     }
 
     public void logError(Exception e) throws IOException {

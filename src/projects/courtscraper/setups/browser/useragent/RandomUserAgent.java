@@ -1,9 +1,11 @@
 package courtscraper.setups.browser.useragent;
 
+import courtscraper.setups.browser.Firefox;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
-    public class RandomUserAgent {
+    public class RandomUserAgent extends Firefox {
 
         private static Map<String, String[]> uaMap = new HashMap<String, String[]>();
         private static Map<String, Double> freqMap = new HashMap<String, Double>();

@@ -90,7 +90,14 @@ public class MainComboBoxes extends Panels {
             @Override
             public void itemStateChanged(ItemEvent e) {
                 if (e.getStateChange() == ItemEvent.SELECTED) {
-                    selectedStateMain = (String) state.getSelectedItem();
+
+                    //if select state is not picked then set to county, else rest to empty strings
+                    if (!state.getSelectedItem().equals("Select State")) {
+                        selectedStateMain = (String) state.getSelectedItem();
+                    } else {
+                        selectedStateMain = "";
+                        selectedCountyMain = "";
+                    }
 
                     //decides whether county box is open or not
                     boolean isCountyOpen = false;

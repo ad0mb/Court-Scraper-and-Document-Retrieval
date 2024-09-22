@@ -1,6 +1,5 @@
 package courtscraper.flows.courtlink.courtlinkscraper;
 
-import courtscraper.datamanagement.csv.CSVSearchAppendTemp;
 import courtscraper.flows.courtlink.CourtlinkMain;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -14,7 +13,7 @@ import java.util.List;
 import java.util.regex.MatchResult;
 import java.util.regex.Pattern;
 
-import static courtscraper.StartGUI.driver;
+import static courtscraper.datamanagement.csv.CSVSearchAppendTemp.courtLinkAppendToTemp;
 
 
 public class CourtlinkScrapeMain extends CourtlinkMain {
@@ -72,7 +71,7 @@ public class CourtlinkScrapeMain extends CourtlinkMain {
             List<String> toBeAppended = new ArrayList<>();
             toBeAppended.add(pageInfo[i]);
             toBeAppended.add(pageInfo[i + 1]);
-            new CSVSearchAppendTemp().courtLinkAppendToTemp(toBeAppended);
+            courtLinkAppendToTemp(toBeAppended);
         }
 
     }

@@ -1,7 +1,5 @@
 package courtscraper;
 
-import org.openqa.selenium.WebDriver;
-
 import static courtscraper.setups.filesetup.VerifyFilesMain.verifyMain;
 import static courtscraper.setups.gui.Interface.mainGUI;
 
@@ -9,7 +7,7 @@ public class StartGUI {
 
     //interface start
 
-    public static WebDriver driver;
+
 
     public static void main( String[] args ) throws InterruptedException {
         try {

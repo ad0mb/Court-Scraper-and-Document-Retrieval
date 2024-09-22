@@ -11,7 +11,6 @@ import java.io.FileNotFoundException;
 import java.time.Duration;
 
 import static courtscraper.helpers.TabManagement.switchTab;
-import static courtscraper.StartGUI.driver;
 
 
 public class HarrisCounty extends StateSelect {

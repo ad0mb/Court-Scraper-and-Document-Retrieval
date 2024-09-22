@@ -8,7 +8,6 @@ import java.util.List;
 import static courtscraper.helpers.CheckIfRetrieved.fileDownloadedCheck;
 import static courtscraper.helpers.FileManagement.tempFileRename;
 import static courtscraper.helpers.TabManagement.closeLastOpened;
-import static courtscraper.StartGUI.driver;
 
 public class MiamiDadeDocketRetrieval extends MiamiDadeCounty {
 

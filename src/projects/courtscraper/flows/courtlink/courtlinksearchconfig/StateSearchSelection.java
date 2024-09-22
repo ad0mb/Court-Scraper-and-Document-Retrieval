@@ -3,8 +3,6 @@ package courtscraper.flows.courtlink.courtlinksearchconfig;
 import courtscraper.setups.gui.mainpanelelements.MainComboBoxes;
 import org.openqa.selenium.By;
 
-import static courtscraper.StartGUI.driver;
-
 public class StateSearchSelection extends CourtlinkSearchConfigMain {
 
     //this is the dropdown selection portion of the courtlink search flow
