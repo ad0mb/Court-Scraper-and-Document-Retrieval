@@ -6,8 +6,11 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.List;
 
-import static courtscraper.helpers.PastJobsManager.getJobs;
+import static courtscraper.helpers.FolderPaths.PAST_JOBS_CSV_PATH;
 
 public class JobsTableBox extends Panels {
 
@@ -68,5 +71,18 @@ public class JobsTableBox extends Panels {
 
         } catch (IOException ignored) {}
         });
+    }
+
+    public static String[][] getJobs() throws IOException {
+        List<String> rows = Files.readAllLines(Path.of(PAST_JOBS_CSV_PATH));
+        String[][] pastJobsPanelList = new String[rows.size()-1][8];
+
+        int counterCount = 0;
+        for (int i = rows.size()-1; i > 0; i--) {
+            pastJobsPanelList[counterCount] = rows.get(i).split(",");
+            counterCount++;
+        }
+
+        return pastJobsPanelList;
     }
 }
