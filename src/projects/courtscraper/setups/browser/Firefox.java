@@ -6,7 +6,6 @@ import org.openqa.selenium.firefox.*;
 import java.io.FileNotFoundException;
 
 import static courtscraper.helpers.inputprocesses.ProcessConfigInputs.getHeadless;
-import static courtscraper.setups.browser.captcha.CaptchaMain.initiateSolver;
 import static courtscraper.setups.browser.useragent.RandomUserAgent.getRandomUserAgent;
 
 public class Firefox extends StartGUI {
@@ -16,9 +15,6 @@ public class Firefox extends StartGUI {
     public void FirefoxLaunch() throws FileNotFoundException {
 
         //System.setProperty("webdriver.gecko.driver", firefoxPath);
-
-        //starts 2 captcha solver
-        initiateSolver();
 
         ProfilesIni profileIni = new ProfilesIni();
         FirefoxProfile profile = profileIni.getProfile("BOT RUN");

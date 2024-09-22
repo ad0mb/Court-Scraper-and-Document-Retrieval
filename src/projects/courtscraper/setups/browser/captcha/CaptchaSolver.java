@@ -1,24 +1,30 @@
-package courtscraper.helpers;
+package courtscraper.setups.browser.captcha;
 
 import com.twocaptcha.captcha.Normal;
+import courtscraper.datamanagement.json.JSONGrabbers;
+import com.twocaptcha.TwoCaptcha;
 import org.openqa.selenium.By;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.net.URL;
 
-import static courtscraper.helpers.FolderPaths.CAPTCHA_JPG_PATH;
-import static courtscraper.setups.browser.captcha.CaptchaMain.solver;
 import static courtscraper.StartGUI.driver;
+import static courtscraper.helpers.FolderPaths.CAPTCHA_JPG_PATH;
 
-public class CaptchaSolutions {
+public class CaptchaSolver {
 
-    //File containing captcha methods
+    private TwoCaptcha solver;
+    private Normal normalCaptcha;
 
-    private static Normal normalCaptcha = new Normal();
+    public CaptchaSolver() throws FileNotFoundException {
+        this.solver = new TwoCaptcha(new JSONGrabbers().apiGrabber("2captcha"));
+        this.normalCaptcha = new Normal();
+    }
 
-    public static String solveNormalCaptcha(String xpathString) throws Exception {
+    public String solveNormalCaptcha(String xpathString) throws Exception {
 
         //image saver
         String src = driver.findElement(By.xpath(xpathString)).getAttribute("src");
