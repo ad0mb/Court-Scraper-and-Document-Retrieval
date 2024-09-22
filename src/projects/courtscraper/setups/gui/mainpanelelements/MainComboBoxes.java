@@ -68,7 +68,7 @@ public class MainComboBoxes extends Panels {
 
 //State Boxes
     //State type declarations
-    private static final String[] stateElements = {"Select State", "California", "Florida", "New York", "Texas"};
+    public static final String[] stateElements = {"Select State", "California", "Florida", "New York", "Texas"};
     public static JComboBox<String> state = new JComboBox<>(stateElements);
     public static String selectedStateMain = "";
 
