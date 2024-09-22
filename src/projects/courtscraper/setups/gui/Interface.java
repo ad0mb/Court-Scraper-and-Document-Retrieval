@@ -39,7 +39,7 @@ public class Interface extends StartGUI {
         topTabs.setPreferredSize(new Dimension(500, 285));
         topTabs.add(mainPanel, "Start Configuration");
         topTabs.add(jobsPanel, "Jobs");
-        topTabs.add(terminalPanel, "Terminal");
+        //topTabs.add(terminalPanel, "Terminal");
         topTabs.add(settingsPanel, "Settings");
 
     }
