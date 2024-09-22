@@ -17,6 +17,7 @@ public class SettingsButtons extends Panels {
 
     public static void settingsPanelButtons() {
         applyButton();
+        //verifyFilesButton();
     }
 
     public static JButton apply;
@@ -24,9 +25,11 @@ public class SettingsButtons extends Panels {
     public static void applyButton() {
         apply = new JButton("Apply");
 
-        gbcSettings.gridx = 50;
-        gbcSettings.gridy = 50;
-        gbcSettings.insets = new Insets(0,0,0,0);
+        apply.setPreferredSize(new Dimension(15, 10));
+
+        gbcSettings.gridx = 1;
+        gbcSettings.gridy = 7;
+        gbcSettings.insets = new Insets(0,55,0,0);
         settingsPanel.add(apply, gbcSettings);
 
         apply.addActionListener(new ActionListener() {
@@ -44,4 +47,17 @@ public class SettingsButtons extends Panels {
             }
         });
     }
+/*
+    public static JButton verifyFiles;
+
+    public static void verifyFilesButton() {
+        verifyFiles = new JButton("Verify");
+
+        verifyFiles.setPreferredSize(new Dimension(15, 20));
+
+        gbcSettings.gridx = 1;
+        gbcSettings.gridy = 7;
+        gbcSettings.insets = new Insets(0,25,0,45);
+        settingsPanel.add(verifyFiles, gbcSettings);
+    }*/
 }
