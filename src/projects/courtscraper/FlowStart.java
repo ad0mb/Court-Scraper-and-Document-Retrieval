@@ -1,5 +1,6 @@
 package courtscraper;
 
+import courtscraper.helpers.JobsManager;
 import courtscraper.helpers.Logger;
 import courtscraper.setups.browser.Firefox;
 import courtscraper.setups.gui.mainpanelelements.MainButtons;
@@ -18,10 +19,14 @@ public class FlowStart extends MainButtons {
 
     //this is the flow start for the entire process, it can be divided up into specific flow configuration based on users input
 
-    public static Logger runLogger = Logger.getInstance();
+
     public static WebDriver driver;
+    private static JobsManager jobsManager;
+    private static String runStatus;
 
     public static void StartMainFlowButton() throws IOException, InterruptedException {
+        jobsManager = new JobsManager();
+        runStatus = runLogger.updateInfo("runStatus","Finished");
 
         try {
             new Firefox().FirefoxLaunch();
@@ -40,11 +45,12 @@ public class FlowStart extends MainButtons {
                     break;
             }
         } catch(Exception e) {
+            runStatus = runLogger.updateInfo("runStatus", "Failed");
             runLogger.logError(e);
             e.printStackTrace();
         }
 
-        runLogger.logJob();
+        jobsManager.addJob(runStatus);
         updateJobsTable();
 
 

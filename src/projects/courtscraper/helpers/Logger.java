@@ -19,28 +19,15 @@ public class Logger {
 
     private final SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 
-    private static String startTime;
-    private static String endTime;
+    private String startTime;
+    private String endTime;
     private String runStatus;
 
-    private static Logger INSTANCE = null;
-
-
     public Logger() {
-        startTime = dateFormat.format(new Date());
-        this.runStatus = "Finished";
-    }
 
-    public static Logger getInstance() {
-        if (INSTANCE == null) {
-            INSTANCE = new Logger();
-        }
-        return INSTANCE;
     }
 
     public void logError(Exception e) throws IOException {
-        endTime = dateFormat.format(new Date());
-        this.runStatus = "Failed";
         //specific folder name format (new format because folders cant accept other form
         String folderName = new SimpleDateFormat("dd-MM-yyyy HH.MM.SS").format(new Date());
 
@@ -71,42 +58,20 @@ public class Logger {
 
     }
 
-    public void logJob() throws IOException {
-        String appendableString = "";
-
-        //crafts the csv line to add to pastJobslist
-        //adds search terms
-        appendableString += search.getText() + ",";
-        //adds date range
-        appendableString += date.getText() + ",";
-        //adds selected state
-        appendableString += selectedStateMain + ",";
-        //adds selected county
-        appendableString += selectedCountyMain + ",";
-        //adds status (failed or finsihed, this is decided in the FlowStart)
-        appendableString +=  runStatus + ",";
-        //adds selected flow type
-        appendableString += selectedFlowType + ",";
-        //adds start date and time
-        appendableString += startTime + ",";
-        //adds finished date and time
-        appendableString += endTime;
-
-        appendToCSV(appendableString, PAST_JOBS_CSV_PATH);
-        appendToCSV(appendableString, ALL_JOBS_CSV_PATH);
-
-        checkForMaxJobs();
-
-    }
-
-    private void checkForMaxJobs() throws IOException {
-        List<String> rows = Files.readAllLines(Path.of(PAST_JOBS_CSV_PATH));
-
-        if (rows.size() >= 21) {
-            for (int i = 0; i<rows.size(); i++) {
-                if (rows.get(1).equals(rows.get(i)) || rows.get(i).isEmpty())
-                    deleteLine(PAST_JOBS_CSV_PATH, CONFIGS_FOLDER_PATH, rows.get(i));
-            }
+    public String updateInfo(String type, String info) {
+        switch (type) {
+            case "startTime":
+                startTime = info;
+                break;
+            case "endTime":
+                endTime = info;
+                break;
+            case "runStatus":
+                runStatus = info;
+                break;
         }
+        return info;
     }
+
+
 }
