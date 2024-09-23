@@ -1,6 +1,5 @@
 package courtscraper.flows.courtlink.courtlinksearchconfig;
 
-import courtscraper.setups.gui.mainpanelelements.MainComboBoxes;
 import org.openqa.selenium.By;
 
 public class StateSearchSelection extends CourtlinkSearchConfigMain {
@@ -10,15 +9,15 @@ public class StateSearchSelection extends CourtlinkSearchConfigMain {
     public static void searchState(String state) throws InterruptedException {
         switch (state) {
             case "California":
-                driver.findElement(By.xpath("//*[@id=\"courtsdropdown\"]")).sendKeys("California " + MainComboBoxes.selectedCountyMain);
+                driver.findElement(By.xpath("//*[@id=\"courtsdropdown\"]")).sendKeys("California " + processedInputs[5]);
                 driver.findElement(By.xpath("/html/body/main/div/ln-courtlinksearchform/div/searchform/div[1]/div[1]/courtlist/div/courtlistselector/div/div[2]/div/div[2]/div/div/div/div/label/div")).click();
                 break;
             case "Florida":
-                driver.findElement(By.xpath("//*[@id=\"courtsdropdown\"]")).sendKeys("Florida " + MainComboBoxes.selectedCountyMain);
+                driver.findElement(By.xpath("//*[@id=\"courtsdropdown\"]")).sendKeys("Florida " + processedInputs[5]);
                 driver.findElement(By.xpath("/html/body/main/div/ln-courtlinksearchform/div/searchform/div[1]/div[1]/courtlist/div/courtlistselector/div/div[2]/div/div[2]/div/div/div/div/label/div")).click();
                 break;
             case "New York":
-                if (MainComboBoxes.selectedCountyMain.equals("New York BKQ")) {
+                if (processedInputs[5].equals("New York BKQ")) {
                     String[] BKQ = {"Bronx", "Kings", "Queens"};
                     for (String burrough : BKQ) {
                         driver.findElement(By.xpath("//*[@id=\"courtsdropdown\"]")).sendKeys("New York " + burrough);
@@ -26,12 +25,12 @@ public class StateSearchSelection extends CourtlinkSearchConfigMain {
                         driver.findElement(By.xpath("//*[@id=\"courtsdropdown\"]")).clear();
                     }
                 } else {
-                    driver.findElement(By.xpath("//*[@id=\"courtsdropdown\"]")).sendKeys("New York " + MainComboBoxes.selectedCountyMain);
+                    driver.findElement(By.xpath("//*[@id=\"courtsdropdown\"]")).sendKeys("New York " + processedInputs[5]);
                     driver.findElement(By.xpath("/html/body/main/div/ln-courtlinksearchform/div/searchform/div[1]/div[1]/courtlist/div/courtlistselector/div/div[2]/div/div[2]/div/div/div/div/label/div")).click();
                 }
                 break;
             case "Texas":
-                driver.findElement(By.xpath("//*[@id=\"courtsdropdown\"]")).sendKeys("Texas " + MainComboBoxes.selectedCountyMain + " district");
+                driver.findElement(By.xpath("//*[@id=\"courtsdropdown\"]")).sendKeys("Texas " + processedInputs[5] + " district");
                 Thread.sleep(1000);
                 driver.findElement(By.xpath("/html/body/main/div/ln-courtlinksearchform/div/searchform/div[1]/div[1]/courtlist/div/courtlistselector/div/div[2]/div/div[2]/div/div/div/div/label/div")).click();
                 Thread.sleep(1000);

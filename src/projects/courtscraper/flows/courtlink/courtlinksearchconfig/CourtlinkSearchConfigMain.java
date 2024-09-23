@@ -3,11 +3,14 @@ package courtscraper.flows.courtlink.courtlinksearchconfig;
 
 import courtscraper.flows.courtlink.CourtlinkMain;
 import courtscraper.helpers.guiinputprocessors.ProcessMainInputs;
-import courtscraper.setups.gui.mainpanelelements.MainComboBoxes;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
+
+import static courtscraper.flows.courtlink.courtlinksearchconfig.StateSearchSelection.searchState;
+import static courtscraper.setups.gui.mainpanelelements.MainComboBoxes.selectedDateType;
+import static courtscraper.setups.gui.mainpanelelements.MainComboBoxes.selectedStateMain;
 
 
 public class CourtlinkSearchConfigMain extends CourtlinkMain {
@@ -54,7 +57,7 @@ public class CourtlinkSearchConfigMain extends CourtlinkMain {
 
     private static void courtLinkStateSelection() throws InterruptedException {
         driver.findElement(By.xpath("/html/body/main/div/ln-courtlinksearchform/div/searchform/div[1]/div[1]/courtlist/div/courtlistselector/div/div[1]/span[1]/div")).click();
-        StateSearchSelection.searchState(MainComboBoxes.selectedStateMain);
+        searchState(selectedStateMain);
         Thread.sleep(1000);
     }
 
@@ -66,10 +69,10 @@ public class CourtlinkSearchConfigMain extends CourtlinkMain {
 
         //select the date type
         Select dropdown = new Select(driver.findElement(By.xpath("//select")));
-        dropdown.selectByVisibleText(MainComboBoxes.selectedDateType);
+        dropdown.selectByVisibleText(selectedDateType);
 
         Thread.sleep(1000);
-        switch (MainComboBoxes.selectedDateType) {
+        switch (selectedDateType) {
             case "All available dates":
                 return;
             case "Date is":

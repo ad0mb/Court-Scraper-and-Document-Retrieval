@@ -4,6 +4,10 @@ package courtscraper.helpers.guiinputprocessors;
 import courtscraper.setups.gui.mainpanelelements.MainComboBoxes;
 import courtscraper.setups.gui.mainpanelelements.MainInputBoxes;
 
+import static courtscraper.setups.gui.mainpanelelements.MainComboBoxes.selectedCountyMain;
+import static courtscraper.setups.gui.mainpanelelements.MainComboBoxes.selectedStateMain;
+import static courtscraper.setups.gui.mainpanelelements.MainInputBoxes.*;
+
 public class ProcessMainInputs {
 
     //This Helper class is for grabbing the inputs from the search box and combo boxes on the interface to then be processed into usable variables throughout the code
@@ -24,15 +28,15 @@ public class ProcessMainInputs {
     }
 
     private String getSearchBox() {
-        return MainInputBoxes.search.getText();
+        return search.getText();
     }
 
     private String getAttorneyBox() {
-        return MainInputBoxes.attorney.getText();
+        return attorney.getText();
     }
 
     private void getDateBox() {
-        String[] reformattedDates = MainInputBoxes.date.getText().replaceAll("[^0-9/-]", "").split("-");
+        String[] reformattedDates = date.getText().replaceAll("[^0-9/-]", "").split("-");
         if (reformattedDates.length > 1) {
             startDate = reformattedDates[0];
             endDate = reformattedDates[1];
@@ -42,10 +46,10 @@ public class ProcessMainInputs {
     }
 
     private String getState() {
-        return MainComboBoxes.selectedStateMain;
+        return selectedStateMain;
     }
 
     private String getCounty() {
-        return MainComboBoxes.selectedCountyMain;
+        return selectedCountyMain;
     }
 }
