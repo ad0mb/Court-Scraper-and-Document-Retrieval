@@ -24,7 +24,6 @@ public class SettingsButtons extends Panels {
 
     public static void applyButton() {
         apply = new JButton("Apply");
-
         apply.setPreferredSize(new Dimension(15, 10));
 
         gbcSettings.gridx = 1;
@@ -36,9 +35,18 @@ public class SettingsButtons extends Panels {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
+
+                    //if block for entering username and password
                     if (!username.getText().isEmpty() && !password.getText().isEmpty()) {
+                        passwordErrorField.setText("");
                         loginWriter(selectedStateSettings + selectedCountySettings, username.getText(), password.getText());
-                    } if (!apiKey.getText().isEmpty()) {
+                    } else if (!username.getText().isEmpty() && password.getText().isEmpty()){
+                        passwordErrorField.setText("Please enter password");
+                    } else if (username.getText().isEmpty() && !password.getText().isEmpty()) {
+                        passwordErrorField.setText("Please enter username");
+                    }//dafgasdgasdgadsdfasdgaga@gmail.com
+
+                    if (!apiKey.getText().isEmpty()) {
                         apiWriter(selectedCaptchaSolution, apiKey.getText());
                     }
                 } catch (IOException ex) {

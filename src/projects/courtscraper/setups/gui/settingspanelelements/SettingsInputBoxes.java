@@ -4,14 +4,8 @@ import courtscraper.datamanagement.json.JSONGrabbers;
 import courtscraper.setups.gui.Panels;
 
 import javax.swing.*;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.IOException;
-
-import static courtscraper.datamanagement.json.JSONWriters.apiWriter;
 
 public class SettingsInputBoxes extends Panels {
 
@@ -40,8 +34,11 @@ public class SettingsInputBoxes extends Panels {
         settingsPanel.add(username, gbcSettings);
     }
 
+    public static JLabel passwordErrorField;
+
     public static void passwordBox() {
         JLabel instruction = new JLabel("Password");
+        passwordErrorField = new JLabel("");
         password = new JTextField(13);
 
         gbcSettings.gridx = 0;
@@ -53,6 +50,13 @@ public class SettingsInputBoxes extends Panels {
         gbcSettings.gridy = 7;
         gbcSettings.insets = new Insets(0,0,0,0);
         settingsPanel.add(password, gbcSettings);
+
+        passwordErrorField.setForeground(Color.red);
+
+        gbcSettings.gridx = 0;
+        gbcSettings.gridy = 8;
+        gbcSettings.insets = new Insets(0,0,0,0);
+        settingsPanel.add(passwordErrorField, gbcSettings);
     }
 
     public static void apiKeyBox() {
