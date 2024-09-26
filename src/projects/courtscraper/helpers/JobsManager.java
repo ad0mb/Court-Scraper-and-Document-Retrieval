@@ -1,3 +1,9 @@
+/**
+ * @author Adam Bouloudene
+ * @summary This file manages and organizes the data that can be seen in the Past Jobs panel on the interface. It will also update jobs, trim the list to ensure it does not get too long.
+ *
+ */
+
 package courtscraper.helpers;
 
 import java.io.IOException;

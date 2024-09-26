@@ -1,3 +1,10 @@
+/**
+ * @author Adam Bouloudene
+ * @summary This filters out which and what type of input to do to ensure it targest the proper county. This is used only in CourtlinkSearchConfigMain.
+ *
+ * @todo Clean up the code and make the same box be clicked and make switch cases purely for the input.
+ */
+
 package courtscraper.flows.courtlink.courtlinksearchconfig;
 
 import org.openqa.selenium.By;
