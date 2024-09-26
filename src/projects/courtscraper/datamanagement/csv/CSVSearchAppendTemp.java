@@ -2,9 +2,6 @@
  * @author Adam Bouloudene
  * @summary This method serves the purpose of appending the case numbers from a Courtlink scrape to the temp folder. It appends the case number, date filed and other relevant information.
  *
- * Methods:
- * courtLinkAppendToTemp: This method builds a string containing the case number, date filed (pertaining to case), keywords used in search, etc... A lot of relevant date to the search. At the end it appends this to the temp.csv for the respective state.
- *
  * @todo Use string builder to build the appendableString.
  * @todo Use CSVManagement().appendToCSV() method to append string to csv.
  */

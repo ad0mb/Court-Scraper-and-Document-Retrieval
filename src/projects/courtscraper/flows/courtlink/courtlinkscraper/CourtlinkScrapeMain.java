@@ -2,11 +2,6 @@
  * @author Adam Bouloudene
  * @summary This class is the main scraping flow for Courtlink, methods in here will click through Courtlink and collect all case numbers returned by the desired search.
  *
- * Methods:
- * courtLinkScrape: This is the method containing the main process of collecting case numbers from the page.
- * grabCaseInfo: This grabs the case info from the entire page 10 at a time. This is incorporated into the loop in courtLinkScrape.
- * getNumCases: This method is used to grab the cases at the start after search is configured. This is only used once to set the limits for how many times the loop runs. This method contains 3 possible scenarios for how to grab case numbers based on how many pages containing cases there are.
- *
  * @todo Go back and clean up for loop code.
  */
 

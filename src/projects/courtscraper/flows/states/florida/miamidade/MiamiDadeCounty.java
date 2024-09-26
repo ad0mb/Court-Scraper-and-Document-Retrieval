@@ -2,10 +2,6 @@
  * @author Adam Bouloudene
  * @summary This class contains the main flow for logging into and navigating the Miami-Dade County website.
  *
- * Methods:
- * miamiDadeMain: This is the main method for navigating and retrieving documents from the Miami-Dade County website.
- * loginMiamiDade: Contains the login process for the Miami-Dade website.
- *
  * @todo Properly comment out code.
  */
 

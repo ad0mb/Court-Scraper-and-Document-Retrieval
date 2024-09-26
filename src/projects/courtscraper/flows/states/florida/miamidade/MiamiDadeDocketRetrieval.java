@@ -2,8 +2,6 @@
  * @author Adam Bouloudene
  * @summary This class is the specific Miami-Dade County flow that will actually download and organize files retrieves from each case.
  *
- * Methods:
- * retrieveDockets: Loops through the format of the page to sort through which documents it wants to download.
  */
 
 package courtscraper.flows.states.florida.miamidade;

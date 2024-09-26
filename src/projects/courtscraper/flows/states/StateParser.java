@@ -2,10 +2,6 @@
  * @author Adam Bouloudene
  * @summary This class is the loop that selects a case number to be searched and retrieved. This is the same flow for any case and will adapt to any case using the StateSelect class. This class ensures no duplicates are allowed to be searched aswell.
  *
- * Methods:
- * stateRetrievalFlow: Loops through all case numbers in the selected state and counties temp.csv. Will sort through duplicates to prevent issues.
- * renameFilesBulk: This is a specific method designed to bulk rename files. It is used for flows that cannot rename documents live and must do so using specific document identifiers. It utilizes 2 lists with matching index names and documents to rename the folders.
- *
  * @todo Explore moving bulk rename to FileManagement.
  */
 

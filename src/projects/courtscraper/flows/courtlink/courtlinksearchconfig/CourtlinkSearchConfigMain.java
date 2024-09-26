@@ -2,13 +2,6 @@
  * @author Adam Bouloudene
  * @summary This class contains the main method which contains a selection of other methods which send the appropriate keys to each input box on the Courtlink serach configuration page.
  *
- * Methods:
- * courtLinkTermInputs: This method contains all the methods designed to input terms.
- * courtLinkSearchTerms: Inputs the main search terms into search terms box.
- * courtLinkAttorneyName: Inputs attorney name into attorney input box.
- * courtLinkStateSelection: Uses another method to properly input state names and selected county into the dropdown box for state/county selection.
- * courtLinkDateInput: Inputs date based on the selected date setting on the interface.
- *
  * @todo Properly comment out code (especially for date input).
  */
 

@@ -2,10 +2,6 @@
  * @author Adam Bouloudene
  * @summary This class contains the main flow for logging into and navigating the Harris County website.
  *
- * Methods:
- * miamiDadeMain: This is the main method for navigating and retrieving documents from the Harris County website.
- * loginMiamiDade: Contains the login process for the Harris County Website.
- *
  * @todo Properly comment out code.
  */
 

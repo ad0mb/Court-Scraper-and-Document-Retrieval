@@ -2,9 +2,6 @@
  * @author Adam Bouloudene
  * @summary This filters out which and what type of input to do to ensure it targest the proper county. This is used only in CourtlinkSearchConfigMain.
  *
- * Methods:
- * searchState: This method contains a large switch case containing all the states added and how to input their terms to get the desired selection.
- *
  * @todo Clean up the code and make the same box be clicked and make switch cases purely for the input.
  */
 

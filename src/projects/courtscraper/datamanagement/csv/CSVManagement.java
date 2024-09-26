@@ -2,10 +2,6 @@
  * @author Adam Bouloudene
  * @summary This contains various methods that serve specific functionalities when dealing with .csv files.
  *
- * Methods:
- * deleteLine: This function serves the purpose of recreating a csv file by omitting a specific line. Although it seems as if it deleted a line, do not be fooled is it created a new file and excluding the line that is to be "deleted".
- * appendToCSV: This function simply appends a line to the bottom of a csv file without overwriting the content.
- *
  * @todo Add exclusion of empty lines in the loops if statement on deleteLine().
  */
 

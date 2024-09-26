@@ -2,10 +2,6 @@
  * @author Adam Bouloudene
  * @summary This contains all the methods used to change .json file elements.
  *
- * Methods:
- * loginWriter: Edit chosen login with new username and password.
- * apiWriter: Redefines API Keys that are set through the settings panel.
- * configWriter: Redefines settings set in the settings panel to be used later throughout the code.
  */
 
 package courtscraper.datamanagement.json;
@@ -16,7 +12,6 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
 import com.google.gson.stream.JsonReader;
 
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;

@@ -2,9 +2,6 @@
  * @author Adam Bouloudene
  * @summary This class is the hub for the entire Courtlink process from login to scrape.
  *
- * Methods:
- * courtLinkFlow: This method contains the search configuration and scraping processes in order.
- * courtLinkLogin: Login process to log into the homepage of Courtlink
  */
 
 package courtscraper.flows.courtlink;

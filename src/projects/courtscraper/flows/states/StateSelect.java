@@ -2,8 +2,6 @@
  * @author Adam Bouloudene
  * @summary This class is used in StateParser to specify which state it wants to search the selected case number in.
  *
- * Methods:
- * stateFilter: This uses a switch case to match each state and if statements within to specify which county flow is desired.
  */
 
 package courtscraper.flows.states;

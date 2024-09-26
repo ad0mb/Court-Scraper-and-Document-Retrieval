@@ -2,11 +2,6 @@
  * @author Adam Bouloudene
  * @summary This class contains all the methods used to grab data from different .json files. Currently, it contains capabilities to from logins.json, configs.json, and API Keys.json. These data in these files serve various purposes throughout the code.
  *
- * Methods:
- * loginGrabber: This grabs login information from logins.json for the various websites that the program has to log into during its run time.
- * apiGrabber: This grabs API keys used to validate the usage of API's throughout the code.
- * configGrabber: This grabs the configurations (settings) for the program.
- *
  * @todo Remove the extra return on loginGrabber.
  */
 
