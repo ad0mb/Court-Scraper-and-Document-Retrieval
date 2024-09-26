@@ -14,7 +14,7 @@ public class CourtlinkMain extends FlowStart {
 
     //main hub for all courtlink processes from login, to search, to scrape
 
-    public static void CourtlinkFlow() throws IOException, InterruptedException {
+    public static void courtLinkFlow() throws IOException, InterruptedException {
         courtLinkLogin(); //login process
 
         Thread.sleep(1000);
