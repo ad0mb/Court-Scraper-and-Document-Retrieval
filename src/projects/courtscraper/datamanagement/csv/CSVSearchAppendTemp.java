@@ -1,3 +1,14 @@
+/**
+ * @author Adam Bouloudene
+ * @summary This method serves the purpose of appending the case numbers from a Courtlink scrape to the temp folder. It appends the case number, date filed and other relevant information.
+ *
+ * Methods:
+ * courtLinkAppendToTemp: This method builds a string containing the case number, date filed (pertaining to case), keywords used in search, etc... A lot of relevant date to the search. At the end it appends this to the temp.csv for the respective state.
+ *
+ * @todo Use string builder to build the appendableString.
+ * @todo Use CSVManagement().appendToCSV() method to append string to csv.
+ */
+
 package courtscraper.datamanagement.csv;
 
 import java.io.FileWriter;
@@ -14,13 +25,8 @@ import static courtscraper.setups.gui.mainpanelelements.MainComboBoxes.selectedS
 
 public class CSVSearchAppendTemp {
 
-    //this will contain the search flows specific appending variables
-
-    //public static String tempFilePath = "C:\\Users\\" + System.getenv("USERNAME") + "\\Desktop\\Courtlink Scraper\\States\\" + selectedStateMain + "\\" + selectedCountyMain + "\\temp.csv";
-
-    //declarations of current date and time
-    private final static SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-    private static Date date;
+    private final static SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss"); // Sets format for date and time
+    private static Date date; // The current date is declared here
 
     public static void courtLinkAppendToTemp(List<String> toBeAppended) throws IOException {
         date = new Date();
@@ -29,23 +35,23 @@ public class CSVSearchAppendTemp {
 
         FileWriter csvFile = new FileWriter(TEMP_CSV_PATH, true);
 
-        //adds case number and date of case filed from the courtlink site
+        // Adds case number and date of case filed from the Courtlink site
         for (int i = toBeAppended.size()-1; i>=0; i--) {
             appendableString += toBeAppended.get(i).replace("\"", "") + ",";
         }
 
-        //adds keywords used in search
-        appendableString += processedInputs[0] + ",";
-        //adds attorney terms used in search
-        appendableString += processedInputs[1] + ",";
-        //adds current date and time from which the document was grabbed from
-        appendableString += dateFormat.format(date) + ",";
-        //adds selected state
-        appendableString += selectedStateMain + ",";
-        //added selected county
-        appendableString += selectedCountyMain + ",";
-        //adds documents selected
-        appendableString += "" + ",";
+
+        appendableString += processedInputs[0] + ","; // Adds keywords used in search
+
+        appendableString += processedInputs[1] + ","; // Adds attorney terms used in search
+
+        appendableString += dateFormat.format(date) + ","; // Adds current date and time from which the document was grabbed from
+
+        appendableString += selectedStateMain + ","; // Adds selected state
+
+        appendableString += selectedCountyMain + ","; // Added selected county
+
+        appendableString += "" + ","; // Adds documents selected
 
 
         csvFile.append("\n");

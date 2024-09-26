@@ -1,3 +1,12 @@
+/**
+ * @author Adam Bouloudene
+ * @summary This class is the hub for the entire Courtlink process from login to scrape.
+ *
+ * Methods:
+ * courtLinkFlow: This method contains the search configuration and scraping processes in order.
+ * courtLinkLogin: Login process to log into the homepage of Courtlink
+ */
+
 package courtscraper.flows.courtlink;
 
 import courtscraper.FlowStart;
@@ -12,21 +21,18 @@ import static courtscraper.flows.courtlink.courtlinksearchconfig.CourtlinkSearch
 
 public class CourtlinkMain extends FlowStart {
 
-    //main hub for all courtlink processes from login, to search, to scrape
-
-    public static void CourtlinkFlow() throws IOException, InterruptedException {
-        //Login process
-        courtLinkLogin();
+    public static void courtLinkFlow() throws IOException, InterruptedException {
+        courtLinkLogin(); // Login process
 
         Thread.sleep(1000);
 
-        //inputs terms/dates into input boxes
-        courtLinkTermInputs();
+
+        courtLinkTermInputs(); // Inputs terms/dates into input boxes
 
         Thread.sleep(1000);
 
-        //scrapes courtlink for casenumbers
-        courtLinkScrape();
+
+        courtLinkScrape(); //Scrapes Courtlink for case numbers
 
 
     }

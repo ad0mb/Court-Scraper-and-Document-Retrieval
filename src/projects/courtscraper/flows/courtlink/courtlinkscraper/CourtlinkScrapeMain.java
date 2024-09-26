@@ -1,3 +1,15 @@
+/**
+ * @author Adam Bouloudene
+ * @summary This class is the main scraping flow for Courtlink, methods in here will click through Courtlink and collect all case numbers returned by the desired search.
+ *
+ * Methods:
+ * courtLinkScrape: This is the method containing the main process of collecting case numbers from the page.
+ * grabCaseInfo: This grabs the case info from the entire page 10 at a time. This is incorporated into the loop in courtLinkScrape.
+ * getNumCases: This method is used to grab the cases at the start after search is configured. This is only used once to set the limits for how many times the loop runs. This method contains 3 possible scenarios for how to grab case numbers based on how many pages containing cases there are.
+ *
+ * @todo Go back and clean up for loop code.
+ */
+
 package courtscraper.flows.courtlink.courtlinkscraper;
 
 import courtscraper.flows.courtlink.CourtlinkMain;
@@ -18,8 +30,6 @@ import static courtscraper.datamanagement.csv.CSVSearchAppendTemp.courtLinkAppen
 
 public class CourtlinkScrapeMain extends CourtlinkMain {
 
-    //this is the main hub for the courtlink scrape flow
-
     private static WebDriverWait wait;
     private static int numCases = getNumCases();
 
@@ -27,32 +37,28 @@ public class CourtlinkScrapeMain extends CourtlinkMain {
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         Thread.sleep(500);
         System.out.println(numCases);
-        //waits until first page is loaded
 
-        //Grabs Case Info
+        // Grabs Case Info
         for (int i = 0; i<numCases; i++) {
             driver.navigate().refresh();
             Thread.sleep(2000);
             System.out.println(i);
-            //grabs info on page
-            new CourtlinkScrapeMain().grabCaseInfo();
+            new CourtlinkScrapeMain().grabCaseInfo(); // Grabs info on page
             Thread.sleep(2000);
 
-            //grabs url for later next page loaded check
-            String url = driver.getCurrentUrl();
+
+            String url = driver.getCurrentUrl(); // Grabs url for later next page loaded check
 
 
-            //ends if on last page to prevent stoppage and grabs last case before stopping
+            // Ends if on last page to prevent stoppage and grabs last case before stopping
             if (i==numCases-1) {
                 Thread.sleep(2000);
                 break;
             }
 
-            //clicks next button to move on to the next page
-            driver.findElement(By.cssSelector("a.la-TriangleRight")).click();
+            driver.findElement(By.cssSelector("a.la-TriangleRight")).click(); // Clicks next button to move on to the next page
 
-            //waits until next page loaded
-            wait.until(ExpectedConditions.not(ExpectedConditions.urlToBe(url)));
+            wait.until(ExpectedConditions.not(ExpectedConditions.urlToBe(url))); // Waits until next page loaded
             Thread.sleep(500);
 
 
@@ -60,13 +66,11 @@ public class CourtlinkScrapeMain extends CourtlinkMain {
     }
 
     private void grabCaseInfo() throws IOException {
-        //grabs Javascript script
-        WebElement item = driver.findElement(By.xpath("/html/body/main/script[2]"));
-        //regex that grabs the date and docketnumber from javascript script
-        Pattern pattern = Pattern.compile("(?<=\"docketnumber\":)(\".*?\")*|(?<=\"date\":)(\".*?\")*");
+        WebElement item = driver.findElement(By.xpath("/html/body/main/script[2]")); // Grabs Javascript script
+        Pattern pattern = Pattern.compile("(?<=\"docketnumber\":)(\".*?\")*|(?<=\"date\":)(\".*?\")*"); // Regex that grabs the date and docketnumber from javascript script
         String[] pageInfo = pattern.matcher(item.getAttribute("innerHTML")).results().map(MatchResult::group).toArray(String[]::new);
 
-        //adds the case number and date filed in a loop
+        // Adds the case number and date filed in a loop
         for (int i = 0; i<pageInfo.length; i+=2) {
             List<String> toBeAppended = new ArrayList<>();
             toBeAppended.add(pageInfo[i]);

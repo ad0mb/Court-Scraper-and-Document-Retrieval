@@ -1,3 +1,11 @@
+/**
+ * @author Adam Bouloudene
+ * @summary This class is used in StateParser to specify which state it wants to search the selected case number in.
+ *
+ * Methods:
+ * stateFilter: This uses a switch case to match each state and if statements within to specify which county flow is desired.
+ */
+
 package courtscraper.flows.states;
 
 
@@ -11,8 +19,6 @@ import static courtscraper.setups.gui.mainpanelelements.MainComboBoxes.selectedC
 import static courtscraper.setups.gui.mainpanelelements.MainComboBoxes.selectedStateMain;
 
 public class StateSelect extends StateParser {
-
-    //This file contains the filter that decides which county under which state to search
 
     public static void stateFilter(String caseNumber) throws FileNotFoundException, InterruptedException {
         Thread.sleep(500);

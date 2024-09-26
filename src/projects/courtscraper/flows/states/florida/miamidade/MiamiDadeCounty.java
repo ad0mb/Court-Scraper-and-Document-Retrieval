@@ -1,3 +1,14 @@
+/**
+ * @author Adam Bouloudene
+ * @summary This class contains the main flow for logging into and navigating the Miami-Dade County website.
+ *
+ * Methods:
+ * miamiDadeMain: This is the main method for navigating and retrieving documents from the Miami-Dade County website.
+ * loginMiamiDade: Contains the login process for the Miami-Dade website.
+ *
+ * @todo Properly comment out code.
+ */
+
 package courtscraper.flows.states.florida.miamidade;
 
 import courtscraper.flows.states.StateSelect;
@@ -16,7 +27,7 @@ import java.util.Map;
 public class MiamiDadeCounty extends StateSelect {
 
     private static WebDriverWait wait;
-    //for case type dropdown
+    // For case type dropdown
     public static Map<String, String> caseType = Map.of(
             "AC", "AC - Civil Appeals",
             "AF", "AF - Administrative File",
@@ -31,7 +42,7 @@ public class MiamiDadeCounty extends StateSelect {
 
     public static void miamiDadeMain(String caseNumber) throws InterruptedException, FileNotFoundException {
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        //grabs miami-dade site and logs in only if reset has recently happened
+        // Grabs miami-dade site and logs in only if reset has recently happened
         if (driver.getCurrentUrl().equals("https://www.google.com/")) {
             loginMiamiDade();
             driver.get("https://www2.miamidadeclerk.gov/ocs/");
@@ -40,10 +51,10 @@ public class MiamiDadeCounty extends StateSelect {
             Thread.sleep(500);
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/main/form/div[4]/div[2]/div/div[5]/div/div/div[1]/ul/li[2]/a"))).click();
         }
-        //creates case numbers list
-        List<String> caseNumbers = new ArrayList<>(List.of(caseNumber.split("-")));
-        //each block enters a parameter for the search
-        driver.findElement(By.xpath("//*[@id=\"txtLCNYearSTD_localCaseContent\"]")).clear();
+
+        List<String> caseNumbers = new ArrayList<>(List.of(caseNumber.split("-"))); // Creates case numbers list
+
+        driver.findElement(By.xpath("//*[@id=\"txtLCNYearSTD_localCaseContent\"]")).clear(); // Each block enters a parameter for the search
         driver.findElement(By.xpath("//*[@id=\"txtLCNYearSTD_localCaseContent\"]")).sendKeys(caseNumbers.get(0));
 
         driver.findElement(By.xpath("//*[@id=\"txtLCNSeqSTD_localCaseContent\"]")).clear();

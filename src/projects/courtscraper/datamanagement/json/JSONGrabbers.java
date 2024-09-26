@@ -1,3 +1,15 @@
+/**
+ * @author Adam Bouloudene
+ * @summary This class contains all the methods used to grab data from different .json files. Currently, it contains capabilities to from logins.json, configs.json, and API Keys.json. These data in these files serve various purposes throughout the code.
+ *
+ * Methods:
+ * loginGrabber: This grabs login information from logins.json for the various websites that the program has to log into during its run time.
+ * apiGrabber: This grabs API keys used to validate the usage of API's throughout the code.
+ * configGrabber: This grabs the configurations (settings) for the program.
+ *
+ * @todo Remove the extra return on loginGrabber.
+ */
+
 package courtscraper.datamanagement.json;
 
 
@@ -13,24 +25,21 @@ import static courtscraper.helpers.FolderPaths.*;
 
 public class JSONGrabbers {
 
-    //This helper class is for grabbing any data in configs
-
     private static Gson gson = new Gson();
 
     public String[] loginGrabber(String website) throws FileNotFoundException {
 
-        //Defining Array with login credentials
-        String[] loginCreds;
+        String[] loginCreds; // Defining Array with login credentials
 
         //Opening File and reading the file as Json
         JsonReader reader = new JsonReader(new FileReader(LOGINS_JSON_PATH));
         JsonObject logins = gson.fromJson(reader, JsonObject.class);
 
         for (JsonElement element : logins.get("credentials").getAsJsonArray()) {
-            //finds credentials matching input
+            // Finds credentials matching input
             if (element.getAsJsonObject().get("ID").getAsString().equals(website)) {
 
-                //grabs username and passwords and puts them in an array
+                // Grabs username and passwords and puts them in an array
                 String username = element.getAsJsonObject().get("username").getAsString();
                 String password = element.getAsJsonObject().get("password").getAsString();
                 loginCreds = new String[]{username, password};
@@ -42,12 +51,12 @@ public class JSONGrabbers {
     }
 
     public String apiGrabber(String apiID) throws FileNotFoundException {
-        //opens file as JsonArray
+        // Opens file as JsonArray
         JsonReader reader = new JsonReader(new FileReader(API_KEYS_JSON_PATH));
         JsonObject apiKeys = gson.fromJson(reader, JsonObject.class);
 
         for (JsonElement element : apiKeys.get("API Keys").getAsJsonArray()) {
-            //grabs key if inputed parameter is the same as something on the api key
+            // Grabs key if inputed parameter is the same as something on the api key
             if (element.getAsJsonObject().get("ID").getAsString().equals(apiID)) {
                 return element.getAsJsonObject().get("Key").getAsString();
             }
@@ -56,12 +65,12 @@ public class JSONGrabbers {
     }
 
     public String configGrabber(String config) throws FileNotFoundException {
-        //opens file as JsonArray
+        // Opens file as JsonArray
         JsonReader reader = new JsonReader(new FileReader(CONFIGS_JSON_PATH));
         JsonObject settings = gson.fromJson(reader, JsonObject.class);
 
-        //returns the targetted config
-        return settings.getAsJsonObject("settings").get(config).getAsString();
+
+        return settings.getAsJsonObject("settings").get(config).getAsString(); // Returns the targetted config
 
     }
 }

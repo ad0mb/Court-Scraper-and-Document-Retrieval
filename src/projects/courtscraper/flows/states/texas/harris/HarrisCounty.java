@@ -1,3 +1,14 @@
+/**
+ * @author Adam Bouloudene
+ * @summary This class contains the main flow for logging into and navigating the Harris County website.
+ *
+ * Methods:
+ * miamiDadeMain: This is the main method for navigating and retrieving documents from the Harris County website.
+ * loginMiamiDade: Contains the login process for the Harris County Website.
+ *
+ * @todo Properly comment out code.
+ */
+
 package courtscraper.flows.states.texas.harris;
 
 import courtscraper.flows.states.StateSelect;
@@ -19,13 +30,12 @@ public class HarrisCounty extends StateSelect {
 
     public static void harrisMain(String caseNumber) throws FileNotFoundException, InterruptedException {
         wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-        //grabs harris site and logs in only if reset has recently happened
+        // Grabs harris site and logs in only if reset has recently happened
         if (driver.getCurrentUrl().equals("https://www.google.com/")) {
             loginHarris();
         }
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='txtCaseNumber']"))).sendKeys(caseNumber);
-        //driver.findElement(By.xpath("//*[@id='txtCaseNumber']")).sendKeys(caseNumber);
 
         Thread.sleep(6000);
 
@@ -39,10 +49,8 @@ public class HarrisCounty extends StateSelect {
 
         Thread.sleep(500);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#ctl00_ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder2_ContentPlaceHolder2_btnCivSearch"))).click();
-        //driver.findElement(By.cssSelector("#ctl00_ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder2_ContentPlaceHolder2_btnCivSearch")).click();
         Thread.sleep(1500);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[@title='View Case Details']"))).click();
-        //driver.findElement(By.xpath("//a[@title='View Case Details']")).click();
         Thread.sleep(2000);
 
         switchTab(1);

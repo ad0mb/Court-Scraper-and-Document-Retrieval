@@ -1,14 +1,13 @@
 package courtscraper;
 
 import courtscraper.helpers.JobsManager;
-import courtscraper.helpers.Logger;
 import courtscraper.setups.browser.Firefox;
 import courtscraper.setups.gui.mainpanelelements.MainButtons;
 import org.openqa.selenium.WebDriver;
 
 import java.io.IOException;
 
-import static courtscraper.flows.courtlink.CourtlinkMain.CourtlinkFlow;
+import static courtscraper.flows.courtlink.CourtlinkMain.courtLinkFlow;
 import static courtscraper.flows.states.StateParser.stateRetrievalFlow;
 import static courtscraper.helpers.TabManagement.closeAllTabs;
 import static courtscraper.setups.gui.jobspanelelements.JobsTableBox.updateJobsTable;
@@ -33,12 +32,12 @@ public class FlowStart extends MainButtons {
 
             switch (selectedFlowType) {
                 case "Scrape and Retrieve":
-                    CourtlinkFlow();
+                    courtLinkFlow();
                     closeAllTabs();
                     stateRetrievalFlow();
                     break;
                 case "Scrape Only":
-                    CourtlinkFlow();
+                    courtLinkFlow();
                     break;
                 case "Retrieve Only":
                     stateRetrievalFlow();

@@ -1,3 +1,11 @@
+/**
+ * @author Adam Bouloudene
+ * @summary This class is the specific Harris County flow that will actually download and organize files retrieves from each case.
+ *
+ * Methods:
+ * retrieveDockets: Loops through the format of the page to sort through which documents it wants to download.
+ */
+
 package courtscraper.flows.states.texas.harris;
 
 import org.openqa.selenium.By;
@@ -16,22 +24,23 @@ public class HarrisDocketRetrieval extends HarrisCounty {
 
         List<WebElement> rows = driver.findElements(By.xpath("/html/body/form/div[3]/div/div/div/div[3]/div[15]/div/section/div/div/div[3]/table/tbody/tr"));
         int count = 0;
-        //defines link for compatibility with the try catch for grabbing the link below
+        // Defines link for compatibility with the try catch for grabbing the link below
         WebElement link;
         for (WebElement element : rows) {
             count++;
             if (element.getAttribute("outerHTML").contains(">Order<") || count <= 5) {
-                //finds anchor for the link to click and download
+                // Finds anchor for the link to click and download
                 try {
                     link = element.findElement(By.xpath(".//a"));
                 } catch (Exception e) {
                     continue;
                 }
-                //grabs name of document for renaming purposes
-                docketNames.add(element.findElement(By.xpath("./td/table/tbody/tr/td[1]")).getAttribute("innerHTML").replace("\n", " ").replace(",", "").replace("\u00A0", "").replace("/", " ").replace("\"", " ").trim());
-                //grabs docket number for renaming and puts them on a list for later use
+
+                docketNames.add(element.findElement(By.xpath("./td/table/tbody/tr/td[1]")).getAttribute("innerHTML").replace("\n", " ").replace(",", "").replace("\u00A0", "").replace("/", " ").replace("\"", " ").trim()); // Grabs name of document for renaming purposes
+
                 docketNumbers.add(link.getText());
-                ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", link);
+                ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", link); // Grabs docket number for renaming and puts them on a list for later use
+
                 try {
                     link.click();
                 } catch (Exception ignored) {}

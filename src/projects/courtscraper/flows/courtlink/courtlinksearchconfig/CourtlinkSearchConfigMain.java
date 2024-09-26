@@ -1,3 +1,17 @@
+/**
+ * @author Adam Bouloudene
+ * @summary This class contains the main method which contains a selection of other methods which send the appropriate keys to each input box on the Courtlink serach configuration page.
+ *
+ * Methods:
+ * courtLinkTermInputs: This method contains all the methods designed to input terms.
+ * courtLinkSearchTerms: Inputs the main search terms into search terms box.
+ * courtLinkAttorneyName: Inputs attorney name into attorney input box.
+ * courtLinkStateSelection: Uses another method to properly input state names and selected county into the dropdown box for state/county selection.
+ * courtLinkDateInput: Inputs date based on the selected date setting on the interface.
+ *
+ * @todo Properly comment out code (especially for date input).
+ */
+
 package courtscraper.flows.courtlink.courtlinksearchconfig;
 
 
@@ -27,17 +41,17 @@ public class CourtlinkSearchConfigMain extends CourtlinkMain {
 
         processedInputs = new ProcessMainInputs().grabMainInputs();
 
-        //enter search terms
-        courtLinkSearchTerms();
 
-        //enter attorney name
-        courtLinkAttorneyName();
+        courtLinkSearchTerms(); // Enter search terms
 
-        //select state
-        courtLinkStateSelection();
 
-        //select date
-        courtLinkDateInput();
+        courtLinkAttorneyName(); // Enter attorney name
+
+
+        courtLinkStateSelection(); // Select state
+
+
+        courtLinkDateInput(); // Select date
 
         Thread.sleep(1000);
 
@@ -62,12 +76,12 @@ public class CourtlinkSearchConfigMain extends CourtlinkMain {
     }
 
     private static void courtLinkDateInput() throws InterruptedException {
-        //scroll into view
+        // Scroll into view
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", driver.findElement(By.cssSelector("div.courtlinkdateselection-container")));
         Thread.sleep(1000);
 
 
-        //select the date type
+        // Select the date type
         Select dropdown = new Select(driver.findElement(By.xpath("//select")));
         dropdown.selectByVisibleText(selectedDateType);
 
