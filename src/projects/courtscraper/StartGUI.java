@@ -18,8 +18,8 @@ public class StartGUI {
         try {
             verifyMain();
 
-            //Initializes interface
-            mainGUI();
+
+            mainGUI(); //Initializes interface
 
             verifyMain();
 

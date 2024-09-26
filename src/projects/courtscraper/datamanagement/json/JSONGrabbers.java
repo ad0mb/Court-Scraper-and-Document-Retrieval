@@ -13,16 +13,14 @@ import static courtscraper.helpers.FolderPaths.*;
 
 public class JSONGrabbers {
 
-    //This helper class is for grabbing any data in configs
+    //this class is for grabbing any data in configs
 
     private static Gson gson = new Gson();
 
     public String[] loginGrabber(String website) throws FileNotFoundException {
+        String[] loginCreds; //defining Array with login credentials
 
-        //Defining Array with login credentials
-        String[] loginCreds;
-
-        //Opening File and reading the file as Json
+        //opening File and reading the file as Json
         JsonReader reader = new JsonReader(new FileReader(LOGINS_JSON_PATH));
         JsonObject logins = gson.fromJson(reader, JsonObject.class);
 
@@ -60,8 +58,7 @@ public class JSONGrabbers {
         JsonReader reader = new JsonReader(new FileReader(CONFIGS_JSON_PATH));
         JsonObject settings = gson.fromJson(reader, JsonObject.class);
 
-        //returns the targetted config
-        return settings.getAsJsonObject("settings").get(config).getAsString();
+        return settings.getAsJsonObject("settings").get(config).getAsString(); //returns the targetted config
 
     }
 }

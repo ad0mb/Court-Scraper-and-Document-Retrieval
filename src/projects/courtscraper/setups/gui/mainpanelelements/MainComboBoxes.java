@@ -3,7 +3,6 @@ package courtscraper.setups.gui.mainpanelelements;
 import courtscraper.setups.gui.Panels;
 
 import javax.swing.*;
-
 import java.awt.*;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
@@ -15,7 +14,6 @@ import static courtscraper.setups.gui.mainpanelelements.MainInputBoxes.*;
 public class MainComboBoxes extends Panels {
 
     //This file contains the main panels combo boxes (dropdowns)
-
 
     public static void mainPanelComboBoxes() {
         setDateType();
@@ -68,7 +66,7 @@ public class MainComboBoxes extends Panels {
 
 //State Boxes
     //State type declarations
-    public static final String[] stateElements = {"Select State", "California", "Florida", "New York", "Texas"};
+    public static final String[] stateElements = {"Select State"/*, "California"*/, "Florida" /*, "New York"*/, "Texas"};
     public static JComboBox<String> state = new JComboBox<>(stateElements);
     public static String selectedStateMain = "";
 

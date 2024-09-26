@@ -1,3 +1,9 @@
+/**
+ * @author Adam Bouloudene
+ * @summary This class contains all of the Folder paths to be used for this program. The updateCountyFolderPath method redefines paths after flow starts to get most up to date state and county information.
+ *
+ */
+
 package courtscraper.helpers;
 
 import static courtscraper.setups.gui.mainpanelelements.MainComboBoxes.selectedCountyMain;

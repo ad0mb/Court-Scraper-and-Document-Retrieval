@@ -14,10 +14,6 @@ import static courtscraper.setups.gui.mainpanelelements.MainComboBoxes.selectedS
 
 public class CSVSearchAppendTemp {
 
-    //this will contain the search flows specific appending variables
-
-    //public static String tempFilePath = "C:\\Users\\" + System.getenv("USERNAME") + "\\Desktop\\Courtlink Scraper\\States\\" + selectedStateMain + "\\" + selectedCountyMain + "\\temp.csv";
-
     //declarations of current date and time
     private final static SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
     private static Date date;
@@ -34,18 +30,12 @@ public class CSVSearchAppendTemp {
             appendableString += toBeAppended.get(i).replace("\"", "") + ",";
         }
 
-        //adds keywords used in search
-        appendableString += processedInputs[0] + ",";
-        //adds attorney terms used in search
-        appendableString += processedInputs[1] + ",";
-        //adds current date and time from which the document was grabbed from
-        appendableString += dateFormat.format(date) + ",";
-        //adds selected state
-        appendableString += selectedStateMain + ",";
-        //added selected county
-        appendableString += selectedCountyMain + ",";
-        //adds documents selected
-        appendableString += "" + ",";
+        appendableString += processedInputs[0] + ","; //adds keywords used in search
+        appendableString += processedInputs[1] + ","; //adds attorney terms used in search
+        appendableString += dateFormat.format(date) + ","; //adds current date and time from which the document was grabbed from
+        appendableString += selectedStateMain + ","; //adds selected state
+        appendableString += selectedCountyMain + ","; //added selected county
+        appendableString += "" + ","; //adds documents selected
 
 
         csvFile.append("\n");

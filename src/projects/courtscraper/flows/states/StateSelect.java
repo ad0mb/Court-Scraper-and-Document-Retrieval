@@ -12,7 +12,7 @@ import static courtscraper.setups.gui.mainpanelelements.MainComboBoxes.selectedS
 
 public class StateSelect extends StateParser {
 
-    //This file contains the filter that decides which county under which state to search
+    //this file contains the filter that decides which county under which state to search
 
     public static void stateFilter(String caseNumber) throws FileNotFoundException, InterruptedException {
         Thread.sleep(500);

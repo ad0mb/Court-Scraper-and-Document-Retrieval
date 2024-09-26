@@ -13,8 +13,6 @@ public class CheckIfRetrieved {
 
     //This file contains all the retrieval check processes
 
-    //public static String downloadedFilePath = "C:\\Users\\" + System.getenv("USERNAME") + "\\Desktop\\Courtlink Scraper\\States\\" + selectedStateMain + "\\" + selectedCountyMain + "\\downloadedtest.csv";
-
     public static boolean caseRepeatedCheck(String caseNumber) throws IOException {
         List<String> downloadedList = Files.readAllLines(Path.of(DOWNLOADED_TEST_CSV_PATH));
 
@@ -30,8 +28,8 @@ public class CheckIfRetrieved {
 
     public static boolean fileDownloadedCheck(String fileName) {
         File tempFolder = new File(TEMP_FOLDER_PATH + "\\" + fileName + ".pdf");
-        //sets infolder to false for loop
-        boolean inFolder = false;
+
+        boolean inFolder = false; //sets infolder to false for loop
 
         //gets current time for timeout sequence
         long startTime = System.currentTimeMillis() + 10000;

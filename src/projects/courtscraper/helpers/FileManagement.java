@@ -1,3 +1,9 @@
+/**
+ * @author Adam Bouloudene
+ * @summary This class contains the file management for the temp folder. It can move the tempfolder and rename it. Aswell as rename individual pdfs.
+ *
+ */
+
 package courtscraper.helpers;
 
 import java.io.File;
@@ -6,12 +12,10 @@ import static courtscraper.helpers.FolderPaths.*;
 
 public class FileManagement {
 
-    //this file contains all the methods that allow you to move rename and modify files/folders
-
     public static void tempFileMove(String caseNumber) throws InterruptedException {
         File oldFolder = new File(TEMP_FOLDER_PATH);
 
-        //moves and renames
+        // Moves and renames
         oldFolder.renameTo(new File(DOWNLOADS_FOLDER_PATH + "\\" + caseNumber));
         new File(COURTLINK_SCRAPER_PATH + "\\Temp").mkdir();
 

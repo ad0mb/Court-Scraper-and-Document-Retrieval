@@ -1,23 +1,21 @@
 package courtscraper.setups.gui.mainpanelelements;
 
 //panel imports
-import static courtscraper.FlowStart.StartMainFlowButton;
-import static courtscraper.helpers.FolderPaths.updateCountyFolderPath;
 
 import courtscraper.setups.gui.Panels;
 
-
-//java swing imports
 import javax.swing.*;
+
+import static courtscraper.FlowStart.StartMainFlowButton;
+import static courtscraper.helpers.FolderPaths.updateCountyFolderPath;
 
 public class MainButtons extends Panels {
 
-    //This file contains the main panel buttons
+    //this file contains the main panel buttons
 
     public static void mainPanelButtons() throws InterruptedException {
         startButton();
     }
-
 
     //startButton declarations
     public static JButton start;

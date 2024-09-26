@@ -1,3 +1,9 @@
+/**
+ * @author Adam Bouloudene
+ * @summary This class contains the Config input grabbers which are designed to grab the settings configured in the settings panel for different purposes throughout the code.
+ *
+ */
+
 package courtscraper.helpers.guiinputprocessors;
 
 import courtscraper.datamanagement.json.JSONGrabbers;
