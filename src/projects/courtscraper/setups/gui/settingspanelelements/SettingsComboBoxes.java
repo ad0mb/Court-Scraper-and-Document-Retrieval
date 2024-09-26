@@ -26,7 +26,7 @@ public class SettingsComboBoxes extends Panels {
     }
 
 //Settings Panel login comboboxes
-    private static final String[] stateElements = {"Courtlink", "California", "Florida", "New York", "Texas"};
+    private static final String[] stateElements = {"Courtlink"/*, "California"*/, "Florida" /*, "New York"*/, "Texas"};
     public static JComboBox<String> state = new JComboBox<>(stateElements);
     public static String selectedStateSettings = "Courtlink";
 
