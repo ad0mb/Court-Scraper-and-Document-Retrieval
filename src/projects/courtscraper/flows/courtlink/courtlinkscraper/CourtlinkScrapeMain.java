@@ -18,28 +18,25 @@ import static courtscraper.datamanagement.csv.CSVSearchAppendTemp.courtLinkAppen
 
 public class CourtlinkScrapeMain extends CourtlinkMain {
 
-    //this is the main hub for the courtlink scrape flow
+    //this is the main hub for the courtlink case number collection flow
 
     private static WebDriverWait wait;
-    private static int numCases = getNumCases();
+    private static int numCases = getNumCases(); //number of cases defined at start
 
     public static void courtLinkScrape() throws IOException, InterruptedException {
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         Thread.sleep(500);
         System.out.println(numCases);
-        //waits until first page is loaded
 
-        //Grabs Case Info
+        //grabs Case Info
         for (int i = 0; i<numCases; i++) {
             driver.navigate().refresh();
             Thread.sleep(2000);
             System.out.println(i);
-            //grabs info on page
-            new CourtlinkScrapeMain().grabCaseInfo();
+            new CourtlinkScrapeMain().grabCaseInfo(); //grabs info on page
             Thread.sleep(2000);
 
-            //grabs url for later next page loaded check
-            String url = driver.getCurrentUrl();
+            String url = driver.getCurrentUrl(); //grabs url for later next page loaded check
 
 
             //ends if on last page to prevent stoppage and grabs last case before stopping
@@ -48,11 +45,9 @@ public class CourtlinkScrapeMain extends CourtlinkMain {
                 break;
             }
 
-            //clicks next button to move on to the next page
-            driver.findElement(By.cssSelector("a.la-TriangleRight")).click();
+            driver.findElement(By.cssSelector("a.la-TriangleRight")).click();  //clicks next button to move on to the next page
 
-            //waits until next page loaded
-            wait.until(ExpectedConditions.not(ExpectedConditions.urlToBe(url)));
+            wait.until(ExpectedConditions.not(ExpectedConditions.urlToBe(url))); //waits until next page loaded
             Thread.sleep(500);
 
 
@@ -60,10 +55,8 @@ public class CourtlinkScrapeMain extends CourtlinkMain {
     }
 
     private void grabCaseInfo() throws IOException {
-        //grabs Javascript script
-        WebElement item = driver.findElement(By.xpath("/html/body/main/script[2]"));
-        //regex that grabs the date and docketnumber from javascript script
-        Pattern pattern = Pattern.compile("(?<=\"docketnumber\":)(\".*?\")*|(?<=\"date\":)(\".*?\")*");
+        WebElement item = driver.findElement(By.xpath("/html/body/main/script[2]")); //grabs Javascript script
+        Pattern pattern = Pattern.compile("(?<=\"docketnumber\":)(\".*?\")*|(?<=\"date\":)(\".*?\")*"); //regex that grabs the date and docketnumber from javascript script
         String[] pageInfo = pattern.matcher(item.getAttribute("innerHTML")).results().map(MatchResult::group).toArray(String[]::new);
 
         //adds the case number and date filed in a loop

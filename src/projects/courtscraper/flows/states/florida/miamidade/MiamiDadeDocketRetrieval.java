@@ -22,7 +22,7 @@ public class MiamiDadeDocketRetrieval extends MiamiDadeCounty {
             String name = element.findElement(By.xpath(".//td[5]")).getAttribute("innerHTML").replace("\n", " ").replace(",", "").replace("\u00A0", "").replace("/", " ").replace("\"", " ").trim();
 
             link.click();
-            //if more than one tab opened means that download has been started
+            //if more than one tab opened means that download has been started and will execute renaming processes
             boolean Downloaded = driver.getWindowHandles().size() > 1;
             if (Downloaded) {
                 fileDownloadedCheck("Document");

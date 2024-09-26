@@ -27,17 +27,13 @@ public class CourtlinkSearchConfigMain extends CourtlinkMain {
 
         processedInputs = new ProcessMainInputs().grabMainInputs();
 
-        //enter search terms
-        courtLinkSearchTerms();
+        courtLinkSearchTerms(); //enter search terms
 
-        //enter attorney name
-        courtLinkAttorneyName();
+        courtLinkAttorneyName(); //enter attorney name
 
-        //select state
-        courtLinkStateSelection();
+        courtLinkStateSelection(); //select state
 
-        //select date
-        courtLinkDateInput();
+        courtLinkDateInput(); //select date
 
         Thread.sleep(1000);
 

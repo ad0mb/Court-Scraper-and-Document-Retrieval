@@ -1,7 +1,10 @@
 package courtscraper.setups.browser;
 
 import courtscraper.FlowStart;
-import org.openqa.selenium.firefox.*;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.firefox.FirefoxProfile;
+import org.openqa.selenium.firefox.ProfilesIni;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -17,8 +20,6 @@ public class Firefox extends FlowStart {
     private File tempFolder = new File(TEMP_FOLDER_PATH);
 
     public void FirefoxLaunch() throws FileNotFoundException {
-
-        //System.setProperty("webdriver.gecko.driver", firefoxPath);
 
         ProfilesIni profileIni = new ProfilesIni();
 

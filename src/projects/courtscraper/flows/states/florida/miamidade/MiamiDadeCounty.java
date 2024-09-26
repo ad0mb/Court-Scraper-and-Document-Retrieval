@@ -1,7 +1,7 @@
 package courtscraper.flows.states.florida.miamidade;
 
-import courtscraper.flows.states.StateSelect;
 import courtscraper.datamanagement.json.JSONGrabbers;
+import courtscraper.flows.states.StateSelect;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -16,7 +16,7 @@ import java.util.Map;
 public class MiamiDadeCounty extends StateSelect {
 
     private static WebDriverWait wait;
-    //for case type dropdown
+    //each case type for the dropdown on the site
     public static Map<String, String> caseType = Map.of(
             "AC", "AC - Civil Appeals",
             "AF", "AF - Administrative File",
@@ -40,8 +40,9 @@ public class MiamiDadeCounty extends StateSelect {
             Thread.sleep(500);
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/main/form/div[4]/div[2]/div/div[5]/div/div/div[1]/ul/li[2]/a"))).click();
         }
-        //creates case numbers list
-        List<String> caseNumbers = new ArrayList<>(List.of(caseNumber.split("-")));
+
+        List<String> caseNumbers = new ArrayList<>(List.of(caseNumber.split("-"))); //creates case numbers list
+
         //each block enters a parameter for the search
         driver.findElement(By.xpath("//*[@id=\"txtLCNYearSTD_localCaseContent\"]")).clear();
         driver.findElement(By.xpath("//*[@id=\"txtLCNYearSTD_localCaseContent\"]")).sendKeys(caseNumbers.get(0));
@@ -59,7 +60,7 @@ public class MiamiDadeCounty extends StateSelect {
         Thread.sleep(500);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/main/form/div[4]/div[2]/div/div[8]/div[1]"))).click();
 
-        new MiamiDadeDocketRetrieval().retrieveDockets();
+        new MiamiDadeDocketRetrieval().retrieveDockets(); //docket retrieval flow
 
         driver.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_lnkbtn_DetailsBottom\"]")).click();
     }

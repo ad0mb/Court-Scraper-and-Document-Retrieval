@@ -44,7 +44,7 @@ public class SettingsButtons extends Panels {
                         passwordErrorField.setText("Please enter password");
                     } else if (username.getText().isEmpty() && !password.getText().isEmpty()) {
                         passwordErrorField.setText("Please enter username");
-                    }//dafgasdgasdgadsdfasdgaga@gmail.com
+                    }
 
                     if (!apiKey.getText().isEmpty()) {
                         apiWriter(selectedCaptchaSolution, apiKey.getText());

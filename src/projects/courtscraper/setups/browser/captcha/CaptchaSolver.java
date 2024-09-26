@@ -1,8 +1,8 @@
 package courtscraper.setups.browser.captcha;
 
+import com.twocaptcha.TwoCaptcha;
 import com.twocaptcha.captcha.Normal;
 import courtscraper.datamanagement.json.JSONGrabbers;
-import com.twocaptcha.TwoCaptcha;
 import org.openqa.selenium.By;
 
 import javax.imageio.ImageIO;
@@ -15,6 +15,8 @@ import static courtscraper.FlowStart.driver;
 import static courtscraper.helpers.FolderPaths.CAPTCHA_JPG_PATH;
 
 public class CaptchaSolver {
+
+    //this class contains all the captcha solving methods
 
     private TwoCaptcha solver;
     private Normal normalCaptcha;

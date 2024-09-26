@@ -6,7 +6,6 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
 import com.google.gson.stream.JsonReader;
 
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -14,6 +13,8 @@ import java.io.IOException;
 import static courtscraper.helpers.FolderPaths.*;
 
 public class JSONWriters {
+
+    //this class if for writing data to configs
 
     private static Gson gson = new Gson();
 

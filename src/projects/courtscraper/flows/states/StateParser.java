@@ -4,7 +4,7 @@ import courtscraper.FlowStart;
 import courtscraper.helpers.CheckIfRetrieved;
 import courtscraper.helpers.FileManagement;
 
-import java.io.*;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -20,17 +20,15 @@ public class StateParser extends FlowStart {
 
     //this is the main parser flow which will parse through all gathered case numbers in temp.csv
 
-
     //docket names and numbers for renaming purposes
     protected static List<String> docketNumbers;
     protected static List<String> docketNames;
 
 
     public static void stateRetrievalFlow() throws IOException, InterruptedException {
-        //declares lists for docket names and docket numbers
-
         //declares list containing lines from temp file.
         List<String> tempLines = Files.readAllLines(Path.of(TEMP_CSV_PATH));
+
         //parses through the current temp file skipping the first line
         for (int i = 1; i<=tempLines.size()-1; i++) {
             docketNames = new ArrayList<>();
@@ -44,17 +42,13 @@ public class StateParser extends FlowStart {
                 continue;
             }
 
-            //grabs case files
-            StateSelect.stateFilter(caseLine[0]);
+            StateSelect.stateFilter(caseLine[0]); //grabs case files
 
-            //moves case number folder to downloaded folder
-            FileManagement.tempFileMove(caseLine[0]);
+            FileManagement.tempFileMove(caseLine[0]); //moves case number folder to downloaded folder
 
-            //adds line to downloads folder
-            appendToCSV(tempLines.get(i), DOWNLOADED_TEST_CSV_PATH);
+            appendToCSV(tempLines.get(i), DOWNLOADED_TEST_CSV_PATH); //adds line to downloads folder
 
-            //deletes line from temp folder
-            deleteLine(TEMP_CSV_PATH, COUNTY_FOLDER_PATH, tempLines.get(i));
+            deleteLine(TEMP_CSV_PATH, COUNTY_FOLDER_PATH, tempLines.get(i)); //deletes line from temp folder
 
 
         }

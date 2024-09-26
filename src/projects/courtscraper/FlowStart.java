@@ -1,7 +1,6 @@
 package courtscraper;
 
 import courtscraper.helpers.JobsManager;
-import courtscraper.helpers.Logger;
 import courtscraper.setups.browser.Firefox;
 import courtscraper.setups.gui.mainpanelelements.MainButtons;
 import org.openqa.selenium.WebDriver;
@@ -18,7 +17,6 @@ import static courtscraper.setups.gui.mainpanelelements.MainComboBoxes.selectedF
 public class FlowStart extends MainButtons {
 
     //this is the flow start for the entire process, it can be divided up into specific flow configuration based on users input
-
 
     public static WebDriver driver;
     private static JobsManager jobsManager;

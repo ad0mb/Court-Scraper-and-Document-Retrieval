@@ -1,18 +1,15 @@
 package courtscraper.helpers;
 
-import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 
 import static courtscraper.FlowStart.driver;
-import static courtscraper.datamanagement.csv.CSVManagement.appendToCSV;
-import static courtscraper.datamanagement.csv.CSVManagement.deleteLine;
-import static courtscraper.helpers.FolderPaths.*;
+import static courtscraper.helpers.FolderPaths.CRASH_LOGS_FOLDER_PATH;
 import static courtscraper.setups.gui.mainpanelelements.MainComboBoxes.*;
-import static courtscraper.setups.gui.mainpanelelements.MainInputBoxes.date;
 import static courtscraper.setups.gui.mainpanelelements.MainInputBoxes.search;
 
 public class Logger {

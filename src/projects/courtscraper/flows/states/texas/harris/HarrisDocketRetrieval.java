@@ -27,11 +27,12 @@ public class HarrisDocketRetrieval extends HarrisCounty {
                 } catch (Exception e) {
                     continue;
                 }
-                //grabs name of document for renaming purposes
-                docketNames.add(element.findElement(By.xpath("./td/table/tbody/tr/td[1]")).getAttribute("innerHTML").replace("\n", " ").replace(",", "").replace("\u00A0", "").replace("/", " ").replace("\"", " ").trim());
-                //grabs docket number for renaming and puts them on a list for later use
-                docketNumbers.add(link.getText());
-                ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", link);
+
+                docketNames.add(element.findElement(By.xpath("./td/table/tbody/tr/td[1]")).getAttribute("innerHTML").replace("\n", " ").replace(",", "").replace("\u00A0", "").replace("/", " ").replace("\"", " ").trim()); //grabs name of document for renaming purposes
+                docketNumbers.add(link.getText()); //grabs docket number for renaming and puts them on a list for later use
+
+                ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", link); //scrolls to the link to ensure it is clicked properly
+
                 try {
                     link.click();
                 } catch (Exception ignored) {}

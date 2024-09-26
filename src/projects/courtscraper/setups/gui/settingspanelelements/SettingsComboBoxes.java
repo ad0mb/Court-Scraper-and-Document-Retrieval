@@ -43,7 +43,7 @@ public class SettingsComboBoxes extends Panels {
         gbcSettings.insets = new Insets(0, 0, 0, 0);
         settingsPanel.add(state, gbcSettings);
 
-        //Listener for County Combo Box selection
+        //listener for County Combo Box selection
         state.addItemListener(new ItemListener() {
             @Override
             public void itemStateChanged(ItemEvent e) {
@@ -105,8 +105,7 @@ public class SettingsComboBoxes extends Panels {
         gbcSettings.insets = new Insets(0, 0, 0, 0);
         settingsPanel.add(counties, gbcSettings);
 
-        //Listening to grab input for county
-
+        //listening to grab input for county
         counties.addItemListener(new ItemListener() {
             @Override
             public void itemStateChanged(ItemEvent e) {

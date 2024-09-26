@@ -14,7 +14,7 @@ import static courtscraper.helpers.FolderPaths.PAST_JOBS_CSV_PATH;
 
 public class JobsTableBox extends Panels {
 
-    //This file contains table for the jobs panel
+    //this file contains table for the jobs panel
 
     public static void jobsTables() throws IOException {
         jobsTable();
