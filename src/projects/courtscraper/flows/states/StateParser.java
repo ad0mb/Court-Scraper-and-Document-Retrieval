@@ -1,5 +1,6 @@
 package courtscraper.flows.states;
 
+import courtscraper.Exceptions.BlockedDocumentException;
 import courtscraper.FlowStart;
 import courtscraper.helpers.CheckIfRetrieved;
 import courtscraper.helpers.FileManagement;
@@ -42,7 +43,13 @@ public class StateParser extends FlowStart {
                 continue;
             }
 
-            StateSelect.stateFilter(caseLine[0]); //grabs case files
+            //catches blocked documents error, Example: Confidential document on harris county
+            try {
+                StateSelect.stateFilter(caseLine[0]); //grabs case files
+            } catch (BlockedDocumentException e) {
+                deleteLine(TEMP_CSV_PATH, COUNTY_FOLDER_PATH, tempLines.get(i));
+                continue;
+            }
 
             FileManagement.tempFileMove(caseLine[0]); //moves case number folder to downloaded folder
 

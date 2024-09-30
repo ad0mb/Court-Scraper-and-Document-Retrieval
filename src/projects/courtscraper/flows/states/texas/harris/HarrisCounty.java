@@ -1,5 +1,6 @@
 package courtscraper.flows.states.texas.harris;
 
+import courtscraper.Exceptions.BlockedDocumentException;
 import courtscraper.datamanagement.json.JSONGrabbers;
 import courtscraper.flows.states.StateSelect;
 import org.openqa.selenium.By;
@@ -17,14 +18,14 @@ public class HarrisCounty extends StateSelect {
 
     private static WebDriverWait wait;
 
-    public static void harrisMain(String caseNumber) throws FileNotFoundException, InterruptedException {
+    public static void harrisMain(String caseNumber) throws FileNotFoundException, InterruptedException, BlockedDocumentException {
         wait = new WebDriverWait(driver, Duration.ofSeconds(60));
         //grabs harris site and logs in only if reset has recently happened (aka. Google webpage)
         if (driver.getCurrentUrl().equals("https://www.google.com/")) {
             loginHarris();
         }
 
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='txtCaseNumber']"))).sendKeys(caseNumber);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='txtCaseNumber']"))).sendKeys(caseNumber); //inputs case number
 
         Thread.sleep(6000);
 
@@ -37,21 +38,29 @@ public class HarrisCounty extends StateSelect {
         }
 
         Thread.sleep(500);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#ctl00_ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder2_ContentPlaceHolder2_btnCivSearch"))).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#ctl00_ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder2_ContentPlaceHolder2_btnCivSearch"))).click(); //clicks search to search entered case number
         Thread.sleep(1500);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[@title='View Case Details']"))).click();
+
+        //looks for confidential document tag on website and throws special exception if it is blocked and clicks search again.
+        try {
+            driver.findElement(By.xpath("//*[@class=\"systemmessage\"]"));
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"ctl00_ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder2_ContentPlaceHolder2_btnSearchAgain\"]"))).click();
+            throw new BlockedDocumentException();
+        } catch (NoSuchElementException ignored) {}
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[@title='View Case Details']"))).click(); //clicks on case after search
         Thread.sleep(2000);
 
         switchTab(1);
 
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"tabDocuments\"]"))).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"tabDocuments\"]"))).click(); //clicks on tab containing documents
 
         new HarrisDocketRetrieval().retrieveDockets(); //starts harris retrieval flow
 
         driver.close();
         switchTab(0);
 
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"ctl00_ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder2_ContentPlaceHolder2_btnSearchAgain\"]"))).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"ctl00_ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder2_ContentPlaceHolder2_btnSearchAgain\"]"))).click(); //clicks search again to complete the loop
 
         renameFilesBulk(); //renames case files
     }
