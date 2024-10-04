@@ -1,4 +1,4 @@
-package courtscraper.Exceptions;
+package courtscraper.exceptions;
 
 public class BlockedDocumentException extends Exception {
 

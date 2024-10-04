@@ -1,7 +1,7 @@
 package courtscraper.flows.states;
 
-import courtscraper.Exceptions.BlockedDocumentException;
 import courtscraper.FlowStart;
+import courtscraper.exceptions.BlockedDocumentException;
 import courtscraper.helpers.CheckIfRetrieved;
 import courtscraper.helpers.FileManagement;
 

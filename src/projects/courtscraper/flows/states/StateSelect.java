@@ -1,7 +1,7 @@
 package courtscraper.flows.states;
 
 
-import courtscraper.Exceptions.BlockedDocumentException;
+import courtscraper.exceptions.BlockedDocumentException;
 import courtscraper.flows.states.texas.dallas.DallasCounty;
 
 import java.io.FileNotFoundException;

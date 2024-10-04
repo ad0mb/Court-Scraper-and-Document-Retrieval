@@ -1,7 +1,7 @@
 package courtscraper.flows.states.texas.harris;
 
-import courtscraper.Exceptions.BlockedDocumentException;
 import courtscraper.datamanagement.json.JSONGrabbers;
+import courtscraper.exceptions.BlockedDocumentException;
 import courtscraper.flows.states.StateSelect;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
