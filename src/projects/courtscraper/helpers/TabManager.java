@@ -7,11 +7,13 @@ import java.util.Set;
 import static courtscraper.FlowStart.driver;
 
 
-public class TabManagement {
+public class TabManager {
 
     //this file contains all the methods that allow you to manipulate and modify browser tabs as needed
 
-    public static void closeAllTabs() throws InterruptedException {
+    public TabManager() {}
+
+    public void closeAllTabs() throws InterruptedException {
         Set<String> tabs = driver.getWindowHandles();
         ((JavascriptExecutor) driver).executeScript("window.open('https://www.google.com');");
         for (String tab : tabs) {
@@ -22,7 +24,7 @@ public class TabManagement {
         switchTab(0);
    }
 
-   public static void switchTab(int tabSpot) {
+   public void switchTab(int tabSpot) {
         Set<String> tabs = driver.getWindowHandles();
 
         int count = 0;
@@ -35,7 +37,7 @@ public class TabManagement {
         }
    }
 
-   public static void closeLastOpened() {
+   public void closeLastOpened() {
         String currentTab = driver.getWindowHandle();
         int numOfTabs = driver.getWindowHandles().size();
         switchTab(numOfTabs-1);

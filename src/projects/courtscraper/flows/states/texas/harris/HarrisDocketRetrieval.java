@@ -7,7 +7,6 @@ import org.openqa.selenium.WebElement;
 import java.util.List;
 
 import static courtscraper.helpers.CheckIfRetrieved.fileDownloadedCheck;
-import static courtscraper.helpers.TabManagement.closeLastOpened;
 
 public class HarrisDocketRetrieval extends HarrisCounty {
 
@@ -40,7 +39,7 @@ public class HarrisDocketRetrieval extends HarrisCounty {
                 Thread.sleep(2000);
                 fileDownloadedCheck(link.getText());
 
-                closeLastOpened();
+                tabManager.closeLastOpened();
 
 
             }

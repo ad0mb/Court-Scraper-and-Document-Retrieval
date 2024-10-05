@@ -11,9 +11,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.io.FileNotFoundException;
 import java.time.Duration;
 
-import static courtscraper.helpers.TabManagement.switchTab;
-
-
 public class HarrisCounty extends StateSelect {
 
     private static WebDriverWait wait;
@@ -51,14 +48,14 @@ public class HarrisCounty extends StateSelect {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[@title='View Case Details']"))).click(); //clicks on case after search
         Thread.sleep(2000);
 
-        switchTab(1);
+        tabManager.switchTab(1);
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"tabDocuments\"]"))).click(); //clicks on tab containing documents
 
         new HarrisDocketRetrieval().retrieveDockets(); //starts harris retrieval flow
 
         driver.close();
-        switchTab(0);
+        tabManager.switchTab(0);
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"ctl00_ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder2_ContentPlaceHolder2_btnSearchAgain\"]"))).click(); //clicks search again to complete the loop
 

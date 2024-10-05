@@ -7,7 +7,6 @@ import java.util.List;
 
 import static courtscraper.helpers.CheckIfRetrieved.fileDownloadedCheck;
 import static courtscraper.helpers.FileManagement.tempFileRename;
-import static courtscraper.helpers.TabManagement.closeLastOpened;
 
 public class MiamiDadeDocketRetrieval extends MiamiDadeCounty {
 
@@ -27,7 +26,7 @@ public class MiamiDadeDocketRetrieval extends MiamiDadeCounty {
             if (Downloaded) {
                 fileDownloadedCheck("Document");
                 tempFileRename("Document", name);
-                closeLastOpened();
+                tabManager.closeLastOpened();
             }
         }
     }
