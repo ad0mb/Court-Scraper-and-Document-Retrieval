@@ -1,12 +1,15 @@
 package courtscraper.setups.gui;
 
-import courtscraper.setups.gui.mainpanelelements.MainButtons;
 import courtscraper.StartGUI;
+import courtscraper.setups.gui.mainpanelelements.MainButtons;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.io.IOException;
 
+import static courtscraper.FlowStart.driver;
 import static courtscraper.setups.gui.Panels.*;
 
 
@@ -65,6 +68,43 @@ public class Interface extends StartGUI {
         frame.pack();
         frame.setVisible(true);
         //frame setup
+
+        frame.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowClosing(WindowEvent e) {
+                if (driver != null) {driver.quit();}
+            }
+
+            @Override
+            public void windowClosed(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowIconified(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowDeiconified(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowActivated(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowDeactivated(WindowEvent e) {
+
+            }
+        });
     }
 
 

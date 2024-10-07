@@ -52,6 +52,6 @@ public class FlowStart extends MainButtons {
         jobsManager.addJob(runStatus);
         updateJobsTable();
 
-
+        driver.quit(); //to ensure geckodriver is closed in turn saving computer resources
     }
 }
