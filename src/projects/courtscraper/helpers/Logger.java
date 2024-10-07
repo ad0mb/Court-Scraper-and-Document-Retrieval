@@ -36,10 +36,6 @@ public class Logger {
         File crashInfoFile = new File(CRASH_LOGS_FOLDER_PATH + "\\" + folderName + "\\info.txt");
         crashInfoFile.createNewFile();
 
-        //create html file
-        File crashHtmlFile = new File(CRASH_LOGS_FOLDER_PATH + "\\" + folderName + "\\crashpage.html");
-        crashHtmlFile.createNewFile();
-
         //write error to info txt
         FileWriter infoWriter = new FileWriter(crashInfoFile, true);
         infoWriter.write("Start Time: " + startTime + "\nEnd Time: " + endTime + "\nSearch: " + search.getText() + "\nSelected State: " + selectedStateMain + "\nSelected County: " + selectedCountyMain + "\nSelected Flow Type: " + selectedFlowType + "\n " + "\n");
@@ -47,12 +43,17 @@ public class Logger {
         infoWriter.flush();
         infoWriter.close();
 
-        //write html source to html file
-        FileWriter crashWriter = new FileWriter(crashHtmlFile);
-        crashWriter.write(driver.getPageSource());
-        crashWriter.flush();
-        crashWriter.close();
+        if (!driver.toString().contains("null")) {
+            //create html file
+            File crashHtmlFile = new File(CRASH_LOGS_FOLDER_PATH + "\\" + folderName + "\\crashpage.html");
+            crashHtmlFile.createNewFile();
 
+            //write html source to html file
+            FileWriter crashWriter = new FileWriter(crashHtmlFile);
+            crashWriter.write(driver.getPageSource());
+            crashWriter.flush();
+            crashWriter.close();
+        }
     }
 
     public String updateInfo(String type, String info) {
