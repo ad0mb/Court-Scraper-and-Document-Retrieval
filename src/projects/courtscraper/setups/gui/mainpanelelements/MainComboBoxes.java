@@ -66,7 +66,7 @@ public class MainComboBoxes extends Panels {
 
 //State Boxes
     //State type declarations
-    public static final String[] stateElements = {"Select State"/*, "California"*/, "Florida" /*, "New York"*/, "Texas"};
+    public static final String[] stateElements = {"Select State", "Florida", "Minnesota", "Texas"};
     public static JComboBox<String> state = new JComboBox<>(stateElements);
     public static String selectedStateMain = "";
 
@@ -106,19 +106,14 @@ public class MainComboBoxes extends Panels {
                             counties.addItem("Select State First");
                             isCountyOpen = false;
                             break;
-                        case "California":
-                            counties.removeAllItems();
-                            counties.addItem("Whole State");
-                            isCountyOpen = true;
-                            break;
                         case "Florida":
                             counties.removeAllItems();
                             counties.addItem("Miami Dade");
                             isCountyOpen = true;
                             break;
-                        case "New York":
+                        case "Minnesota":
                             counties.removeAllItems();
-                            counties.addItem("New York BKQ");
+                            counties.addItem("Whole State");
                             isCountyOpen = true;
                             break;
                         case "Texas":

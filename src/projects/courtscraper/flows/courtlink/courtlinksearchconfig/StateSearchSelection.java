@@ -19,6 +19,9 @@ public class StateSearchSelection extends CourtlinkSearchConfigMain {
             case "Florida":
                 inputString = state + " " + processedInputs[5];
                 break;
+            case "Minnesota":
+                inputString = state + " " + "State";
+                break;
             case "Texas":
                 inputString = state + " " + processedInputs[5] + " district";
                 break;

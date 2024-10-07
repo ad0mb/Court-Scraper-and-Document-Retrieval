@@ -11,7 +11,6 @@ import java.io.FileNotFoundException;
 
 import static courtscraper.helpers.FolderPaths.TEMP_FOLDER_PATH;
 import static courtscraper.helpers.guiinputprocessors.ProcessConfigInputs.getHeadless;
-import static courtscraper.setups.browser.useragent.RandomUserAgent.getRandomUserAgent;
 
 public class Firefox extends FlowStart {
 
@@ -24,7 +23,7 @@ public class Firefox extends FlowStart {
         ProfilesIni profileIni = new ProfilesIni();
 
         FirefoxProfile profile = profileIni.getProfile("botrun");
-        profile.setPreference("general.useragent.override", getRandomUserAgent());
+        //profile.setPreference("general.useragent.override", getRandomUserAgent());
 
         //sets download path on firefox launch
         profile.setPreference("browser.download.dir", tempFolder.getAbsolutePath());

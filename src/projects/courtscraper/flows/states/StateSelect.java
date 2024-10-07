@@ -7,6 +7,7 @@ import courtscraper.flows.states.texas.dallas.DallasCounty;
 import java.io.FileNotFoundException;
 
 import static courtscraper.flows.states.florida.miamidade.MiamiDadeCounty.miamiDadeMain;
+import static courtscraper.flows.states.minnesota.state.MinnesotaState.minnesotaMain;
 import static courtscraper.flows.states.texas.harris.HarrisCounty.harrisMain;
 import static courtscraper.setups.gui.mainpanelelements.MainComboBoxes.selectedCountyMain;
 import static courtscraper.setups.gui.mainpanelelements.MainComboBoxes.selectedStateMain;
@@ -25,6 +26,11 @@ public class StateSelect extends StateParser {
             case "Florida":
                 if (selectedCountyMain.equals("Miami Dade")) {
                     miamiDadeMain(caseNumber);
+                }
+                break;
+            case "Minnesota":
+                if (selectedCountyMain.equals("Whole State")) {
+                    minnesotaMain(caseNumber);
                 }
                 break;
             case "New York":
