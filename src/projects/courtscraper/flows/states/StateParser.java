@@ -2,6 +2,7 @@ package courtscraper.flows.states;
 
 import courtscraper.FlowStart;
 import courtscraper.exceptions.BlockedDocumentException;
+import courtscraper.exceptions.NoFilesException;
 import courtscraper.helpers.CheckIfRetrieved;
 import courtscraper.helpers.FileManagement;
 
@@ -51,7 +52,9 @@ public class StateParser extends FlowStart {
                 continue;
             }
 
-            FileManagement.tempFileMove(caseLine[0]); //moves case number folder to downloaded folder
+            try {
+                FileManagement.tempFileMove(caseLine[0]); //moves case number folder to downloaded folder
+            } catch (NoFilesException ignored) {}
 
             appendToCSV(tempLines.get(i), DOWNLOADED_TEST_CSV_PATH); //adds line to downloads folder
 

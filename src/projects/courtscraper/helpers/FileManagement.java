@@ -6,15 +6,20 @@
 
 package courtscraper.helpers;
 
+import courtscraper.exceptions.NoFilesException;
+
 import java.io.File;
 
 import static courtscraper.helpers.FolderPaths.*;
 
 public class FileManagement {
 
-    public static void tempFileMove(String caseNumber) throws InterruptedException {
+    public static void tempFileMove(String caseNumber) throws InterruptedException, NoFilesException {
         File oldFolder = new File(TEMP_FOLDER_PATH);
 
+        if (!checkIfFilesExist(oldFolder)) {
+            throw new NoFilesException();
+        }
         // Moves and renames
         oldFolder.renameTo(new File(DOWNLOADS_FOLDER_PATH + "\\" + caseNumber));
         new File(COURTLINK_SCRAPER_PATH + "\\Temp").mkdir();
@@ -27,5 +32,15 @@ public class FileManagement {
         File oldNamedFolder = new File(TEMP_FOLDER_PATH + "\\" + originalName + ".pdf");
 
         oldNamedFolder.renameTo(new File(TEMP_FOLDER_PATH + "\\" + newName + ".pdf"));
+    }
+
+    public static boolean checkIfFilesExist(File folder) {
+        File[] files = folder.listFiles();
+
+        if (!(files.length > 0)) {
+            return false;
+        } else {
+            return true;
+        }
     }
 }
