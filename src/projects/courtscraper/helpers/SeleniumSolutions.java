@@ -7,7 +7,7 @@ import static courtscraper.FlowStart.driver;
 
 public class SeleniumSolutions {
 
-    public static void waitUntilFound(String xpath) {
+    public void waitUntilFound(String xpath) {
         while (true) {
             try {
                 driver.findElement(By.xpath(xpath));
@@ -15,6 +15,15 @@ public class SeleniumSolutions {
                 continue;
             }
             break;
+        }
+    }
+
+    public boolean checkIfFound(String xpath) {
+        try {
+            driver.findElement(By.xpath(xpath));
+            return true;
+        } catch (NoSuchElementException e) {
+            return false;
         }
     }
 }

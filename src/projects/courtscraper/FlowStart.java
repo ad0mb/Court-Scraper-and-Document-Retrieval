@@ -1,6 +1,7 @@
 package courtscraper;
 
 import courtscraper.helpers.JobsManager;
+import courtscraper.helpers.SeleniumSolutions;
 import courtscraper.helpers.TabManager;
 import courtscraper.setups.browser.Firefox;
 import courtscraper.setups.gui.mainpanelelements.MainButtons;
@@ -20,6 +21,7 @@ public class FlowStart extends MainButtons {
 
     public static WebDriver driver;
     public static TabManager tabManager = new TabManager();
+    public static SeleniumSolutions selSolutions = new SeleniumSolutions();
     private static JobsManager jobsManager;
     private static String runStatus;
 
@@ -51,7 +53,5 @@ public class FlowStart extends MainButtons {
 
         jobsManager.addJob(runStatus);
         updateJobsTable();
-
-        driver.quit(); //to ensure geckodriver is closed in turn saving computer resources
     }
 }
