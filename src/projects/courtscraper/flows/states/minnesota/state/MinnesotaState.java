@@ -1,5 +1,6 @@
 package courtscraper.flows.states.minnesota.state;
 
+import courtscraper.exceptions.CaseNotFoundException;
 import courtscraper.flows.states.StateParser;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -11,7 +12,7 @@ public class MinnesotaState extends StateParser {
 
     public static WebDriverWait wait;
 
-    public static void minnesotaMain(String caseNumber) throws InterruptedException {
+    public static void minnesotaMain(String caseNumber) throws InterruptedException, CaseNotFoundException {
         wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 
         driver.get("https://publicaccess.courts.state.mn.us/DocumentSearch");
@@ -22,7 +23,14 @@ public class MinnesotaState extends StateParser {
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"btnFindCaseByNumber\"]"))).click();
         }
 
-        while (!selSolutions.checkIfFound("/html/body/main/div/div[1]/div[2]/div[2]/h2")) {
+        while (!selSolutions.checkIfFound("/html/body/main/div/div[1]/div[2]/div[2]/h2")) { //checks if is on the case page
+            //checks if no cases were found
+            if (selSolutions.checkIfFound("/html/body/main/div/div[1]/div[2]/div")) {
+                if (driver.findElement(By.xpath("/html/body/main/div/div[1]/div[2]/div")).getAttribute("innerHTML").contains("No results")) {
+                    throw new CaseNotFoundException();
+                }
+            }
+
             driver.navigate().refresh();
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"CaseNumber\"]"))).sendKeys(caseNumber);
             Thread.sleep(500);

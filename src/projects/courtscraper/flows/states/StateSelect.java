@@ -2,6 +2,7 @@ package courtscraper.flows.states;
 
 
 import courtscraper.exceptions.BlockedDocumentException;
+import courtscraper.exceptions.CaseNotFoundException;
 import courtscraper.flows.states.texas.dallas.DallasCounty;
 
 import java.io.FileNotFoundException;
@@ -16,7 +17,7 @@ public class StateSelect extends StateParser {
 
     //this file contains the filter that decides which county under which state to search
 
-    public static void stateFilter(String caseNumber) throws FileNotFoundException, InterruptedException, BlockedDocumentException {
+    public static void stateFilter(String caseNumber) throws FileNotFoundException, InterruptedException, BlockedDocumentException, CaseNotFoundException {
         Thread.sleep(500);
         switch (selectedStateMain) {
             case "California":
