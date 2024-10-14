@@ -26,7 +26,7 @@ public class StateParser extends FlowStart {
     //docket names and numbers for renaming purposes
     protected static List<String> docketNumbers;
     protected static List<String> docketNames;
-
+    protected static int count = 0;
 
     public static void stateRetrievalFlow() throws IOException, InterruptedException {
         //declares list containing lines from temp file.

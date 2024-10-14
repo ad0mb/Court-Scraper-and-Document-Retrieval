@@ -2,17 +2,24 @@ package courtscraper.flows.states.minnesota.state;
 
 import courtscraper.exceptions.CaseNotFoundException;
 import courtscraper.flows.states.StateParser;
+import courtscraper.setups.browser.Firefox;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.io.FileNotFoundException;
 import java.time.Duration;
 
 public class MinnesotaState extends StateParser {
 
     public static WebDriverWait wait;
 
-    public static void minnesotaMain(String caseNumber) throws InterruptedException, CaseNotFoundException {
+    public static void minnesotaMain(String caseNumber) throws InterruptedException, CaseNotFoundException, FileNotFoundException {
+        count++;
+        if (count == 10) {
+            new Firefox().FirefoxLaunch();
+        }
+
         wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 
         driver.get("https://publicaccess.courts.state.mn.us/DocumentSearch");

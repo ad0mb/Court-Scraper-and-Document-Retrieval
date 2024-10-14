@@ -19,6 +19,7 @@ public class Firefox extends FlowStart {
     private File tempFolder = new File(TEMP_FOLDER_PATH);
 
     public void FirefoxLaunch() throws FileNotFoundException {
+        if (!(driver == null)) {driver.quit();}
 
         ProfilesIni profileIni = new ProfilesIni();
 
