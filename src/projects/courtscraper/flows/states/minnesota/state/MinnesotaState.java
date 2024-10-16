@@ -4,6 +4,7 @@ import courtscraper.exceptions.CaseNotFoundException;
 import courtscraper.flows.states.StateParser;
 import courtscraper.setups.browser.Firefox;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -27,7 +28,8 @@ public class MinnesotaState extends StateParser {
         if (driver.findElement(By.xpath("//*[@id=\"tcModalAcceptBtn\"]")).isDisplayed()) {
             driver.findElement(By.xpath("//*[@id=\"tcModalAcceptBtn\"]")).click();
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"CaseNumber\"]"))).sendKeys(caseNumber);
-            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"btnFindCaseByNumber\"]"))).click();
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"CaseNumber\"]"))).sendKeys(Keys.ENTER);
+            //wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"btnFindCaseByNumber\"]"))).click();
         }
 
         while (!selSolutions.checkIfFound("/html/body/main/div/div[1]/div[2]/div[2]/h2")) { //checks if is on the case page
@@ -41,7 +43,8 @@ public class MinnesotaState extends StateParser {
             driver.navigate().refresh();
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"CaseNumber\"]"))).sendKeys(caseNumber);
             Thread.sleep(500);
-            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"btnFindCaseByNumber\"]"))).click();
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"CaseNumber\"]"))).sendKeys(Keys.ENTER);
+            //wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"btnFindCaseByNumber\"]"))).click();
             Thread.sleep(4000);
         }
 
