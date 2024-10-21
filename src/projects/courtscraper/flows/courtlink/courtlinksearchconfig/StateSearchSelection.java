@@ -14,16 +14,23 @@ public class StateSearchSelection extends CourtlinkSearchConfigMain {
     //this is the dropdown selection portion of the courtlink search flow
 
     public static void searchState(String state) throws InterruptedException {
+        String countyString = processedInputs[5];
+        if (countyString.contains("SO")) {
+            countyString = countyString.substring(0, countyString.length() - 3);
+        }
         String inputString = "";
         switch (state) {
+            case "California":
+                inputString = state + " " + countyString;
+                break;
             case "Florida":
-                inputString = state + " " + processedInputs[5];
+                inputString = state + " " + countyString;
                 break;
             case "Minnesota":
                 inputString = state + " " + "State";
                 break;
             case "Texas":
-                inputString = state + " " + processedInputs[5] + " district";
+                inputString = state + " " + countyString + " district";
                 break;
         }
 

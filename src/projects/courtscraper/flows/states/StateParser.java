@@ -50,6 +50,7 @@ public class StateParser extends FlowStart {
                 StateSelect.stateFilter(caseLine[0]); //grabs case files
             } catch (BlockedDocumentException | CaseNotFoundException e) {
                 deleteLine(TEMP_CSV_PATH, COUNTY_FOLDER_PATH, tempLines.get(i));
+                //potentially add appendToCSV(tempLines.get(i), DOWNLOADED_TEST_CSV_PATH); to add to memory once case is skipped
                 continue;
             }
 
