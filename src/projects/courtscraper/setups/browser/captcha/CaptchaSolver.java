@@ -2,8 +2,10 @@ package courtscraper.setups.browser.captcha;
 
 import com.twocaptcha.TwoCaptcha;
 import com.twocaptcha.captcha.Normal;
+import com.twocaptcha.captcha.ReCaptcha;
 import courtscraper.datamanagement.json.JSONGrabbers;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -19,7 +21,9 @@ public class CaptchaSolver {
     //this class contains all the captcha solving methods
 
     private TwoCaptcha solver;
+
     private Normal normalCaptcha;
+    private ReCaptcha captcha = new ReCaptcha();
 
     public CaptchaSolver() throws FileNotFoundException {
         this.solver = new TwoCaptcha(new JSONGrabbers().apiGrabber("2captcha"));
@@ -44,5 +48,21 @@ public class CaptchaSolver {
         outputFile.delete();
 
         return normalCaptcha.getCode();
+    }
+
+    public void solveReCaptcha(String siteKey, String url) {
+        captcha.setSiteKey(siteKey);
+        captcha.setUrl(url);
+
+        try {
+            solver.solve(captcha);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        //((JavascriptExecutor) driver).executeScript("document.getElementById('g-recaptcha-response').style.display='block';");
+        ((JavascriptExecutor) driver).executeScript(String.format("document.getElementById('g-recaptcha-response').value='%s';", captcha.getCode()));
+
+        System.out.println("solved");
     }
 }

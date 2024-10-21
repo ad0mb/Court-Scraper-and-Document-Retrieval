@@ -15,7 +15,8 @@ public class VerifyStatesMain extends VerifyFilesMain {
             "California", new String[]{"San Diego SO"},
             "Florida", new String[]{"Whole State", "Miami Dade"},
             "Texas", new String[]{"Whole State", "Harris"},
-            "Minnesota", new String[]{"Whole State"}
+            "Minnesota", new String[]{"Whole State"},
+            "New York", new String[]{"Kings"}
     );
 
     public static void verifyStatesAndCounties() throws IOException {

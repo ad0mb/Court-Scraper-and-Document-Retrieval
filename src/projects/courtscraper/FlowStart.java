@@ -4,6 +4,7 @@ import courtscraper.helpers.JobsManager;
 import courtscraper.helpers.SeleniumSolutions;
 import courtscraper.helpers.TabManager;
 import courtscraper.setups.browser.Firefox;
+import courtscraper.setups.browser.captcha.CaptchaSolver;
 import courtscraper.setups.gui.mainpanelelements.MainButtons;
 import org.openqa.selenium.WebDriver;
 
@@ -22,10 +23,12 @@ public class FlowStart extends MainButtons {
     public static WebDriver driver;
     public static TabManager tabManager = new TabManager();
     public static SeleniumSolutions selSolutions = new SeleniumSolutions();
+    public static CaptchaSolver captchaSolver;
     private static JobsManager jobsManager;
     private static String runStatus;
 
     public static void StartMainFlowButton() throws IOException, InterruptedException {
+        captchaSolver = new CaptchaSolver();
         jobsManager = new JobsManager();
         runStatus = runLogger.updateInfo("runStatus","Finished");
 

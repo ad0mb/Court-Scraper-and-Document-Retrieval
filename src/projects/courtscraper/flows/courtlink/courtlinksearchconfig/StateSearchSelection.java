@@ -32,6 +32,9 @@ public class StateSearchSelection extends CourtlinkSearchConfigMain {
             case "Texas":
                 inputString = state + " " + countyString + " district";
                 break;
+            case "New York":
+                inputString = state + " " + countyString;
+                break;
         }
 
         driver.findElement(By.xpath("//*[@id=\"courtsdropdown\"]")).sendKeys(inputString);
