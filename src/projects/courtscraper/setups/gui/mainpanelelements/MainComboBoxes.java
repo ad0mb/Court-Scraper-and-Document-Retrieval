@@ -109,6 +109,7 @@ public class MainComboBoxes extends Panels {
                         case "California":
                             counties.removeAllItems();
                             counties.addItem("San Diego SO");
+                            counties.addItem("Kern SO");
                             isCountyOpen = true;
                             break;
                         case "Florida":

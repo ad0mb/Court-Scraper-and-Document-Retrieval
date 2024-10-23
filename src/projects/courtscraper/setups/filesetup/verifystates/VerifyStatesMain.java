@@ -12,7 +12,7 @@ import static courtscraper.setups.gui.mainpanelelements.MainComboBoxes.stateElem
 public class VerifyStatesMain extends VerifyFilesMain {
 
     private static final Map<String, String[]> countyFileMap = Map.of(
-            "California", new String[]{"San Diego SO"},
+            "California", new String[]{"San Diego SO", "Kern SO"},
             "Florida", new String[]{"Whole State", "Miami Dade"},
             "Texas", new String[]{"Whole State", "Harris"},
             "Minnesota", new String[]{"Whole State"},
